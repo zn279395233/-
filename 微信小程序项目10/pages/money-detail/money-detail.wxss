@@ -1,0 +1,48 @@
+/* pages/money-detail/money-detail.wxss */
+page{
+  background-color: #f0eff5;
+}
+.container{
+ margin-top: 42rpx;
+ height: 615rpx;
+ background-color: #fff;
+ padding: 0 34rpx;
+ padding-right:  34rpx;
+ font-family: "Microsoft YaHei";
+}
+.container>view{
+  display: flex;
+  justify-content: space-between;
+}
+view>text{
+  color: #999999;
+  font-size: 29rpx;
+  line-height: 62.5rpx;
+}
+ .container>.money{
+  height: 125rpx;
+  line-height: 125rpx;
+  font-size: 31rpx;
+  color: #999999;
+  border-bottom: 1rpx solid #dcdcdc;
+  margin-bottom: 42rpx;
+
+
+}
+.money>text{
+  line-height: 125rpx;
+}
+.money-c{
+ font-size: 41rpx;
+ font-weight: 700;
+ color: black;
+ float: right;
+}
+ .width{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+    width: 400rpx;
+    text-align: right;
+    
+} 

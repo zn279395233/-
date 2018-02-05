@@ -1,0 +1,36 @@
+<view class="container">
+     <view class='money'>
+      <text>付款金额</text>
+      <text class='money-c'>￥0.01</text>
+     </view>
+     <view>
+      <text>当前状态</text>
+      <text class='left'>已转账</text>
+     </view>
+     <view>
+      <text>收款方</text>
+      <text >王菲菲</text>
+     </view>
+     <view>
+      <text>收款方备注</text>
+      <text >二维码收款</text>
+     </view>
+     <view>
+      <text>收款方留言</text>
+      <text >八月房贷</text>
+     </view>
+     <view>
+      <text>转账时间</text>
+      <text>2018-01-25 14:43</text>
+     </view>
+     <view>
+      <text>支付方式</text>
+      <text >电子会员卡</text>
+     </view>
+     <view>
+      <text>转账单号</text>
+      <text class='width'>0010020030040050060070889009</text>
+     </view>
+
+  </view>
+
