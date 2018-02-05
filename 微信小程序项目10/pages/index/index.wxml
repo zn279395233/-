@@ -1,0 +1,25 @@
+
+<view class="container">
+  <view class='totalMoney'>
+    <text class='month'>本月</text>
+    <text class='expend'>支出￥10.00</text><text class='income'>收入￥10.00</text><icon class='success'></icon>
+  </view>
+  <view class='lists'>
+     <view class='list-item'>
+          <image></image>
+          <view class='list-c'>
+              <label class='name'>华景乐游1234</label>
+              <text class='date'>走开吧</text>
+          </view>
+          <text class='money'>30.0</text>
+     </view>
+     <view wx:for="{{array}}">
+          <image src="{{item.imageSrc}}"></image>
+          <view class='list-c'>
+              <label class='name'>{{item.title}}</label>
+              <text class='date'>{{item.date}}</text>
+          </view>
+          <text class='money'>{{item.money}}</text>    
+    </view>
+  </view>
+</view>
