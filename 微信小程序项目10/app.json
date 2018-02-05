@@ -1,9 +1,13 @@
 {
   "pages":[
+    "pages/pay-success-/pay-success",
+    "pages/money-detail/money-detail",
     "pages/index/index",
     "pages/aboutUs/aboutUs"
-  
+      
+        
   ],
+  
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#393a3f",
