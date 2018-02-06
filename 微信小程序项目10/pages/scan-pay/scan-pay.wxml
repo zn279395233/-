@@ -11,7 +11,7 @@
        <text>￥</text>
        <input placeholder="100" auto-focus='true'></input>
       </view>
+      <view class='remark'>添加备注</view>
    </view>
-   <view>添加备注</view>
-   <button></button>
+   <button>转账</button>
 </view>

@@ -5,6 +5,7 @@ page{
   margin: 41.6rpx 31rpx;
   background-color: #fff;
   border-radius: 10rpx;
+  padding-bottom: 104rpx;
 }
 .head{
   padding-top: 41.6rpx;
@@ -41,4 +42,17 @@ image{
 .money>text{
   font-size: 62.5rpx;
   
+}
+.remark{
+  margin-top: 26rpx;
+  font-size: 25rpx;
+  color: #00a0fc;
+  margin-bottom: 52rpx;
+}
+button{
+  font-size: 37.5rpx;
+  color: #fff;
+  margin: 0 62.5rpx;
+  background-color:#00a0fc;
+  height: 94rpx; 
 }
