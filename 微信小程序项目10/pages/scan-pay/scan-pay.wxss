@@ -1,0 +1,44 @@
+page{
+  background-color: #ededed;
+}
+.container{
+  margin: 41.6rpx 31rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+}
+.head{
+  padding-top: 41.6rpx;
+  text-align: center;
+}
+image{
+ height: 78rpx;
+ width: 81rpx;
+}
+.user{
+  margin-top: 21rpx;
+  font-size: 29rpx;
+}
+.center{
+  margin-top: 109rpx;
+  padding-left: 62.5rpx;
+  font-size: 29rpx;
+}
+.money{
+  margin-top: 62.5rpx;
+  display: flex;
+  justify-content: left;
+  height: 125rpx;
+  border-bottom: 1rpx solid #dcdcdc;
+  margin-right: 62.5rpx;
+}
+.money>input{
+  height: 125rpx;
+  font-size: 104rpx;
+  opacity: 0.4;
+  padding-bottom: 21rpx;
+  box-sizing: border-box;
+}
+.money>text{
+  font-size: 62.5rpx;
+  
+}
