@@ -6,7 +6,7 @@
   </view>
   <view class='lists'>
    <scroll-view scroll-y="true" style="height: 100%;" bindscrolltolower="loadMore">
-     <view wx:for="{{order}}" class='list-item'>
+     <view wx:for="{{order}}" class='list-item'  bindtap="bindViewTap">
           <image src="{{item.imageSrc}}"></image>
           <view class='list-c'>
               <label class='name'>{{item.merchantName}}</label>

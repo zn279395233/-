@@ -1,3 +1,7 @@
+var app = getApp();
+
+
+
 Page({
     data: {
         info: {
@@ -11,6 +15,27 @@ Page({
             idValue: "418175188515151313",
             userLocationName: "我的地址",
             userLocationValue: "河南省郑州市巩义市米河镇小里河村9组",
+        },
+        userInfo: {}
+    },
+    userNameInput: function (e) {
+        var that = this;
+        that.setData({
+            info: {
+                userName: e.detail.value
         }
+        })
+    },
+    onLoad: function () {
+        console.log('onLoad')
+        var that = this
+        //调用应用实例的方法获取全局数据
+        app.getUserInfo(function (userInfo) {
+            //更新数据
+            that.setData({
+                userInfo: userInfo
+            })
+        })
     }
 });
+

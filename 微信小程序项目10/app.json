@@ -1,16 +1,15 @@
 {
-  "pages":[
+  "pages": [
+    "pages/money-list/money-list",
+    "pages/about-us/about-us",
+    
     "pages/scan-pay/scan-pay",
     "pages/pay-success/pay-success",
     "pages/money-detail/money-detail",
-    "pages/money-list/money-list",
-    "pages/index/index",
-    "pages/about-us/about-us"
+    "pages/index/index"
   ],
 
   "window":{
-
-
     "backgroundTextStyle": "#000",
     "navigationBarBackgroundColor": "#393a3f",
     "navigationBarTitleText": "WeChat",

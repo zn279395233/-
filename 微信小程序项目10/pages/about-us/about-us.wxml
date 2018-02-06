@@ -1,13 +1,13 @@
 
 <view class="container">
   <view class='headPortrait'>
-    <image src=''></image>
+    <image src='{{userInfo.avatarUrl}}'  background-size="cover"></image>
   </view>
   <form>
       <view class='lists'>
           <view class='list-item'>
               <label>姓名</label>
-              <input value='{{info.userValue}}'></input>
+              <input value='{{info.userValue}}'  bindinput="userNameInput"></input>
           </view>
           <view class='list-item'>
               <label>会员号</label>

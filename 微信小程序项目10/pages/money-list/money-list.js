@@ -13,8 +13,14 @@ Page({
             money: -300
         }]
     },
-
+    //事件处理函数  
+    bindViewTap: function () {
+        wx.navigateTo({
+            url: '../money-detail/money-detail'
+        })
+    },
     onLaunch: function (e) {
+
         var that = this;
         var url = '';
         wx.request({
