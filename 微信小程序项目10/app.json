@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/scan-pay/scan-pay",
     "pages/pay-success-/pay-success",
     "pages/money-detail/money-detail",
     "pages/index/index",
