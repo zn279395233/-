@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/index/index",
     "pages/code-pay/code-pay",
+    "pages/index/index",
+    
     "pages/about-us/about-us",
     "pages/money-list/money-list",
     "pages/scan-pay/scan-pay",
