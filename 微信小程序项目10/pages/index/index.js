@@ -1,3 +1,4 @@
+var app = getApp();
 Page({
   data:{
     order:[{
@@ -8,5 +9,38 @@ Page({
     },{
       
     }]
-  }
+  },
+    bindViewSweep: function () {
+        // 扫码功能
+        wx.scanCode({
+            success: function (json) {
+                wx.navigateTo({
+                    url: '../scan-pay/scan-pay',
+                })
+            },
+            fail: function (json) {
+
+            }
+        })
+    },
+    bindViewCode: function () {
+        wx.navigateTo({
+            url: '../code-pay/code-pay',
+        })
+    },
+    bindViewPay: function () {
+        app.init();
+
+    },
+    bindViewUs: function () {
+        wx.navigateTo({
+            url: '../about-us/about-us',
+        })
+    },
+    bindViewPayList: function () {
+        wx.navigateTo({
+            url: '../money-list/money-list',
+        })
+    },
+  
 })

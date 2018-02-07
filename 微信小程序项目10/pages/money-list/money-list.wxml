@@ -2,12 +2,12 @@
 <view class="container">
   <view class='totalMoney'>
     <text class='month'>本月</text>
-    <text class='expend'>支出￥10.00</text><text class='income'>收入￥10.00</text><icon class='success'></icon>
+    <text class='expend'>支出￥10.00</text><text class='income'>收入￥10.00</text><icon  type="waiting"></icon>
   </view>
   <view class='lists'>
-   <scroll-view scroll-y="true" style="height: 100%;" bindscrolltolower="loadMore">
-     <view wx:for="{{order}}" class='list-item'  bindtap="bindViewTap">
-          <image src="{{item.imageSrc}}"></image>
+   <scroll-view scroll-y="true" bindscrolltolower="loadMore" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll"  scroll-top="{{scrollTop}}">
+     <view wx:for="{{order}}" class='list-item'  bindtap="bindViewTap" data-orderNumber="{{item.orderNumber}}">
+          <image src="{{item.src}}"></image>
           <view class='list-c'>
               <label class='name'>{{item.merchantName}}</label>
               <text class='date'>{{item.date}}</text>
@@ -15,12 +15,15 @@
           <text class='money payOut' wx:if="{{item.money >= 0}}">+{{item.money}}</text>
           <text class='money payIn' wx:else="{{item.money > 0}}">{{item.money}}</text>
     </view>
-    <view class="tips1">
-          <view wx:if="{{hasMore}}" style="display: flex;flex-direction: row;align-items: center;align-self: center;justify-content: center;">
-          <icon type="success" size="20"/><text>加载中...</text>
+    <view class="isLaod">
+          <view wx:if="{{hasMore}}" style="" class='loadingContainer'>
+          <icon type="waiting" size="20"/><text>加载中...</text>
           </view>
-          <view wx:else><text>没有更多内容了</text></view>
+          <view wx:else class='noContent'><text>没有更多内容了</text></view>
     </view>
     </scroll-view>
   </view>
+  <loading hidden="{{hiddenLoading}}">
+          加载中...
+  </loading>
 </view>

@@ -5,14 +5,35 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+      hiddenLoading: false,
+      info: {}
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+      var that = this;
+      var orderNumber = options.orderNumber
+      setTimeout(function () {
+          that.setData({
+              hiddenLoading: true
+          })
+      }, 1500);
+
+      wx.request({
+          url: "",
+          method: 'GET',
+          data: {},
+          header: {
+              'Accept': 'application/json'
+          },
+          success: function (res) {
+
+          },
+          complete: function (json) {
+
+          }
+      })
   },
 
   /**

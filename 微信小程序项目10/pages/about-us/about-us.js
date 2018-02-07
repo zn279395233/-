@@ -1,7 +1,4 @@
 var app = getApp();
-
-
-
 Page({
     data: {
         info: {
@@ -19,12 +16,7 @@ Page({
         userInfo: {}
     },
     userNameInput: function (e) {
-        var that = this;
-        that.setData({
-            info: {
-                userName: e.detail.value
-        }
-        })
+        return e.detail.value
     },
     onLoad: function () {
         console.log('onLoad')

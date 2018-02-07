@@ -25,5 +25,15 @@ App({
   },
   globalData: {
     userInfo: null
+  },
+  init: function () {
+    wx.request({
+      url: "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=APPID&secret=APPSECRET",
+      method: 'GET',
+      success: function () {
+
+
+      }
+    })
   }
 })  

@@ -31,6 +31,8 @@
       <text>转账单号</text>
       <text class='width'>0010020030040050060070889009</text>
      </view>
-
+    <loading hidden="{{loadingHidden}}">
+              加载中...
+      </loading>
   </view>
 

@@ -1,12 +1,13 @@
 {
   "pages": [
-    "pages/money-list/money-list",
+    "pages/index/index",
+    "pages/code-pay/code-pay",
     "pages/about-us/about-us",
-    
+    "pages/money-list/money-list",
     "pages/scan-pay/scan-pay",
     "pages/pay-success/pay-success",
     "pages/money-detail/money-detail",
-    "pages/index/index"
+    "pages/full-money/full-money" 
   ],
 
   "window":{
