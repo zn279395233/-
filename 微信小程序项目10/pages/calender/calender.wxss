@@ -1,0 +1,15 @@
+/* pages/workspace/workspace/schedule/schedule.wxss */
+@import "../../template/modal.wxss";
+/*日历  */
+.box {display: block;}
+.box-flex {display: -webkit-box;display: -webkit-flex;display: flex; flex-wrap: wrap;}
+.flex-item {flex-flow: nowrap;flex-grow: 1;flex-shrink: 1;width: 14.2%;}
+.item-content {margin: 5rpx; padding: 0 10px;text-align: center;font-size: 24rpx;color: #333333;height: 2rem; line-height: 2rem;}
+.bk-color-day {background-color: #8A2BE2;border-radius: 50%;color: #fff;}
+.item-content-current-day {flex-grow: 2;}
+
+.calendar{height: auto;top:10%;padding: 0;}
+.calendar .box-flex.box-year,.calendar .box-flex.box-weekend{background-color: #4e9fee;}
+.calendar .box-year .item-content,.calendar .box-weekend .item-content{color: #fff}
+.calendar .box-weekend .item-content{font-size: 25rpx;}
+.calendar .box-year .item-content{font-size: 30rpx;}

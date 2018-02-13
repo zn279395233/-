@@ -1,0 +1,47 @@
+.top{
+  text-align: center;
+  color: #00a0fc;
+  margin: 0 42rpx;
+  border-bottom: 1rpx solid #dcdcdc;
+
+}
+icon{
+  color: #00a0fc;
+  margin: 31rpx 0;
+ 
+}
+.money{
+ margin-top: 42rpx;
+ font-size: 104rpx;
+ color: black;
+ margin-bottom: 100rpx;
+}
+.money text{
+  border-spacing: 0
+}
+.nine{
+  font-size: 80rpx;
+}
+.bottom{
+  padding: 0 62.5rpx;
+}
+.bottom>view{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 36.5rpx;
+}
+image{
+  width: 46rpx;
+  height: 46rpx;
+  margin-right: 11rpx;
+
+}
+button{
+  margin-top: 200rpx;
+  width: 327rpx;
+  height: 69rpx;
+  line-height: 69rpx;
+  color: #00a0fc;
+  background-color: #fff;
+  border: 1rpx solid #00a0fc;
+}

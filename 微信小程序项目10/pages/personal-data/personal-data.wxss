@@ -7,4 +7,4 @@
 .list-item{height: 115rpx;line-height: 115rpx;border-top:1rpx solid #dcdcdc;width:100%;white-space: nowrap;}
 .list-item:first-child{border-top: 0;}
 .list-item label{color: #999;font-size: 29rpx;}
-.list-item input{float:right;height: 100%;color: #333333;font-size: 29rpx;text-align: right;width:560rpx;}
+.list-item text{float:right;height: 100%;color: #333333;font-size: 29rpx;text-align: right;width:560rpx;}

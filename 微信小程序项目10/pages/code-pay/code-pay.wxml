@@ -1,0 +1,26 @@
+<import src="../../template/modal.wxml"/>
+
+<view class='container'>
+  <view class="pays" bindtap='bindView'>
+      <view class='pay-header'>
+          <icon class='icon iconfont icon-moneyBag'></icon>
+          <text>向商家付款</text>
+        </view>
+        <view class='content'>
+            <view class='content-header'>
+                  <text>点击可查看付款码数字</text>
+            </view>
+            <canvas canvas-id="barcode" class='code' bindtap='showViewCodeIntro'
+                    data-title="{{auth_codes[index]}}"></canvas>
+            <canvas canvas-id='qrcode' class='twoCode'></canvas>
+            <view class='content-footer'>
+                  *<text>付款码每分钟刷新一次</text>
+            </view>
+        </view>
+  </view>
+  <!--条形码  -->
+  <template is="codePayIntroduce" data="{{codePayIntroduce}}"></template>
+  <!--谨防诈骗提示  -->
+  <template is="codePayCode" data="{{codePayCode}}"></template>
+</view>
+

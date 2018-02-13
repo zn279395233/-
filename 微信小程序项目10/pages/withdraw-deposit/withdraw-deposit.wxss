@@ -1,0 +1,11 @@
+/* pages/withdraw-deposit/withdraw-deposit.wxss */
+.container{background-color: #f0eff5;padding-top: 31.25rpx;height: 100%;box-sizing: border-box;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;}
+.list{padding: 0 27.083rpx;height: 114.583rpx;background-color: #ffffff;line-height: 114.583rpx;position: relative;}
+.lists .list{border-bottom:1rpx solid #dcdcdc;}
+.lists{background-color: white;padding-bottom: 73.9583rpx;}
+.lists label{font-size: 31.25rpx;color: #696969;margin-right: 10rpx;}
+.lists text{font-size: 37.5rpx;color: #000000;position:absolute;right: 27.083rpx;}
+.lists .totalwithdrawMoney{position: relative;right: 0;font-size: 50rpx;vertical-align: middle;letter-spacing: 0;display: inline-block;width: 350rpx;}
+.lists text.totalwithdrawBtn{position:absolute;font-size: 31.25rpx;color: #00a0fc;right: 44rpx;}
+.lists .list .unit{font-size: 50rpx;position: relative;right: 0;vertical-align: middle;}
+.withdrawBtn{width: 562.5rpx;height: 93.75rpx;background-color: #00a0fc;border-radius: 10.417rpx;color: #ffffff;font-size: 37.5rpx;outline: none;border: 0;margin-top: 83.125rpx;}

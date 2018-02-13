@@ -1,17 +1,34 @@
 {
-  "pages":[
-    "pages/pay-success-/pay-success",
-    "pages/money-detail/money-detail",
+  "pages": [
+    "pages/calender/calender",
     "pages/index/index",
-    "pages/aboutUs/aboutUs"
-      
-        
+    "pages/money-list/money-list",
+    "pages/change-personal/change-personal",
+    "pages/code-pay/code-pay",
+    "pages/scan-pay/scan-pay",
+    "pages/about-us/about-us",
+    "pages/change-pay-password/change-pay-password",
+    "pages/find-password/find-password",
+    "pages/money-detail/money-detail",
+    "pages/us-set/us-set",
+    "pages/personal-data/personal-data",
+    "pages/charge-money/charge-money",
+    "pages/withdraw-deposit/withdraw-deposit", 
+    "pages/pay-success/pay-success",
+    "pages/change-password/change-password"
   ],
-  
+
   "window":{
-    "backgroundTextStyle":"light",
+    "backgroundTextStyle": "#000",
     "navigationBarBackgroundColor": "#393a3f",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"#fff"
+    "navigationBarTextStyle": "#fff",
+    "enablePullDownRefresh": true
+  },
+  "networkTimeout": {
+    "request": 5000,
+    "connectSocket": 5000,
+    "uploadFile": 5000,
+    "downloadFile": 5000
   }
 }

@@ -1,0 +1,5 @@
+<!--pages/change-personal/change-personal.wxml-->
+<view class='container'>
+    <button bindtap='bindViewSaveBtn'>保存</button>
+    <input value='{{personalValue || null}}' name="{{personalkey}}" bindinput='changeDataInput'></input>
+</view>

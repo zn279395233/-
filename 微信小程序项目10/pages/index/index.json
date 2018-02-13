@@ -1,4 +1,6 @@
 {
-  "navigationBarTitleText": "资金流水"
+  "navigationBarTitleText": "电子会员卡",
+  "navigationBarTextStyle": "#000",
+  "enablePullDownRefresh": true
   
 }

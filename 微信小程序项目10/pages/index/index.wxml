@@ -1,25 +1,40 @@
 
 <view class="container">
-  <view class='totalMoney'>
-    <text class='month'>本月</text>
-    <text class='expend'>支出￥10.00</text><text class='income'>收入￥10.00</text><icon class='success'></icon>
+    <view class='title'>电子会员卡</view>
+  <view class='img-container'>
+        <view class='content'>
+            <image src='../../images/cardImg.jpg'></image>
+           <!-- <icon type='success'></icon> -->
+            <text class='name'>{{info.card_name}}</text>
+            <text class='number'>NO\t•\t0000000000000</text>
+        </view>
+      <view class='balance'>余额：<text>￥0</text>
+          <text bindtap="bindViewPayList" class='moneyList'>查看明细</text>
+      </view>
+      <view>
+          <button bindtap='bindViewPay' class='bindViewPay'>充值</button>
+          <button bindtap='bindViewWithdraw'>提现</button>
+      </view>
   </view>
   <view class='lists'>
-     <view class='list-item'>
-          <image></image>
-          <view class='list-c'>
-              <label class='name'>华景乐游1234</label>
-              <text class='date'>走开吧</text>
-          </view>
-          <text class='money'>30.0</text>
-     </view>
-     <view wx:for="{{array}}">
-          <image src="{{item.imageSrc}}"></image>
-          <view class='list-c'>
-              <label class='name'>{{item.title}}</label>
-              <text class='date'>{{item.date}}</text>
-          </view>
-          <text class='money'>{{item.money}}</text>    
-    </view>
+        <view  class='list-item'  bindtap="bindViewSweep">
+              <icon type='' class='icon iconfont icon-sweep'></icon>
+              <view class='list-c'>
+                  <label class='name'>扫码付</label>
+              </view>
+        </view>
+        <view  class='list-item'  bindtap="bindViewCode">
+            <icon type='' class='icon iconfont icon-code-pay'></icon>
+
+              <view class='list-c'>
+                  <label class='name'>付款码</label>
+              </view>
+        </view>
+        <view  class='list-item'  bindtap="bindViewUs">
+            <icon type='' class='icon iconfont icon-us'></icon>
+              <view class='list-c'>
+                  <label class='name'>关于我</label>
+              </view>
+        </view>
   </view>
 </view>

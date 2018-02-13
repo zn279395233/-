@@ -1,0 +1,19 @@
+/**index.wxss**/
+/*图片code  */
+.container{background-color: #f0eff5;height: 100%;}
+/*会员卡  */
+.img-container .content text{position: absolute;color: #fff;}
+.img-container .content{width:688.5417rpx;margin:auto;position: relative;text-align: center;}
+.img-container .number{font-size: 37.5rpx;left: 0;right: 0;bottom:119.7917rpx;}
+.img-container{text-align: center;padding-top: 43.75rpx;position: relative;background-color: white;}
+.img-container image{width: 688.5417rpx;height: 396.875rpx;}
+.img-container .avatar{width:144.7917rpx;height:144.7917rpx;border-radius: 50%;position: absolute;top: 85.417rpx;left: 0;right: 0;margin: auto;}
+
+.img-container text.moneyList{position:absolute;font-size: 31.25rpx;color: #00a0fc;right: 45rpx;}
+/*列表  */
+.lists{padding: 0 31.25rpx;background-color: #fff;padding-top: 32.7rpx;}
+.lists scroll-view{height: 100%;}
+.list-item{height: 116.7rpx;border-top:1rpx solid #dcdcdc;position:relative;line-height: 116.7rpx;}
+.list-item .name{font-size: 29.17rpx;white-space: nowrap;overflow:hidden;text-overflow: ellipsis;height:100%;display: block;width: 100%;box-sizing: border-box;padding-left: 79.17rpx;}
+.list-item icon{width: 47.9rpx;height: 47.9rpx;border-radius: 50%;vertical-align: middle;position: absolute;}
+.list-item:first-child{border-top:0;}

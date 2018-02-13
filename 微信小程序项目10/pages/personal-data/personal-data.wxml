@@ -1,0 +1,29 @@
+<view class="container">
+    <view class='headPortrait'>
+        <image src='{{info.photo}}' background-size="cover"></image>
+    </view>
+    <form>
+        <view class='lists'>
+            <view class='list-item' bindtap='gotoChangePersonalName'>
+                <label>姓名</label>
+                <text>{{info.member_name}}</text>
+            </view>
+            <view class='list-item'>
+                <label>会员号</label>
+                <text>{{info.member_code}}</text>
+            </view>
+            <view class='list-item' bindtap='gotoChangePersonalMobile'>
+                <label>手机号码</label>
+                <text>{{info.mobile}}</text>
+            </view>
+            <view class='list-item' bindtap='gotoChangePersonalId'>
+                <label>身份证号</label>
+                <text>{{info.idValue}}</text>
+            </view>
+            <view class='list-item' bindtap='gotoChangePersonalLocation'>
+                <label>我的地址</label>
+                <text>{{info.userLocationValue}}</text>
+            </view>
+        </view>
+    </form>
+</view>

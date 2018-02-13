@@ -1,0 +1,153 @@
+<!-- <button class="show-btn" bindtap="showDialogBtn">弹窗</button> -->
+
+<!--添加备注信息，带有输入框的模态框-->
+<template name="modalRemark">
+    <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+    <view class="modal-dialog" wx:if="{{showModal}}">
+        <view class="modal-title">添加备注</view>
+        <view class="modal-content">
+            <view class="modal-input">
+                <input placeholder-class="input-holder" type="number" maxlength="10" bindinput="inputChange"
+                       class="input" placeholder="请输入备注信息"></input>
+            </view>
+        </view>
+        <view class="modal-footer">
+            <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
+            <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">确定</view>
+        </view>
+    </view>
+</template>
+        <!--支付密码错误，请重试-->
+<template name="modalError">
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view class="modal-dialog" wx:if="{{showModal}}">
+    <view class="modal-title">{{msg}}</view>
+
+    <view class="modal-footer">
+        <view class="btn-cancel" bindtap="onCancel" data-status="cancel">重试</view>
+        <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">忘记密码</view>
+    </view>
+</view>
+</template>
+        <!--弹出键盘 -->
+<template name="modalKeyboard">
+</template>
+
+        <!--请输入输入支付密码弹框  -->
+<template name="modalPayPassword">
+<view class="modal-mask " bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModalPay}}"></view>
+<view class="modal-dialog pay" wx:if="{{showModalPay}}">
+    <view class="modal-title">
+        <icon class='icon iconfont icon-error' bindtap='hideDialogPayBtn'></icon>
+        <image src='../../images/big_03.png' mode='aspectFill'></image>
+        <text>请输入支付密码</text>
+    </view>
+    <view class='modal-content'>
+        <view class='user'>向xxx用户转账</view>
+        <text class='moneys'>￥
+            <text class='number'>100</text>
+        </text>
+    </view>
+    <view class="modal-footer">
+        <view class='payPassword'>
+            <input></input>
+            <input></input>
+            <input></input>
+            <input></input>
+            <input></input>
+            <input></input>
+        </view>
+    </view>
+</view>
+</template>
+
+        <!--条码付  -->
+<template name="codePayIntroduce">
+<view class='content-bg codePayIntroduce' wx:if="{{codePayIntroduce}}" bindtap='hideViewCode'>
+    <view class='content'>
+        <view class='intro'>
+            <icon class='icon iconfont icon-message'></icon>
+            <text>付款码数字仅限于支付时向收银员展示，请勿泄露以防诈骗</text>
+        </view>
+        <view class='codeNumber'>
+            <text>1256</text>
+            <text>3898</text>
+            <text>3121</text>
+            <text>356213</text>
+        </view>
+        <image src="../../images/codeImg.jpg"></image>
+    </view>
+</view>
+</template>
+        <!--谨防诈骗提示  -->
+<template name="codePayCode">
+<view class='content-bg codePayCode' wx:if="{{codePayCode}}">
+    <view class='content'>
+        <view>
+            <icon class='icon iconfont icon-defend'></icon>
+        </view>
+        <view class='hint'>
+            <text>付款码数字仅用于支付时向收银员展示，
+                请勿发送给他人，以防诈骗。
+            </text>
+        </view>
+        <button bindtap='showViewCode'>知道了</button>
+    </view>
+</view>
+</template>
+
+        <!--日历  -->
+<template name="calendar">
+<view class="modal-mask" wx:if="{{showViewCalendar}}"></view>
+<view class="modal-dialog calendar" wx:if="{{showViewCalendar}}">
+    <view class="box">
+        <view class="box-flex box-year">
+            <view class="flex-item">
+                <view class="item-content" bindtap="doDay" data-key='left'>
+                    <view class="glyphicon glyphicon-triangle-left"></view>
+                </view>
+            </view>
+            <view class="flex-item item-content-current-day">
+                <view class="item-content">{{currentDate}}</view>
+            </view>
+            <view class="flex-item">
+                <view class="item-content" bindtap="doDay" data-key="right">
+                    <view class="glyphicon glyphicon-triangle-right"></view>
+                </view>
+            </view>
+        </view>
+        <view class="box-flex box-weekend">
+            <view class="flex-item">
+                <view class="item-content">一</view>
+            </view>
+            <view class="flex-item">
+                <view class="item-content">二</view>
+            </view>
+            <view class="flex-item">
+                <view class="item-content">三</view>
+            </view>
+            <view class="flex-item">
+                <view class="item-content">四</view>
+            </view>
+            <view class="flex-item">
+                <view class="item-content">五</view>
+            </view>
+            <view class="flex-item">
+                <view class="item-content">六</view>
+            </view>
+            <view class="flex-item">
+                <view class="item-content">日</view>
+            </view>
+        </view>
+        <view class="box-flex">
+            <view class="flex-item" wx:for="{{currentDayList}}" wx:for-index='key' wx:for-item="vo" wx:key="{{key}}">
+                <view class="item-content" wx:if="{{currentDay != vo}}">{{vo}}</view>
+                <view class="item-content bk-color-day" wx:else>{{vo}}</view>
+            </view>
+        </view>
+    </view>
+</view>
+</template>
+
+
+  

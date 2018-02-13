@@ -1,0 +1,26 @@
+<import src="../../template/modal.wxml"/>
+<view class='container'>
+  <view class='head'>
+    <view>
+        <image src='../../images/big_03.png' mode='aspectFill'></image>
+    </view>
+     <view class='user'>向xxx用户转账</view>
+  </view>
+   <view class='center'>
+      <view>转账金额</view>
+      <view class='money'>
+       <text>￥</text>
+          <input placeholder="100" auto-focus='true' focus="false"></input>
+      </view>
+       <view class='remark' bindtap="showDialogBtn">添加备注</view>
+   </view>
+  <button bindtap='showDialogPayBtn'>转账</button>
+  <!--添加备注信息  -->
+  <template is="modalRemark" data="{{showModal}}"></template>
+  <!--转账  -->
+  <template is="modalPayPassword" data="{{showModalPay}}"></template>
+
+</view>
+
+
+
