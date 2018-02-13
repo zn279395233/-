@@ -1,20 +1,63 @@
+
 /**index.wxss**/
 /*图片code  */
 .container{background-color: #fff;}
+.container .title{height: 100rpx;line-height: 100rpx;text-align: center;border-bottom: 1rpx solid #dcdcdc;font-size: 37.5rpx;}
 /*会员卡  */
 .img-container .content text,.img-container .content icon{position: absolute;color: #fff;}
 .img-container .content{width:645.83rpx;margin:auto;position: relative;}
 .img-container .name{font-size: 25rpx;left: 117.708rpx;top:47.91rpx;width: 97.917rpx;}
 .img-container .number{font-size: 37.5rpx;left: 41.7rpx;bottom:47.91rpx;}
-.img-container{text-align: center;padding-top: 43.75rpx;}
+.img-container{text-align: center;padding-top: 43.75rpx;position: relative;}
 .img-container image{width: 645.83rpx;height: 385.417rpx;}
-.img-container .balance{font-size: 43.75rpx;color: #696969;height: 125rpx;line-height: 125rpx;}
-.img-container .balance text{color: #00a0fc;font-size: 50rpx;vertical-align: -2rpx;}
-.img-container button{margin-top: 20.83rpx;width: 328.125rpx;height: 75rpx;background-color: #ffffff;border-radius: 10.417rpx;border: solid 2.083rpx #00a0fc;line-height: 75rpx;font-size: 31.5rpx;color: #00a0fc;margin-bottom: 30.4rpx;}
+.img-container .balance{font-size: 43.75rpx;color: #333333;height: 125rpx;line-height: 125rpx;margin: auto;position: relative;width: 645.83rpx;}
+.img-container .balance text{color: #333333;font-size: 50rpx;vertical-align: -2rpx;}
+.img-container button{margin-top: 20.83rpx;width: 312.5rpx;height: 75rpx;background-color: #ffffff;border-radius: 10.417rpx;line-height: 75rpx;font-size: 37.5rpx;color: #696969;display: inline-block;vertical-align: top;margin: 0 10.417rpx;border-color: #bbbbbb;}
+.img-container button:hover{background-color: #00a0fc;color: white;border-radius: #00a0fc;}
+.img-container text.moneyList{position:absolute;font-size: 31.25rpx;color: #00a0fc;right: 0;}
 /*列表  */
-.lists{padding: 0 31.25rpx;background-color: #fff;}
+.lists{padding: 0 31.25rpx;background-color: #fff;margin-top: 32.7rpx;}
 .lists scroll-view{height: 100%;}
 .list-item{height: 116.7rpx;border-top:1rpx solid #dcdcdc;position:relative;line-height: 116.7rpx;}
 .list-item .name{font-size: 37.5rpx;white-space: nowrap;overflow:hidden;text-overflow: ellipsis;height:100%;display: block;width: 100%;box-sizing: border-box;padding-left: 79.17rpx;}
 .list-item icon{width: 47.9rpx;height: 47.9rpx;border-radius: 50%;vertical-align: middle;position: absolute;}
 .list-item:first-child{border-top:0;}
+
+
+/*日历  */
+.box {
+  display: block;
+  margin: 10px;
+}
+
+.box-flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex-item {
+  flex-flow: nowrap;
+  flex-grow: 1;
+  flex-shrink: 1;
+  width: 14.2%;
+}
+
+.item-content {
+  margin: 5px;
+  padding: 0 10px;
+  text-align: center;
+  background-color: #000;
+  height: 2rem;
+  line-height: 2rem;
+  color: #fff;
+}
+
+.bk-color-day {
+  background-color: #8A2BE2;
+}
+
+.item-content-current-day {
+  flex-grow: 2;
+}

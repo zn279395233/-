@@ -1,0 +1,19 @@
+/* pages/withdraw-deposit/withdraw-deposit.wxss */
+.container{background-color: #fff;height: 100%;box-sizing: border-box;}
+/*手动充值  */
+.list{padding: 0 27.083rpx;height: 114.583rpx;background-color: #ffffff;line-height: 114.583rpx;position: relative;}
+.lists .list{border-bottom:1rpx solid #dcdcdc;}
+.lists{background-color: white;padding-bottom: 73.9583rpx;border-top: 31.25rpx solid #f0eff5;}
+.lists label{font-size: 31.25rpx;color: #696969;position: absolute;left: 27.083rpx;}
+.lists input{height: 114.583rpx;line-height: 114.583rpx;padding-left: 151.0417rpx;font-size: 50rpx;}
+/*优惠充值  */
+.power-up{margin-top:  31.25rpx;background-color: white;padding: 0 27.083rpx;font-size: 0;padding-top: 30rpx;height: 526rpx;padding-bottom: 30rpx;border-top: 31.25rpx solid #f0eff5;}
+.power-up .title{color: #696969;font-size: 25rpx;display: block;margin-bottom: 30rpx;}
+.power-up .list-item{width: 212.5rpx;height: 133.33rpx;background-color: #ffffff;border-radius: 5.2083rpx;border: solid 1rpx #00a0fc;text-align: center;margin-right: 25rpx;display: inline-block;vertical-align: top;margin-bottom: 25rpx;}
+.power-up .list-item:hover{background-color: #00a0fc;color: white;}
+.power-up .list-item:hover .original-price{color: #fff;}
+.power-up .list-item:hover .selling-price{color: #fff;}
+.power-up .list-item:nth-of-type(3n){margin-right: 0;}
+.power-up .original-price{display: block;text-align: center;margin: 20rpx auto -4rpx;font-size: 43.75rpx;letter-spacing: 0px;color: #00a0fc;}
+.power-up .selling-price{font-size: 25rpx;letter-spacing: 0px;color: #6bc9ff;}
+.withdrawBtn{width: 562.5rpx;height: 93.75rpx;background-color: #00a0fc;border-radius: 10.417rpx;color: #ffffff;font-size: 37.5rpx;outline: none;border: 0;margin-top: 83.125rpx;}

@@ -21,7 +21,16 @@
 			"list": []
 		},
 		"miniprogram": {
-			"list": []
+			"current": 0,
+			"list": [
+				{
+					"id": 0,
+					"name": "2",
+					"pathName": "pages/index/index",
+					"query": "company_code=c02",
+					"scene": "1011"
+				}
+			]
 		}
 	}
 }

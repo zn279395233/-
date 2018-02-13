@@ -1,4 +1,4 @@
-// pages/full-money/full-money.js
+var app = getApp();
 Page({
 
     /**

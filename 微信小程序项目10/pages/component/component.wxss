@@ -1,0 +1,57 @@
+/* 支付密码框 */
+
+.pay_number {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  border-radius:10rpx;
+}
+
+.password_dot,.get_focus_dot{width: 101.0417rpx;height: 94.7917rpx;background-color: #ffffff;border-top: solid 1rpx #dcdcdc;border-right: solid 1rpx #dcdcdc;border-bottom: solid 1rpx #dcdcdc;display: inline-block;vertical-align: middle;}
+.password_dot:first-child,.get_focus_dot:first-child{border-left: solid 1rpx #dcdcdc;}
+.saveBtn{width: 562.5rpx;height: 93.75rpx;background-color: #00a0fc;border-radius: 10.417rpx;color: #fff;margin-top: 42.7083rpx;font-size: 37.5rpx;}
+
+
+/* 单个格式样式（聚焦的时候） */
+
+.get_focus_dot {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 模拟光标 */
+.cursor {
+  width: 1px;
+  height: 15px;
+  animation: focus 0.7s infinite;
+}
+/* 光标动画 */
+@keyframes focus {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+/* 格式中的点 */
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: #000;
+  border-radius: 50%;
+}
+
+/* 输入框 */
+.input_container {
+  height: 0;
+  width: 0;
+  min-height:0;
+  position: relative;
+  text-indent: -999em;
+  left: -100%;
+}

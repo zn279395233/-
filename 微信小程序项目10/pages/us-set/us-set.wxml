@@ -1,0 +1,13 @@
+<!--pages/withdraw-deposit/withdraw-deposit.wxml-->
+<view class='container'>
+    <view class='lists'>
+        <view class='list' bindtap='bindViewChangePassword'>
+            <label>设置/修改支付密码</label>
+            <icon type='' class='icon iconfont icon-detail'></icon>
+        </view>
+        <view class='list' bindtap='bindViewFindPassword'>
+            <label>忘记支付密码</label>
+            <icon type='' class='icon iconfont icon-detail'></icon>
+        </view>
+    </view>
+</view>

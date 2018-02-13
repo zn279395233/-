@@ -1,4 +1,5 @@
 // pages/money-detail/money-detail.js
+var app = getApp();
 Page({
 
   /**
@@ -12,28 +13,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      var that = this;
-      var orderNumber = options.orderNumber
-      setTimeout(function () {
-          that.setData({
-              hiddenLoading: true
-          })
-      }, 1500);
+    var id = options.id;
+    var that = this;
+    app.appRequest({
+      url: "api/account/detail",
+      data: {
+        id: id
+      },
+      success: function (res) {
+        that.setData({
+          info: res.data
+        })
+      },
+      fail: function (res) {
 
-      wx.request({
-          url: "",
-          method: 'GET',
-          data: {},
-          header: {
-              'Accept': 'application/json'
-          },
-          success: function (res) {
+      }
+    });
 
-          },
-          complete: function (json) {
-
-          }
-      })
   },
 
   /**

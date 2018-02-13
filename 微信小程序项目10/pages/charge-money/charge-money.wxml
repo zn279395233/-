@@ -1,0 +1,42 @@
+<!--pages/withdraw-deposit/withdraw-deposit.wxml-->
+<view class='container'>
+    <view class='lists'>
+        <view class='list'>
+            <label>电子卡号</label>
+            <input value='00000001' bindinput='cardCodeInput'></input>
+        </view>
+        <view class='list'>
+            <label>充值金额</label>
+            <input bindinput='amountInput'></input>
+        </view>
+        <button class='withdrawBtn' bindtap='withdrawBtn'>充值</button>
+    </view>
+    <!--快速充值  -->
+    <view class=' power-up'>
+        <text class='title'>优惠充值</text>
+        <view class='list-item'>
+            <text class='original-price'>100元</text>
+            <text class='selling-price'>售90元</text>
+        </view>
+        <view class='list-item'>
+            <text class='original-price'>100元</text>
+            <text class='selling-price'>售90元</text>
+        </view>
+        <view class='list-item'>
+            <text class='original-price'>100元</text>
+            <text class='selling-price'>售90元</text>
+        </view>
+        <view class='list-item'>
+            <text class='original-price'>100元</text>
+            <text class='selling-price'>售90元</text>
+        </view>
+        <view class='list-item'>
+            <text class='original-price'>100元</text>
+            <text class='selling-price'>售90元</text>
+        </view>
+        <view class='list-item'>
+            <text class='original-price'>100元</text>
+            <text class='selling-price'>售90元</text>
+        </view>
+    </view>
+</view>

@@ -1,19 +1,22 @@
+<import src="../../template/modal.wxml"/>
 
+<scroll-view scroll-y="true" lower-threshold="10" bindscrolltolower="loadMore" bindscrolltoupper="refresh">
 <view class="container">
   <view class='totalMoney'>
     <text class='month'>本月</text>
-    <text class='expend'>支出￥10.00</text><text class='income'>收入￥10.00</text><icon  type="waiting"></icon>
+      <text class='expend'>支出￥{{expend_sum || 0}}</text>
+      <text class='income'>收入￥{{income_sum || 0}}</text>
+      <icon bindtap='showViewCalendarBtn' class='icon iconfont icon-calendar'></icon>
   </view>
   <view class='lists'>
-   <scroll-view scroll-y="true" bindscrolltolower="loadMore" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll"  scroll-top="{{scrollTop}}">
-     <view wx:for="{{order}}" class='list-item'  bindtap="bindViewTap" data-orderNumber="{{item.orderNumber}}">
-          <image src="{{item.src}}"></image>
+      <view wx:for="{{rows}}" class='list-item' bindtap="bindViewTap" data-orderNumber="{{item.id}}">
+          <image src="{{item.icon}}"></image>
           <view class='list-c'>
-              <label class='name'>{{item.merchantName}}</label>
-              <text class='date'>{{item.date}}</text>
+              <label class='name'>{{item.title}}</label>
+              <text class='date'>{{item.deal_time}}</text>
           </view>
-          <text class='money payOut' wx:if="{{item.money >= 0}}">+{{item.money}}</text>
-          <text class='money payIn' wx:else="{{item.money > 0}}">{{item.money}}</text>
+          <text class='money payOut' wx:if="{{item.amount >= 0}}">+{{item.amount}}</text>
+          <text class='money payIn' wx:else="{{item.amount > 0}}">{{item.amount}}</text>
     </view>
     <view class="isLaod">
           <view wx:if="{{hasMore}}" style="" class='loadingContainer'>
@@ -21,9 +24,67 @@
           </view>
           <view wx:else class='noContent'><text>没有更多内容了</text></view>
     </view>
-    </scroll-view>
+
   </view>
-  <loading hidden="{{hiddenLoading}}">
-          加载中...
-  </loading>
+    <!-- <loading hidden="{{hiddenLoading}}">
+           加载中...
+   </loading>  -->
+</view>
+
+
+</scroll-view>
+
+        <!--日历  -->
+        <!-- <view>
+            <template is="calendar" data="{{showViewCalendar}}"> </template>
+        </view> -->
+<view class="modal-mask" wx:if="{{showViewCalendar.state}}"></view>
+<view class="modal-dialog calendar" wx:if="{{showViewCalendar.state}}">
+<view class="box">
+    <view class="box-flex box-year">
+        <view class="flex-item">
+            <view class="item-content" bindtap="doDay" data-key='left'>
+                <view class="glyphicon glyphicon-triangle-left"></view>
+            </view>
+        </view>
+        <view class="flex-item item-content-current-day">
+            <view class="item-content">{{showViewCalendar.currentDate}}</view>
+        </view>
+        <view class="flex-item">
+            <view class="item-content" bindtap="doDay" data-key="right">
+                <view class="glyphicon glyphicon-triangle-right"></view>
+            </view>
+        </view>
+    </view>
+    <view class="box-flex box-weekend">
+        <view class="flex-item">
+            <view class="item-content">一</view>
+        </view>
+        <view class="flex-item">
+            <view class="item-content">二</view>
+        </view>
+        <view class="flex-item">
+            <view class="item-content">三</view>
+        </view>
+        <view class="flex-item">
+            <view class="item-content">四</view>
+        </view>
+        <view class="flex-item">
+            <view class="item-content">五</view>
+        </view>
+        <view class="flex-item">
+            <view class="item-content">六</view>
+        </view>
+        <view class="flex-item">
+            <view class="item-content">日</view>
+        </view>
+    </view>
+    <view class="box-flex">
+        <view class="flex-item" wx:for="{{showViewCalendar.currentDayList}}" wx:for-index='key' wx:for-item="vo"
+              wx:key="{{key}}">
+            <view class="item-content" wx:if="{{showViewCalendarcurrentDay != vo}}">{{vo}}</view>
+            <view class="item-content bk-color-day" wx:else>{{vo}}</view>
+        </view>
+    </view>
+</view>
 </view>

@@ -1,4 +1,4 @@
-// pages/pay-success-/pay-success.js
+var app = getApp();
 Page({
 
     /**

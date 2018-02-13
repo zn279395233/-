@@ -1,14 +1,15 @@
+@import "../../template/modal.wxss";
+
 .container{background-color: #00a0fc;width:100%;height: 100%;padding-top: 41.7rpx;box-sizing: border-box;}
 .pays{width: 687.5rpx;height: 802rpx;background-color: #ffffff;box-shadow: 0px 0px 2px 0px #d3d3d3;border-radius: 5px;margin: auto;}
-
 .pay-header{height: 93.75rpx;line-height: 93.75rpx;font-size: 31.5rpx;background-color: #fbfbfb;padding: 0 31.5rpx;}
-.pay-header icon{margin-right: 20.8rpx;vertical-align: middle;line-height: 2rpx;}
+.pay-header icon{margin-right: 4rpx;vertical-align: -9rpx;line-height: 2rpx;}
 .pay-header text{vertical-align: middle;}
 /* 内容区域*/
 .content{padding: 0 62.5rpx;text-align: center;}
 .content-header{line-height: 101.04rpx;height:101.04rpx;text-align: center;}
 .content-header text{color:#999;font-size: 31.25rpx;}
-.content .code{width: 591.7rpx;height: 165.625rpx;}
-.content .twoCode{width:250rpx;height: 250rpx;margin-top: 51.04rpx;margin-bottom: 40.625rpx;}
+.content .code{width: 591.7rpx;height: 165.625rpx;margin-left: -310rpx;}
+.content .twoCode{width:250rpx;height: 250rpx;margin-top: 51.04rpx;margin-bottom: 40.625rpx;margin-left: 16rpx;}
 .content-footer{color: #f00000;font-size: 25rpx;border-top: 1.04rpx solid #dcdcdc;height: 27.5rpx;line-height: 87.5rpx;text-align: left;}
 .content-footer text{color: #333333;font-size: 25rpx;}

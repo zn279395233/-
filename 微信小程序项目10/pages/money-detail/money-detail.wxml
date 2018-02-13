@@ -1,23 +1,11 @@
 <view class="container">
      <view class='money'>
-      <text>付款金额</text>
-      <text class='money-c'>￥0.01</text>
+         <text>付款金额</text>
+         <text class='money-c'>￥0.01</text>
      </view>
      <view>
-      <text>当前状态</text>
-      <text class='left'>已转账</text>
-     </view>
-     <view>
-      <text>收款方</text>
-      <text >王菲菲</text>
-     </view>
-     <view>
-      <text>收款方备注</text>
+         <text>付款方备注</text>
       <text >二维码收款</text>
-     </view>
-     <view>
-      <text>收款方留言</text>
-      <text >八月房贷</text>
      </view>
      <view>
       <text>转账时间</text>
@@ -31,8 +19,19 @@
       <text>转账单号</text>
       <text class='width'>0010020030040050060070889009</text>
      </view>
-    <loading hidden="{{loadingHidden}}">
-              加载中...
-      </loading>
-  </view>
+
+
+</view>
+        <!--常见问题和投诉建议  -->
+<view class='lists'>
+<view class='list'>
+    <label>常见问题</label>
+</view>
+<view class='list'>
+    <label>投诉建议</label>
+</view>
+</view>
+<loading hidden="{{loadingHidden}}">
+加载中...
+</loading>
 

@@ -1,5 +1,5 @@
-page{
-  background-color: #ededed;
+@import "../../template/modal.wxss";
+page{background-color: #ededed;
 }
 .container{
   margin: 41.6rpx 31rpx;
@@ -35,19 +35,23 @@ image{
 .money>input{
   height: 125rpx;
   font-size: 104rpx;
-  opacity: 0.4;
+  color: #000;
   padding-bottom: 21rpx;
   box-sizing: border-box;
+  vertical-align: top;
 }
 .money>text{
   font-size: 62.5rpx;
+   vertical-align: top;
   
 }
 .remark{
   margin-top: 26rpx;
   font-size: 25rpx;
+  width: 100rpx;
   color: #00a0fc;
   margin-bottom: 52rpx;
+  cursor: pointer;
 }
 button{
   font-size: 37.5rpx;
@@ -56,3 +60,5 @@ button{
   background-color:#00a0fc;
   height: 94rpx; 
 }
+
+/*输入框  */

@@ -4,19 +4,18 @@ page{
 }
 .container{
  margin-top: 42rpx;
- height: 615rpx;
  background-color: #fff;
- padding: 0 34rpx;
- padding-right:  34rpx;
  font-family: "Microsoft YaHei";
+ padding-bottom: 25.625rpx;
 }
 .container>view{
   display: flex;
   justify-content: space-between;
+  padding: 0 32.2917rpx;
 }
 view>text{
   color: #999999;
-  font-size: 29rpx;
+  font-size: 29.17rpx;
   line-height: 62.5rpx;
 }
  .container>.money{
@@ -25,7 +24,7 @@ view>text{
   font-size: 31rpx;
   color: #999999;
   border-bottom: 1rpx solid #dcdcdc;
-  margin-bottom: 42rpx;
+  margin-bottom: 25.625rpx;
 
 
 }
@@ -33,8 +32,7 @@ view>text{
   line-height: 125rpx;
 }
 .money-c{
- font-size: 41rpx;
- font-weight: 700;
+ font-size: 50rpx;
  color: black;
  float: right;
 }
@@ -42,7 +40,13 @@ view>text{
     overflow: hidden;
     white-space: nowrap;
     text-overflow:ellipsis;
-    width: 400rpx;
+    width: 480rpx;
     text-align: right;
     
 } 
+
+/*常见问题和修改建议  */
+.lists{background-color: white;border-top: 31.25rpx solid #f0eff5;display: block;}
+.list{height: 114.583rpx;background-color: #ffffff;line-height: 114.583rpx;position: relative;padding: 0 32.2917rpx;}
+.lists .list:first-child{border-bottom:1rpx solid #dcdcdc;}
+.lists label{font-size: 31.25rpx;color: #000;}
