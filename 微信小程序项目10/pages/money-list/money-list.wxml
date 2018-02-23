@@ -1,7 +1,6 @@
  <import src="../../template/modal.wxml"/>
-
-<scroll-view scroll-y="true" lower-threshold="10" bindscrolltolower="loadMore" bindscrolltoupper="refresh">
-<view class="container">
+<scroll-view scroll-y="true" lower-threshold="10" bindscrolltolower="loadMore" bindscrolltoupper="refresh" >
+<view class="container" >
   <view class='totalMoney'>
     <text class='month'>本月</text>
       <text class='expend'>支出￥{{expend_sum || 0}}</text>
@@ -34,13 +33,10 @@
 <!-- 日历 -->
 
  
-  
-
-
 
 <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
 <view class="modal-dialog" wx:if="{{showModal}}">
-   <view>  
+   <view >  
     <view style='text-align:center'>选择日期</view>  
     <picker-view indicator-style="height: 50px;" style="width: 100%; height: 180px;" value="{{value}}" bindchange="bindChange">  
         <picker-view-column>  
@@ -64,4 +60,3 @@
 
  </scroll-view> 
 
-    

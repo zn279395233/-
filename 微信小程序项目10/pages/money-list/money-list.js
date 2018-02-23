@@ -68,14 +68,21 @@ Page({
       days: mdays
     })
   },
+  onPullDownRefresh: function () {
+    wx.stopPullDownRefresh()
+  },
   /**
  * 弹窗
  */
+
   showViewCalendarBtn: function () {
     this.setData({
       showModal: true
-    })
+    }),
+      this.onPullDownRefresh()
+      
   },
+ 
   /**
    * 弹出框蒙层截断touchmove事件
    */
