@@ -1,4 +1,4 @@
-<import src="../../template/modal.wxml"/>
+ <import src="../../template/modal.wxml"/>
 
 <scroll-view scroll-y="true" lower-threshold="10" bindscrolltolower="loadMore" bindscrolltoupper="refresh">
 <view class="container">
@@ -25,66 +25,43 @@
           <view wx:else class='noContent'><text>没有更多内容了</text></view>
     </view>
 
-  </view>
-    <!-- <loading hidden="{{hiddenLoading}}">
+   </view>
+      <!-- <loading hidden="{{hiddenLoading}}">
            加载中...
-   </loading>  -->
+   </loading> -->
+     </view>   
+
+<!-- 日历 -->
+
+ 
+  
+
+
+
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view class="modal-dialog" wx:if="{{showModal}}">
+   <view>  
+    <view style='text-align:center'>选择日期</view>  
+    <picker-view indicator-style="height: 50px;" style="width: 100%; height: 180px;" value="{{value}}" bindchange="bindChange">  
+        <picker-view-column>  
+            <view wx:for="{{years}}" style="line-height: 50px;text-align:center;">{{item}}年</view>  
+        </picker-view-column>  
+        <picker-view-column>  
+            <view wx:for="{{months}}" style="line-height: 50px;text-align:center;">{{item}}月</view>  
+        </picker-view-column>  
+    </picker-view>
+    <button bindtap='onCancel'>取消</button>  <button class='sure' bindtap='onConfirm'>确认</button> 
+ </view> 
 </view>
 
 
-</scroll-view>
 
-        <!--日历  -->
-        <!-- <view>
-            <template is="calendar" data="{{showViewCalendar}}"> </template>
-        </view> -->
-<view class="modal-mask" wx:if="{{showViewCalendar.state}}"></view>
-<view class="modal-dialog calendar" wx:if="{{showViewCalendar.state}}">
-<view class="box">
-    <view class="box-flex box-year">
-        <view class="flex-item">
-            <view class="item-content" bindtap="doDay" data-key='left'>
-                <view class="glyphicon glyphicon-triangle-left"></view>
-            </view>
-        </view>
-        <view class="flex-item item-content-current-day">
-            <view class="item-content">{{showViewCalendar.currentDate}}</view>
-        </view>
-        <view class="flex-item">
-            <view class="item-content" bindtap="doDay" data-key="right">
-                <view class="glyphicon glyphicon-triangle-right"></view>
-            </view>
-        </view>
-    </view>
-    <view class="box-flex box-weekend">
-        <view class="flex-item">
-            <view class="item-content">一</view>
-        </view>
-        <view class="flex-item">
-            <view class="item-content">二</view>
-        </view>
-        <view class="flex-item">
-            <view class="item-content">三</view>
-        </view>
-        <view class="flex-item">
-            <view class="item-content">四</view>
-        </view>
-        <view class="flex-item">
-            <view class="item-content">五</view>
-        </view>
-        <view class="flex-item">
-            <view class="item-content">六</view>
-        </view>
-        <view class="flex-item">
-            <view class="item-content">日</view>
-        </view>
-    </view>
-    <view class="box-flex">
-        <view class="flex-item" wx:for="{{showViewCalendar.currentDayList}}" wx:for-index='key' wx:for-item="vo"
-              wx:key="{{key}}">
-            <view class="item-content" wx:if="{{showViewCalendarcurrentDay != vo}}">{{vo}}</view>
-            <view class="item-content bk-color-day" wx:else>{{vo}}</view>
-        </view>
-    </view>
-</view>
-</view>
+
+
+
+
+
+
+ </scroll-view> 
+
+    

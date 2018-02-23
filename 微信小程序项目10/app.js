@@ -18,7 +18,7 @@ App({
           that.globalData.code = res.code;
           that.getSeachOption()//获取企业的company_code
           wx.getUserInfo({
-            success: function (res) {
+            success: function (res) { 
               // that.globalData.userInfo = res.userInfo;
               that.globalData.options = res;
               // typeof cb == "function" && cb(that.globalData.userInfo)
@@ -32,13 +32,13 @@ App({
                   iv: that.globalData.options.iv
                 },
                 success: function (res) {
-                  if (res.statusCode == "200") {
+                  if (res.statusCode == "200"){
                     that.globalData.token = res.data.data;
                     typeof cb == "function" && cb(that.globalData);
                   }
                 },
                 fail: function (res) {
-
+                
                 }
               })
             }
@@ -47,10 +47,10 @@ App({
       });
     }
   },
-  appRequest: function (options) {
+  appRequest:function(options){
     var that = this;
     that.getUserInfo(function (json) {
-      newWork.requestLoading(options, json)
+      newWork.requestLoading(options,json)
     });
   },
   showok: function () {
@@ -72,21 +72,21 @@ App({
         }
       }
     })
-  },
+  },  
   globalData: {
     userInfo: null,
-    company_code: null,
-    code: null,
-    options: null,
-    appId: "wx53a451564e9aebed",
-    appSecret: "b773c2e821e8d8da8406982bc041e759",
-    token: null,
-    encryptedData: null,
-    iv: null,
-    post: null,
-    baseUrl: "http://192.168.100.244:8200/"
+    company_code:null,
+    code:null,
+    options:null,
+    appId:"wx53a451564e9aebed",
+    appSecret:"b773c2e821e8d8da8406982bc041e759",
+    token:null,
+    encryptedData:null,
+    iv:null,
+    post:null,
+    baseUrl:"http://192.168.100.244:8200/"
   },
-  getSeachOption: function () {
+  getSeachOption:function(){
     var that = this;
     var pages = getCurrentPages()    //获取加载的页面
     var currentPage = pages[pages.length - 1]    //获取当前页面的对象

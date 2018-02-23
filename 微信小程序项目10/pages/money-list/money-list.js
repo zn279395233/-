@@ -1,178 +1,105 @@
 // var formatTime = require("../../utils/util.js");
-var app = getApp();
-Page({
-    data: {
-      deal_date: "2018-02",//请求时间
-      page_number: 1,//开始页数,
-      page_size: 10,//每页显示多少条数据(默认10条)
-      expend_sum: null,//支出汇总
-      hasnextpage: true,//是否还有下一页
-      income_sum: null,//收入汇总
-      rows: [],//明细列表{amount:金额, deal_time:时间, icon:图标, id:明细id,title内容}
-      total: null,//总行数
-      // scrollTop: 100,
-      // hasMore: true,
-      // order: [{
-      //     src: "../../images/big_03.png",
-      //     merchantName: "良品铺子",
-      //     date: "2018-01-24 10：22",
-      //     money: 300,
-      //     orderNumber: 100
-      // }, {
-      //     src: "../../images/big_03.png",
-      //     merchantName: "良品铺子1",
-      //     date: "2018-01-24 10：22",
-      //     money: -300,
-      //     orderNumber: 101
-      // }],
-      // 日历
-      // currentDate: "2017年05月03日",
-      // dayList: '',
-      // currentDayList: '',
-      // currentObj: '',
-      // currentDay: '',
-      // showViewCalendar:false,
-      showViewCalendar: {
-        state: false,
-        currentDate: "2017年05月03日",
-        dayList: '',
-        currentDayList: '',
-        currentObj: '',
-        currentDay: '',
-      }
-    },
-  onLoad: function (e) {
-    this.loadMore();
-    this.createCalendar();
+// var app = getApp();
+const date = new Date()
+const years = []
+const months = []
+const days = []
+const daysX = []
+const daysD = []
+const daysP = []
+const daysR = []
+var mDay
 
+for (let i = 1900; i <= date.getFullYear(); i++) {
+  years.push(i)
+}
+for (let i = 1; i <= 12; i++) {
+  months.push(i)
+}
+
+for (let i = 1; i <= 31; i++) {
+  days.push(i)
+}
+for (let i = 1; i <= 30; i++) {
+  daysX.push(i)
+}
+for (let i = 1; i <= 31; i++) {
+  daysD.push(i)
+}
+for (let i = 1; i <= 28; i++) {
+  daysP.push(i)
+}
+for (let i = 1; i <= 29; i++) {
+  daysR.push(i)
+}
+
+Page({
+  data: {
+    years: years,
+    year: date.getFullYear(),
+    months: months,
+    month: 1,
+    days: days,
+    day: 1,
+    year: date.getFullYear(),
+    value: [9999, 0, 0],
+    showModal: false
   },
-    //事件处理函数  
-    bindViewTap: function (options) {
-        var orderNumber = options.currentTarget.dataset.ordernumber;
-        wx.navigateTo({
-            url: '../money-detail/money-detail?orderNumber=' + orderNumber
-        })
-    },
-  // 显示
+  bindChange: function (e) {
+    const val = e.detail.value
+    var mdays
+    let year = this.data.years[val[0]]
+    let month = this.data.months[val[1]]
+    let day = this.data.days[val[2]]
+    if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+      mdays = daysR
+    } else {
+      mdays = daysP
+    }
+    if (month == 4 || month == 6 || month == 9 || month == 11) {
+      mdays = daysX
+    } else if (month == 1 || month == 3 || month == 5 || month == 7 | month == 8 | month == 10 | month == 12) {
+      mdays = daysD
+    }
+    this.setData({
+      year,
+      month,
+      day,
+      days: mdays
+    })
+  },
+  /**
+ * 弹窗
+ */
   showViewCalendarBtn: function () {
     this.setData({
-      showViewCalendar: {
-        state: true,
-      }
+      showModal: true
     })
-    },
-  loadMore: function (e) {
-        var that = this;
-    if (that.data.hasnextpage) {
-      app.appRequest({
-        url: "api/account/list",
-        data: {
-          deal_date: that.data.deal_date,
-          page_number: that.data.page_number,
-          page_size: that.data.page_size
-            },
-            success: function (res) {
-              that.setData({
-                expend_sum: res.data.expend_sum,
-                hasnextpage: res.data.hasnextpage,
-                income_sum: res.data.income_sum,
-                rows: res.data.rows,
-                page_number: that.data.page_number++
-              })
-            },
-        fail: function (res) {
-
-            }
-      });
-    }
-
-    },
-  // 日历
-  createCalendar: function (options) {
-    debugger
-    var currentObj = this.getCurrentDayString();
+  },
+  /**
+   * 弹出框蒙层截断touchmove事件
+   */
+  preventTouchMove: function () {
+  },
+  /**
+   * 隐藏模态对话框
+   */
+  hideModal: function () {
     this.setData({
-      // showViewCalendar:{
-      //   currentDate: currentObj.getFullYear() + '年' + (currentObj.getMonth() + 1) + '月' + currentObj.getDate() + '日',
-      //   currentDay: currentObj.getDate(),
-      //   currentObj: currentObj
-      // }
+      showModal: false
     });
-    this.setSchedule(currentObj)
-    },
-  doDay: function (e) {
-    debugger
-    var that = this
-    var currentObj = that.data.showViewCalendar.currentObj
-    var Y = currentObj.getFullYear();
-    var m = currentObj.getMonth() + 1;
-    var d = currentObj.getDate();
-    var str = ''
-    if (e.currentTarget.dataset.key == 'left') {
-      m -= 1
-      if (m <= 0) {
-        str = (Y - 1) + '/' + 12 + '/' + d
-      } else {
-        str = Y + '/' + m + '/' + d
-        }
-    } else {
-      m += 1
-      if (m <= 12) {
-        str = Y + '/' + m + '/' + d
-      } else {
-        str = (Y + 1) + '/' + 1 + '/' + d
-      }
-    }
-    currentObj = new Date(str)
-    this.setData({
-      // showViewCalendar:{
-      //   currentDate: currentObj.getFullYear() + '年' + (currentObj.getMonth() + 1) + '月' + currentObj.getDate() + '日',
-      //   currentObj: currentObj
-      // }
-    })
-
-    this.setSchedule(currentObj);
   },
-  getCurrentDayString: function () {
-    var objDate = this.data.showViewCalendar.currentObj;
-    if (objDate != '') {
-      return objDate
-    } else {
-      var c_obj = new Date()
-      var a = c_obj.getFullYear() + '/' + (c_obj.getMonth() + 1) + '/' + c_obj.getDate()
-      return new Date(a)
-    }
+  /**
+   * 对话框取消按钮点击事件
+   */
+  onCancel: function () {
+    this.hideModal();
   },
-  setSchedule: function (currentObj) {
-    var that = this
-    var m = currentObj.getMonth() + 1
-    var Y = currentObj.getFullYear()
-    var d = currentObj.getDate();
-    var dayString = Y + '/' + m + '/' + currentObj.getDate()
-    var currentDayNum = new Date(Y, m, 0).getDate()
-    var currentDayWeek = currentObj.getUTCDay() + 1
-    var result = currentDayWeek - (d % 7 - 1);
-    var firstKey = result <= 0 ? 7 + result : result;
-    var currentDayList = []
-    var f = 0
-    for (var i = 0; i < 42; i++) {
-      let data = []
-      if (i < firstKey - 1) {
-        currentDayList[i] = ''
-      } else {
-        if (f < currentDayNum) {
-          currentDayList[i] = f + 1
-          f = currentDayList[i]
-        } else if (f >= currentDayNum) {
-          currentDayList[i] = ''
-        }
-      }
-    }
-    that.setData({
-      // showViewCalendar:{
-      //   currentDayList: currentDayList
-      // }
-    })
-    }
+  /**
+  * 对话框确认按钮点击事件
+  */
+  onConfirm: function () {
+    this.hideModal();
+  }
 
-})
+})  

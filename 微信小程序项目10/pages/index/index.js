@@ -1,33 +1,33 @@
 var app = getApp();
 Page({
   data:{
-      content: null,
-      info: null,
-      logoUrl: null
+    content:null,
+    info:null,
+    logoUrl:null
   },
-    onLoad: function () {
-        var that = this;
-        app.appRequest({
-            url: "api/card/configinfo",
-            success: function (res) {
-                that.setData({
-                    info: res.data
-                })
-            },
-            fail: function (res) {
+  onLoad:function(){
+    var that = this;
+    app.appRequest({
+        url: "api/card/configinfo",
+        success: function (res) {
+          that.setData({
+            info:res.data
+          })    
+        },
+        fail: function (res) {
 
-            }
-        });
-    },
+        }
+      });
+  },
     bindViewSweep: function () {
         var that = this;
         // 扫码功能
         wx.scanCode({
             success: function (json) {
-                var content = json.result;
-                wx.navigateTo({
-                    url: '../scan-pay/scan-pay?content=' + content,
-                });
+               var content = json.result;
+               wx.navigateTo({
+                 url: '../scan-pay/scan-pay?content=' + content,
+               });
             },
             fail: function (json) {
 
@@ -42,15 +42,15 @@ Page({
     },
     // 充值
     bindViewPay: function () {
-        wx.navigateTo({
-            url: '../charge-money/charge-money',
-        })
+      wx.navigateTo({
+        url: '../charge-money/charge-money',
+      })
     },
     // 提现
-    bindViewWithdraw: function () {
-        wx.navigateTo({
-            url: '../withdraw-deposit/withdraw-deposit',
-        })
+    bindViewWithdraw:function(){
+      wx.navigateTo({
+        url: '../withdraw-deposit/withdraw-deposit',
+      })
     },
     // 关于我
     bindViewUs: function () {
