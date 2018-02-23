@@ -1,4 +1,5 @@
 var app = getApp();
+var app = getApp();
 Page({
   data:{
     content:null,

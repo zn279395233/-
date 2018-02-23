@@ -1,4 +1,5 @@
 // pages/change-personal/change-personal.js
+// pages/change-personal/change-personal.js
 var app = getApp();
 Page({
 

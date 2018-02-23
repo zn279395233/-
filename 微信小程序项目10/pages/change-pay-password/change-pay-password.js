@@ -7,35 +7,74 @@ Page({
    */
   data: {
     oldWriteState:true,
-    oldPayPassword:[]
+    oldPayPassword:[],
+    oldInputValue: null,//旧的支付密码值
+    oldSixValueBox:null, //旧的支付密码包含框
+    newInputValueOne: null,//第一个新的支付密码值
+    newSixValueBoxOne: null, //第一个新的支付密码包含框
+    newInputValueTwo: null,//第一个新的支付密码值
+    newSixValueBoxTwo: null //第一个新的支付密码包含框
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    var that = this;
+    var oldSixValueBox = that.selectComponent("#oldSixValueBox");
+    var newSixValueBoxOne = that.selectComponent("#newSixValueBoxOne");
+    var newSixValueBoxTwo = that.selectComponent("#newSixValueBoxTwo");
+    that.setData({
+      oldSixValueBox: oldSixValueBox,
+      newSixValueBoxOne: newSixValueBoxOne,
+      newSixValueBoxTwo: newSixValueBoxTwo
+    });
   },
   // 当用户输入原密码时自定义函数
   valueSixOld() {
-    console.log("0");
+
   },
   // 当用户第一次输入新密码时自定义函数
   valueSixNewOne() {
-    console.log("1");
+
   },
   // 当用户第二次输入新密码时自定义函数
   valueSixNewTwo() {
-    console.log("2");
+
   },
   // 验证旧的支付密码
   nextBtn:function(){
-    debugger
+
+    var that = this;
+    var value = that.data.oldSixValueBox.data;
+    // app.appRequest({
+    //   url: "api/card/configinfo",
+    //   success: function (res) {
+    //     that.setData({
+    //       info: res.data
+    //     })
+    //   },
+    //   fail: function (res) {
+
+    //   }
+    // });
+  },
+  go:function(){
 
   },
   // 保存新的支付密码
   saveBtn: function () {
+    var that = this;
+    // app.appRequest({
+    //   url: "api/card/configinfo",
+    //   success: function (res) {
+    //     that.setData({
+    //       info: res.data
+    //     })
+    //   },
+    //   fail: function (res) {
 
+    //   }
+    // });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

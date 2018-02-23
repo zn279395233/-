@@ -13,15 +13,11 @@ Component({
                 // 当输入框的值等于6时（发起支付等...）
                 if (newVal == 6) {
                     // 引用组件页面的自定义函数
-                    that.triggerEvent('valueSix', {}, {})
-                    // 回到初始样式
-                    // that.setData({
-                    //   get_focus: false,
-                    //   value_length: 0,
-                    //   // input_value: ""
-                    // });
+                  that.triggerEvent('valueSix', {}, {})
+
                 }
-            }
+            },
+
         },
         //输入框聚焦状态
         get_focus: {
@@ -75,10 +71,15 @@ Component({
 
     // 初始化数据
     data: {},
+    // 组件属性
+    props: {
+      text: "start"
+    },
     // 组件方法
     methods: {
         // 获得焦点时
         get_focus() {
+
             let that = this;
             that.setData({
                 focus_class: true
@@ -105,10 +106,12 @@ Component({
         get_value(data) {
             let that = this;
             let value_length = data.detail.value.length;
+            let input_value = data.detail.value;
             that.setData({
-                value_length: value_length
+                value_length: value_length,
+                input_value: input_value
             });
 
         },
-    }
+    },
 })
