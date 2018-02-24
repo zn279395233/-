@@ -20,12 +20,14 @@ Page({
      */
     onLoad: function (options) {
         var that = this;
-        personalValue: options.personalValue || null
-    })
-
-that.setData({
-            personalkey: options.personalKey || null,
+        that.setData({
+          personalkey: options.personalKey || null,
+          personalValue: options.personalValue || null
+        })
+      
     },
+
+
     // 保存并提交
     bindViewSaveBtn: function () {
       if (this.data.personalValue != null || this.data.personalValue.length != 0){
