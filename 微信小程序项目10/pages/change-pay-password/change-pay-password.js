@@ -43,10 +43,9 @@ Page({
 
     var that = this;
     var value = that.data.oldSixValueBox.data;
-    console.log(value.input_value)
     if(value.input_value.length != 6){
       this.setData(
-        { _num: 2, popErrorMsg: "支付密码至少为6位" },
+        { _num: 2, popErrorMsg: "支付密码至少为6位", get_focus: false, value_length: 0, input_value: "" },
       );
       setTimeout(() => {
         this.setData(
@@ -85,6 +84,33 @@ Page({
       newSixValueBoxTwo: newSixValueBoxTwo
     });
     console.log(newSixValueBoxOne.data)
+    var value1 = newSixValueBoxOne.data;
+    var value2 = newSixValueBoxTwo.data;
+    if (value1.input_value.length != 6) {
+      this.setData(
+        { _num: 2, popErrorMsg: "支付密码至少为6位" },
+      );
+      setTimeout(() => {
+        this.setData(
+          { _num: 1, },
+        );
+      }, 1500);
+
+      return false
+    }
+    if (value1.input_value != value2.input_value) {
+      this.setData(
+        { _num: 2, popErrorMsg: "两次输入密码不一致" },
+      );
+      setTimeout(() => {
+        this.setData(
+          { _num: 1, },
+        );
+      }, 1500);
+
+      return false
+    }
+
     // var value = that.data.newSixValueBoxOne.data;
     // app.appRequest({
     //   url: "api/card/configinfo",
