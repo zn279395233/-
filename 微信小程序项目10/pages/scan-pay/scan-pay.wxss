@@ -34,6 +34,8 @@ image{
 }
 .money>input{
   height: 125rpx;
+  line-height: 125rpx;
+  min-height: 125rpx;
   font-size: 104rpx;
   color: #000;
   padding-bottom: 21rpx;

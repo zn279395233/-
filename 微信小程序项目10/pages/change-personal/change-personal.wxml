@@ -3,3 +3,5 @@
     <button bindtap='bindViewSaveBtn'>保存</button>
     <input value='{{personalValue || null}}' name="{{personalkey}}" bindinput='changeDataInput'></input>
 </view>
+<view class="prompt {{_num == 1?'hide':''}}">{{popErrorMsg}}</view>
+ 

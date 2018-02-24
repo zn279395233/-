@@ -11,6 +11,8 @@ Page({
     data: {
         personalkey: null,
         personalValue: null,
+        popErrorMsg:"",
+        _num:1
     },
 
     /**
@@ -27,22 +29,35 @@ Page({
     // 保存并提交
     bindViewSaveBtn: function () {
       if (this.data.personalValue != null || this.data.personalValue.length != 0){
-        if (this.data.personalkey == "MOBILE" && !(myreg.test(this.data.personalValue))){
-          wx.showToast({
-            title: '手机号输入错误',
-            icon: 'success',
-            duration: 1500
-          })
+        if (this.data.personalkey == "mobile" && !(myreg.test(this.data.personalValue))){
+          this.setData(
+            { _num: 2, popErrorMsg: "手机号错误" },
+          );
+          setTimeout(() => {
+            this.setData(
+              { _num: 1,},
+            );
+            
+          }, 1000);
+          
+          return false
         }
         else if (this.data.personalkey == "ID_CARD" && !(isIDCard.test(this.data.personalValue))){
-          wx.showToast({
-            title: '身份证号错误',
-            icon: 'success',
-            duration: 1500
-          })
+          this.setData(
+            { _num: 2, popErrorMsg: "身份证号错误" },
+          );
+          setTimeout(() => {
+            this.setData(
+              { _num: 1, },
+            );
+
+          }, 1000);
+
+          return false
         }
-        // return false;
+        
       }
+      
 
 
         var that = this;

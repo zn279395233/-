@@ -10,7 +10,7 @@
             <text>￥10</text>
         </view> 
         <view class='list'>
-            <!-- <label>可提现金额</label> -->
+             <label>可提现金额</label> 
             <text class='unit' wx:if="{{amount && amount >= 0}}">￥</text>
             <input class='totalwithdrawMoney' value='{{amount}}' bindinput="amountInput" type="number"></input>
             <text class='totalwithdrawBtn'>全部提现</text>
