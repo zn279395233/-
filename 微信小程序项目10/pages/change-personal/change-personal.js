@@ -20,11 +20,11 @@ Page({
      */
     onLoad: function (options) {
         var that = this;
-        that.setData({
-            personalkey: options.personalKey || null,
-            personalValue: options.personalValue || null
-        })
+        personalValue: options.personalValue || null
+    })
 
+that.setData({
+            personalkey: options.personalKey || null,
     },
     // 保存并提交
     bindViewSaveBtn: function () {
