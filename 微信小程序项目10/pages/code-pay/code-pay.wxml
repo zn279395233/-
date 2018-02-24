@@ -1,7 +1,7 @@
 <import src="../../template/modal.wxml"/>
 
 <view class='container'>
-  <view class="pays" bindtap='bindView'>
+  <view class="pays {{isHidden == true?'isHidden':''}}" bindtap='bindView'>
       <view class='pay-header'>
           <icon class='icon iconfont icon-moneyBag'></icon>
           <text>向商家付款</text>

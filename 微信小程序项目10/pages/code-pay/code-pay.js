@@ -2,6 +2,7 @@ var wxbarcode = require('../../utils/codepay.js');
 var app = getApp();
 Page({
   data: {
+    isHidden:false,
     codePayCode:false,
     codePayIntroduce:false,
     auth_codes:[],//一个批次的条形码数组
@@ -86,21 +87,24 @@ Page({
   showViewCodeIntro: function () {
     this.setData({
       codePayCode: true,
-      codePayIntroduce: false
+      codePayIntroduce: false,
+      isHidden:true
     })
   },
   //条形码
   showViewCode: function () {
     this.setData({
       codePayIntroduce: true,
-      codePayCode: false
+      codePayCode: false,
+      isHidden: true
     })
   },
   // hi
   hideViewCode: function () {
     this.setData({
       codePayIntroduce: false,
-      codePayCode: false
+      codePayCode: false,
+      isHidden: false
     })
   },
   // 根据数字一组数据生成条形码
