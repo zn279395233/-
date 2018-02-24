@@ -1,6 +1,8 @@
 // pages/change-personal/change-personal.js
 // pages/change-personal/change-personal.js
 var app = getApp();
+var myreg = /^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$/;
+var isIDCard = /^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$|^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}([0-9]|X)$/; 
 Page({
 
     /**
@@ -24,7 +26,25 @@ Page({
     },
     // 保存并提交
     bindViewSaveBtn: function () {
-        debugger
+      if (this.data.personalValue != null || this.data.personalValue.length != 0){
+        if (this.data.personalkey == "MOBILE" && !(myreg.test(this.data.personalValue))){
+          wx.showToast({
+            title: '手机号输入错误',
+            icon: 'success',
+            duration: 1500
+          })
+        }
+        else if (this.data.personalkey == "ID_CARD" && !(isIDCard.test(this.data.personalValue))){
+          wx.showToast({
+            title: '身份证号错误',
+            icon: 'success',
+            duration: 1500
+          })
+        }
+        return false;
+      }  
+
+
         var that = this;
         app.appRequest({
             url: "api/member/updateinfo",
