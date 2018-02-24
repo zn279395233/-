@@ -10,11 +10,14 @@ Page({
     index:0,
     timer:null, //计时器,
     timerPay:null,
+    codePayCodeData: {},//条形码数据
+    twoCodePayCodeData: {},//二维码码数据
     // 扫码结果显示
     amount: null,//支付金额
     receiver: null,//收款方名称
     receiver_image: null,//收款方头像
-    remark: null//付款方备注
+    remark: null//付款方备注,
+   
 
   },
   onLoad:function(options){
@@ -77,7 +80,6 @@ Page({
     }else{
       clearInterval(that.data.timer);
     }
-   
   },
   bindView:function(){
     
@@ -97,7 +99,13 @@ Page({
       codePayIntroduce: true,
       codePayCode: false,
       isHidden: true
-    })
+    });
+    if (that.data.index <= 9 && that.data.index >= 0) {
+      var array = that.data.auth_codes, index = that.data.index;
+      wxbarcode.barcode('barcode', array[index], 591.7, 165.625);
+    } else {
+      clearInterval(that.data.timer);
+    }
   },
   // hi
   hideViewCode: function () {

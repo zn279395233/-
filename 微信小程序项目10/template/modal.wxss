@@ -28,7 +28,7 @@ input-holder {color: #666;font-size: 28rpx;}
 .content-bg{position: fixed;left: 0;right: 0;top: 0;bottom: 0;background-color: white;text-align: center;}
  .codePayIntroduce .content{margin-top: 50%;transform: rotate(90deg);transform-origin: center center;} 
 .codePayIntroduce .intro{white-space: nowrap;}
-.codePayIntroduce image{width: 591.7rpx;height: 165.625rpx;}
+.codePayIntroduce .code{width: 591.7rpx;height: 165.625rpx;}
 .codePayIntroduce .intro text{color: #e57c01;font-size: 25rpx;}
 .codePayIntroduce .codeNumber{margin-top: 82.875rpx;margin-bottom: 20rpx;}
 .codePayIntroduce .codeNumber text{font-size: 43.75rpx;color: #010101;padding: 0 20.25rpx;}
@@ -38,7 +38,7 @@ input-holder {color: #666;font-size: 28rpx;}
 .codePayCode button{width: 416.7rpx;	height: 83.3rpx;background-color: #ffffff	;border-radius: 10rpx;	border: solid 2rpx #00a0fc;text-align: center;line-height:  83.33rpx;color: #00a0fc;font-size: 37.5rpx;box-sizing: border-box;}
 
 /* 日历样式 */
-.calendar{width: 750rpx;background-color: #ffffff;border-radius: 5.2083rpx;overflow: hidden; position: fixed;bottom: 0rpx;left: 0;right: 0;margin: auto;z-index: 9999;background: #fff;padding: 0 31.25rpx;}
+.calendar{width: 750rpx;background-color: #ffffff;border-radius: 5.2083rpx;overflow: hidden; position: fixed;bottom: 0rpx;left: 0;right: 0;margin: auto;z-index: 9999;background: #fff;padding: 0 31.25rpx;height: 550rpx;margin-bottom: 0;}
 .calendar button{ width: 50%; background-color: #fff; border: none;color: gray; float: left;border-top: 1rpx solid #dcdcdc;border-radius: 0;}
 .calendar button::after{border: 0}
 .calendar button:first-child{border-right: 1rpx solid #dcdcdc}

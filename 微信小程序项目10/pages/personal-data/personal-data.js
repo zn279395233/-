@@ -28,7 +28,7 @@ Page({
         var that = this;
         var personalValue = that.data.info.member_name || "";
         wx.navigateTo({
-          url: '../change-personal/change-personal?personalKey=NAME&personalValue=' + personalValue,
+          url: '../change-personal/change-personal?personalKey=member_name&personalValue=' + personalValue,
         })
     },
     // 修改手机号码
@@ -36,7 +36,7 @@ Page({
       var that = this;
       var personalValue = that.data.info.mobile || "";
       wx.navigateTo({
-        url: '../change-personal/change-personal?personalKey=MOBILE&personalValue=' + personalValue,
+        url: '../change-personal/change-personal?personalKey=mobile&personalValue=' + personalValue,
       })
     },
     // 修改身份证号
@@ -55,5 +55,8 @@ Page({
         url: '../change-personal/change-personal?personalKey=ADDRESS&personalValue=' + personalValue,
       })
     },
+    onShow:function(){
+      
+    }
 });
 

@@ -41,7 +41,7 @@ Page({
             duration: 1500
           })
         }
-        return false;
+        // return false;
       }
 
 

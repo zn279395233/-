@@ -22,8 +22,9 @@
         </view>
   </view>
   <!--条形码  -->
-  <template is="codePayIntroduce" data="{{codePayIntroduce}}"></template>
+   <template is="codePayIntroduce" data="{{codePayIntroduce:codePayIntroduce,dataNumbe:dataNumbe,dataCanvas:dataCanvas}}"></template> 
+  
   <!--谨防诈骗提示  -->
-  <template is="codePayCode" data="{{codePayCode}}"></template>
+  <template is="codePayCode" data="{{codePayCode:codePayCode}}"></template>
 </view>
 

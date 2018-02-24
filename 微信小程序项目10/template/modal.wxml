@@ -61,7 +61,7 @@
 </view>
 </template>
 
-        <!--条码付  -->
+<!--条码付  -->
 <template name="codePayIntroduce">
 <view class='content-bg codePayIntroduce' wx:if="{{codePayIntroduce}}" bindtap='hideViewCode'>
     <view class='content'>
@@ -75,7 +75,8 @@
             <text>3121</text>
             <text>356213</text>
         </view>
-        <image src="../../images/codeImg.jpg"></image>
+        <canvas canvas-id="barcode" class='code'></canvas>
+        <!-- <image src="../../images/codeImg.jpg"></image> -->
     </view>
 </view>
 </template>
