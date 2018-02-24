@@ -1,5 +1,5 @@
 // var formatTime = require("../../utils/util.js");
-// var app = getApp();
+var app = getApp();
 const date = new Date()
 const years = []
 const months = []
@@ -35,6 +35,17 @@ for (let i = 1; i <= 29; i++) {
 
 Page({
   data: {
+    isScroll:true,
+    deal_date: "2018-02",//请求时间
+    page_number: 1,//开始页数,
+    page_size: 10,//每页显示多少条数据(默认10条)
+    expend_sum: null,//支出汇总
+    hasnextpage: true,//是否还有下一页
+    income_sum: null,//收入汇总
+    rows: [],//明细列表{amount:金额, deal_time:时间, icon:图标, id:明细id,title内容}
+    total: null,//总行数
+    // scrollTop: 100,
+    // hasMore: true,
     years: years,
     year: date.getFullYear(),
     months: months,
@@ -43,43 +54,91 @@ Page({
     day: 1,
     year: date.getFullYear(),
     value: [9999, 0, 0],
-    showModal: false
+    // 上拉刷新与下拉加载
+    showModal: false,
+    hideHeader: true,
+    hideBottom: true,
+    refreshTime: '', // 刷新的时间 
+    contentlist: [], // 列表显示的数据源
+    allPages: '',    // 总页数
+    currentPage: 1,  // 当前页数  默认是1
+    loadMoreData: '加载更多……' 
   },
-  bindChange: function (e) {
-    const val = e.detail.value
-    var mdays
-    let year = this.data.years[val[0]]
-    let month = this.data.months[val[1]]
-    let day = this.data.days[val[2]]
-    if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
-      mdays = daysR
-    } else {
-      mdays = daysP
-    }
-    if (month == 4 || month == 6 || month == 9 || month == 11) {
-      mdays = daysX
-    } else if (month == 1 || month == 3 || month == 5 || month == 7 | month == 8 | month == 10 | month == 12) {
-      mdays = daysD
-    }
+  onLoad: function (e) {
+    this.loadMore();
+// 上拉刷新与下拉加载
+    var date = new Date();
     this.setData({
-      year,
-      month,
-      day,
-      days: mdays
+      refreshTime: date.toLocaleTimeString()
     })
   },
-  onPullDownRefresh: function () {
-    wx.stopPullDownRefresh()
+  //事件处理函数
+  bindViewTap: function (options) {
+      var orderNumber = options.currentTarget.dataset.ordernumber;
+      wx.navigateTo({
+          url: '../money-detail/money-detail?orderNumber=' + orderNumber
+      })
   },
-  /**
- * 弹窗
- */
+  loadMore: function (e) {
+    var that = this;
+    
+    if (that.data.hasnextpage) {
+      app.appRequest({
+        url: "api/account/list",
+        data: {
+          deal_date: that.data.deal_date,
+          page_number: that.data.page_number,
+          page_size: that.data.page_size
+        },
+        success: function (res) {
+          that.setData({
+            expend_sum: res.data.expend_sum,
+            hasnextpage: res.data.hasnextpage,
+            income_sum: res.data.income_sum,
+            // rows: res.data.rows,
+            page_number: that.data.page_number++
+          })
+        },
+        fail: function (res) {
 
+        }
+      });
+    }else{
+      if (self.data.currentPage == self.data.allPages) {
+        self.setData({
+          loadMoreData: '已经到顶'
+        })
+        return;
+      }
+    }
+
+  },
+  // 下拉刷新
+  refresh: function (e) {
+    var self = this;
+    setTimeout(function () {
+      console.log('下拉刷新');
+      var date = new Date();
+      self.setData({
+        currentPage: 1,
+        refreshTime: date.toLocaleTimeString(),
+        hideHeader: false
+      })
+      self.getData();
+    }, 300);
+  },
+  // 显示
   showViewCalendarBtn: function () {
     this.setData({
-      showModal: true
-    }),
-      this.onPullDownRefresh()
+      showModal: true,
+      isScroll:false
+    })
+    // this.onPullDownRefresh();
+    // wx.stopPullDownRefresh();
+      
+  },
+  // 上拉刷新
+  onPullDownRefresh:function(e){
       
   },
  

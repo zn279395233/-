@@ -12,7 +12,7 @@ function requestLoading(options, json) {
     // 请求数据
     var url = options.url;
     var data = options.data || {};
-    var isAnimate = options.isAnimate || true;
+    var isAnimate = typeof options.isAnimate == "undefined" ? true : false;
     data.company_code = company_code;
     var message = options.message || "加载中...";
     var success = options.success || function () {

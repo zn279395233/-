@@ -70,8 +70,8 @@ Page({
     var that = this;
     if (that.data.index <= 9 && that.data.index>= 0){
       var array = that.data.auth_codes, index = that.data.index;
-      wxbarcode.barcode('barcode', array[index], 591, 165);
-      wxbarcode.qrcode('qrcode', array[index], 300, 300);
+      wxbarcode.barcode('barcode', array[index], 591.7, 165.625);
+      wxbarcode.qrcode('qrcode', array[index], 250, 250);
       that.data.index++;
     }else{
       clearInterval(that.data.timer);

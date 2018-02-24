@@ -1,4 +1,4 @@
 {
-  "navigationBarTitleText": "资金流水"
-  
+  "navigationBarTitleText": "资金流水",
+  "enablePullDownRefresh": false
 }

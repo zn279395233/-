@@ -1,5 +1,4 @@
  <import src="../../template/modal.wxml"/>
-<scroll-view scroll-y="true" lower-threshold="10" bindscrolltolower="loadMore" bindscrolltoupper="refresh" >
 <view class="container" >
   <view class='totalMoney'>
     <text class='month'>本月</text>
@@ -7,6 +6,12 @@
       <text class='income'>收入￥{{income_sum || 0}}</text>
       <icon bindtap='showViewCalendarBtn' class='icon iconfont icon-calendar'></icon>
   </view>
+<!-- <view class="header" hidden="{{hideHeader}}">
+  <view>下拉刷新中……</view>
+  <view>{{refreshTime}}</view>
+</view>   -->
+<scroll-view scroll-y="{{isScroll}}" lower-threshold="10" bindscrolltolower="loadMore" bindscrolltoupper="refresh" >
+
   <view class='lists'>
       <view wx:for="{{rows}}" class='list-item' bindtap="bindViewTap" data-orderNumber="{{item.id}}">
           <image src="{{item.icon}}"></image>
@@ -28,16 +33,18 @@
       <!-- <loading hidden="{{hiddenLoading}}">
            加载中...
    </loading> -->
-     </view>   
-
+     
+ </scroll-view> 
+ <!-- <view class="bottom" hidden="{{hideBottom}}">
+  <view>{{loadMoreData}}</view>
+  <view>{{refreshTime}}</view>
+</view>  -->
+  </view>  
 <!-- 日历 -->
-
- 
-
 <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
-<view class="modal-dialog" wx:if="{{showModal}}">
+<view class="modal-dialog calendar" wx:if="{{showModal}}">
    <view >  
-    <view style='text-align:center'>选择日期</view>  
+    <view class='calendar-l'>选择日期</view>  
     <picker-view indicator-style="height: 50px;" style="width: 100%; height: 180px;" value="{{value}}" bindchange="bindChange">  
         <picker-view-column>  
             <view wx:for="{{years}}" style="line-height: 50px;text-align:center;">{{item}}年</view>  
@@ -49,14 +56,3 @@
     <button bindtap='onCancel'>取消</button>  <button class='sure' bindtap='onConfirm'>确认</button> 
  </view> 
 </view>
-
-
-
-
-
-
-
-
-
- </scroll-view> 
-

@@ -1,15 +1,25 @@
-/* pages/workspace/workspace/schedule/schedule.wxss */
 @import "../../template/modal.wxss";
-/*日历  */
-.box {display: block;}
-.box-flex {display: -webkit-box;display: -webkit-flex;display: flex; flex-wrap: wrap;}
-.flex-item {flex-flow: nowrap;flex-grow: 1;flex-shrink: 1;width: 14.2%;}
-.item-content {margin: 5rpx; padding: 0 10px;text-align: center;font-size: 24rpx;color: #333333;height: 2rem; line-height: 2rem;}
-.bk-color-day {background-color: #8A2BE2;border-radius: 50%;color: #fff;}
-.item-content-current-day {flex-grow: 2;}
 
-.calendar{height: auto;top:10%;padding: 0;}
-.calendar .box-flex.box-year,.calendar .box-flex.box-weekend{background-color: #4e9fee;}
-.calendar .box-year .item-content,.calendar .box-weekend .item-content{color: #fff}
-.calendar .box-weekend .item-content{font-size: 25rpx;}
-.calendar .box-year .item-content{font-size: 30rpx;}
+scroll-view{height: 100%;}
+
+/**index.wxss**/
+.totalMoney{padding: 0 31.25rpx;height: 104rpx;position: relative;}
+.totalMoney .month{font-size: 31.25rpx;color: #000;display: block;padding-top: 12.5rpx;}
+.totalMoney .expend,.totalMoney .income{font-size: 25rpx;color:#696969;vertical-align:8rpx;margin-right:2rpx;}
+.totalMoney icon{float: right;width: 43.75rpx;height: 43.75rpx;border-radius: 50%;font-size: 43.75rpx;position: absolute;right: 31.25rpx;top:19rpx;}
+/*列表  */
+.lists{padding: 0 31.25rpx;background-color: #fff;}
+.list-item{height: 134.375rpx;border-bottom:1rpx solid #dcdcdc;position:relative;line-height: 134.375rpx;}
+.list-item .name{font-size: 41.7rpx;white-space: nowrap;overflow:hidden;text-overflow: ellipsis;height:86rpx;line-height: 86rpx;display: block;width: 500rpx;}
+.list-item .date{font-size: 25rpx;}
+.list-item .list-c{padding-left: 109.275rpx;line-height: 10rpx;}
+.list-item image{width: 78.125rpx;height: 78.125rpx;border-radius: 50%;vertical-align: middle;position: absolute;top:28rpx;}
+.list-item .money.payOut{font-size:41.7rpx;position: absolute;right: 0;top:0rpx;color: #000;}
+.list-item .money.payIn{font-size:41.7rpx;position: absolute;right: 0;top:0rpx;color: #e8521b;}
+/*是否继续加载  */
+.isLaod .loadingContainer{height:80rpx;line-height:80rpx;display: flex;flex-direction: row;align-items: center;align-self: center;justify-content: center;font-size: 28rpx;}
+.isLaod .loadingContainer icon{line-height: 1rpx;margin-right: 8rpx;}
+
+.isLaod .noContent{font-size: 28rpx;text-align: center;height:80rpx;line-height:80rpx;}
+
+

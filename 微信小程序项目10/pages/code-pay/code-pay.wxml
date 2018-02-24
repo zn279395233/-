@@ -10,8 +10,11 @@
             <view class='content-header'>
                   <text>点击可查看付款码数字</text>
             </view>
-            <canvas canvas-id="barcode" class='code' bindtap='showViewCodeIntro'
-                    data-title="{{auth_codes[index]}}"></canvas>
+            <view  class='code'>
+              <canvas canvas-id="barcode" class='code' bindtap='showViewCodeIntro'
+                      data-title="{{auth_codes[index]}}"></canvas>
+              </view>
+            
             <canvas canvas-id='qrcode' class='twoCode'></canvas>
             <view class='content-footer'>
                   *<text>付款码每分钟刷新一次</text>
