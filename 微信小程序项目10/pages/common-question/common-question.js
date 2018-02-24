@@ -1,3 +1,5 @@
+var WxParse = require('../../utils/wxParse.js');
+
 var app = getApp();
 
 Page({
@@ -20,6 +22,8 @@ Page({
         that.setData({
           info: res.data
         })
+        var article = that.data;
+        WxParse.wxParse('article', 'html', article, that, 1);
       },
       fail: function (res) {
 

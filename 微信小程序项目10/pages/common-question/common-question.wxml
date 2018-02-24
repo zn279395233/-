@@ -1,4 +1,6 @@
 <!--pages/common-question/common-question.wxml-->
+<import src="../../template/wxParse/wxParse.wxml"/>
+  
 <view>
 {{info.content}}
 </view>
