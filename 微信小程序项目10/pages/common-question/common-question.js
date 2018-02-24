@@ -21,8 +21,9 @@ Page({
       success: function (res) {
         that.setData({
           info: res.data
-        })
-        var article = that.data;
+        });
+        debugger
+        var article = that.data.content;
         WxParse.wxParse('article', 'html', article, that, 1);
       },
       fail: function (res) {

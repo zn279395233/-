@@ -14,7 +14,7 @@
 
 /* 单个格式样式（聚焦的时候） */
 
-.get_focus_dot {
+.get_focus_dot,.password_dot{
   flex: 1;
   display: flex;
   align-items: center;
