@@ -3,5 +3,5 @@
 .container{padding: 15.625rpx 31.25rpx 0;background-color: white;box-sizing: border-box;}
 .container button{padding: 0;width: 83.33rpx;height: 41.7rpx;background-color: #00a0fc;border-radius: 5rpx;font-size: 25rpx;float: right;color: #fff;border: 0;white-space: nowrap;text-align: center;line-height: 41.7rpx;}
 .container input{border-bottom: 1rpx solid #00a0fc;display: block;color: #333;font-size: 31.25rpx;width: 100%;height: 66.67rpx;}
-.prompt{padding:0 40rpx;height: 52rpx;border-radius: 20rpx;background-color: #dcdcdc;position: fixed;bottom: 200rpx;left:50%;transform: translateX(-50%);display: block;}
+.prompt{color:#fff;padding:10rpx 40rpx;font-size: 24rpx; border-radius: 20rpx;background-color: #626262;position: fixed;bottom: 200rpx;left:50%;transform: translateX(-50%);display: block;}
 .prompt.hide{display: none;}

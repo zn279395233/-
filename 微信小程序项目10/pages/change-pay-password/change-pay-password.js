@@ -6,8 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    popErrorMsg: "",
+    _num: 1,
     oldWriteState:true,
-    oldPayPassword:[],
     oldInputValue: null,//旧的支付密码值
     oldSixValueBox:null, //旧的支付密码包含框
     newInputValueOne: null,//第一个新的支付密码值
@@ -21,12 +22,8 @@ Page({
   onLoad: function (options) {
     var that = this;
     var oldSixValueBox = that.selectComponent("#oldSixValueBox");
-    var newSixValueBoxOne = that.selectComponent("#newSixValueBoxOne");
-    var newSixValueBoxTwo = that.selectComponent("#newSixValueBoxTwo");
     that.setData({
-      oldSixValueBox: oldSixValueBox,
-      newSixValueBoxOne: newSixValueBoxOne,
-      newSixValueBoxTwo: newSixValueBoxTwo
+      oldSixValueBox: oldSixValueBox
     });
   },
   // 当用户输入原密码时自定义函数
@@ -43,9 +40,34 @@ Page({
   },
   // 验证旧的支付密码
   nextBtn:function(){
-
+    console.log(this.oldInputValue)
     var that = this;
+    var newSixValueBoxOne = that.selectComponent("#newSixValueBoxOne");
+    var newSixValueBoxTwo = that.selectComponent("#newSixValueBoxTwo");
+    that.setData({
+      newSixValueBoxOne: newSixValueBoxOne,
+      newSixValueBoxTwo: newSixValueBoxTwo
+    });
+    
     var value = that.data.oldSixValueBox.data;
+    console.log(value.input_value) 
+    if(value.input_value.length != 6){
+      this.setData(
+        { _num: 2, popErrorMsg: "支付密码至少为6位" },
+      );
+      setTimeout(() => {
+        this.setData(
+          { _num: 1, },
+        );
+
+      }, 1500);
+
+      return false
+    }else{
+      this.setData(
+        { oldWriteState: false},
+      );
+    }
     // app.appRequest({
     //   url: "api/card/configinfo",
     //   success: function (res) {
@@ -64,6 +86,24 @@ Page({
   // 保存新的支付密码
   saveBtn: function () {
     var that = this;
+    console.log(that)
+    var value1 = that.data.newSixValueOne.data;
+    // var value2 = that.data.newSixValueTwo.data;
+    console.log(value1.input_value)
+    // if (value1.input_value.length != 6) {
+    //   this.setData(
+    //     { _num: 2, popErrorMsg: "支付密码至少为6位" },
+    //   );
+    //   setTimeout(() => {
+    //     this.setData(
+    //       { _num: 1, },
+    //     );
+
+    //   }, 1500);
+
+    //   return false
+    // }
+
     // app.appRequest({
     //   url: "api/card/configinfo",
     //   success: function (res) {

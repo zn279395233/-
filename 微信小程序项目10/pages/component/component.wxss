@@ -55,3 +55,5 @@
   text-indent: -999em;
   left: -100%;
 }
+.prompt{color:#fff;padding:10rpx 40rpx;font-size: 24rpx; border-radius: 20rpx;background-color: #626262;position: fixed;bottom: 200rpx;left:50%;transform: translateX(-50%);display: block;}
+.prompt.hide{display: none;}
