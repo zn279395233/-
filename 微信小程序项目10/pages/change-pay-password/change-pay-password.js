@@ -8,7 +8,7 @@ Page({
   data: {
     popErrorMsg: "",
     _num: 1,
-    oldWriteState:true,
+    oldWriteState:false,
     oldInputValue: null,//旧的支付密码值
     oldSixValueBox:null, //旧的支付密码包含框
     newInputValueOne: null,//第一个新的支付密码值

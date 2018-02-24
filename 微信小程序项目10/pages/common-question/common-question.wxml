@@ -1,6 +1,6 @@
 <!--pages/common-question/common-question.wxml-->
 <import src="../../template/wxParse/wxParse.wxml"/>
   
-<view>
-{{info.content}}
-</view>
+ <view class="wxParse">
+    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+</view> 
