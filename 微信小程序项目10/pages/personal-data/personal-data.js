@@ -9,12 +9,10 @@ Page({
         return e.detail.value
     },
     onLoad: function () {
-      debugger
       var that = this;
       app.appRequest({
         url: "api/member/info",
         success: function (res) {
-          debugger
           that.setData({
             info: res.data,
             userInfo: app.globalData.userInfo

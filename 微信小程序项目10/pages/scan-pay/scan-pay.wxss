@@ -38,9 +38,11 @@ image{
   min-height: 125rpx;
   font-size: 104rpx;
   color: #000;
-  padding-bottom: 21rpx;
-  box-sizing: border-box;
   vertical-align: top;
+  padding-bottom: 0;
+  box-sizing: border-box;
+  line-height: 125rpx;
+  min-height: 125rpx;
 }
 .money>text{
   font-size: 62.5rpx;

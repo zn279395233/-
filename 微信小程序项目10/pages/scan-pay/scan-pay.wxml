@@ -10,7 +10,7 @@
       <view>转账金额</view>
       <view class='money'>
        <text>￥</text>
-          <input placeholder="100" auto-focus='true' focus="false"></input>
+          <input placeholder="100" auto-focus='true' focus="false" type='number'></input>
       </view>
        <view class='remark' bindtap="showDialogBtn">添加备注</view>
    </view>

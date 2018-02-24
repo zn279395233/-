@@ -40,17 +40,10 @@ Page({
   },
   // 验证旧的支付密码
   nextBtn:function(){
-    console.log(this.oldInputValue)
+
     var that = this;
-    var newSixValueBoxOne = that.selectComponent("#newSixValueBoxOne");
-    var newSixValueBoxTwo = that.selectComponent("#newSixValueBoxTwo");
-    that.setData({
-      newSixValueBoxOne: newSixValueBoxOne,
-      newSixValueBoxTwo: newSixValueBoxTwo
-    });
-    
     var value = that.data.oldSixValueBox.data;
-    console.log(value.input_value) 
+    console.log(value.input_value)
     if(value.input_value.length != 6){
       this.setData(
         { _num: 2, popErrorMsg: "支付密码至少为6位" },
@@ -59,7 +52,6 @@ Page({
         this.setData(
           { _num: 1, },
         );
-
       }, 1500);
 
       return false
@@ -86,24 +78,14 @@ Page({
   // 保存新的支付密码
   saveBtn: function () {
     var that = this;
-    console.log(that)
-    var value1 = that.data.newSixValueOne.data;
-    // var value2 = that.data.newSixValueTwo.data;
-    console.log(value1.input_value)
-    // if (value1.input_value.length != 6) {
-    //   this.setData(
-    //     { _num: 2, popErrorMsg: "支付密码至少为6位" },
-    //   );
-    //   setTimeout(() => {
-    //     this.setData(
-    //       { _num: 1, },
-    //     );
-
-    //   }, 1500);
-
-    //   return false
-    // }
-
+    var newSixValueBoxOne = that.selectComponent("#newSixValueBoxOne");
+    var newSixValueBoxTwo = that.selectComponent("#newSixValueBoxTwo");
+    that.setData({
+      newSixValueBoxOne: newSixValueBoxOne,
+      newSixValueBoxTwo: newSixValueBoxTwo
+    });
+    console.log(newSixValueBoxOne.data)
+    // var value = that.data.newSixValueBoxOne.data;
     // app.appRequest({
     //   url: "api/card/configinfo",
     //   success: function (res) {

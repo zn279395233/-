@@ -30,12 +30,17 @@ Page({
         })
     },
     // 常见问题
-    bindViewPay: function () {
-     
+    bindViewQuestion: function () {
+      wx.navigateTo({
+        url: '../common-question/common-question',
+      })
     },
     // 投诉建议
-    bindViewWithdraw: function () {
-
+    bindViewSuggest: function () {
+      wx.navigateTo({
+        url: '../member-suggest/member-suggest',
+      })
+      
     },
     // 设置
     bindViewSet: function () {

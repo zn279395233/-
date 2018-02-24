@@ -21,6 +21,7 @@ Page({
 
   },
   onLoad:function(options){
+  
     var that = this;
     app.appRequest({
       url: "api/member/getauthcode",

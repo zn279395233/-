@@ -65,12 +65,16 @@ Page({
     loadMoreData: '加载更多……'
   },
   onLoad: function (e) {
-    this.loadMore();
-    // 上拉刷新与下拉加载
-    var date = new Date();
-    this.setData({
-      refreshTime: date.toLocaleTimeString()
-    })
+    var that = this;
+    app.appRequest({
+      url: "api/member/help",
+      success: function (res) {
+        
+      },
+      fail: function (res) {
+
+      }
+    });
   },
   //事件处理函数
   bindViewTap: function (options) {

@@ -35,7 +35,7 @@ Page({
             }
         })
     },
-    // 扫码付
+    // 付款码
     bindViewCode: function () {
         wx.navigateTo({
             url: '../code-pay/code-pay',

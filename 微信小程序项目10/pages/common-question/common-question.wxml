@@ -1,0 +1,4 @@
+<!--pages/common-question/common-question.wxml-->
+<view>
+{{info.content}}
+</view>

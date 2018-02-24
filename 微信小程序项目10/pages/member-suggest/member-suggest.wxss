@@ -1,0 +1,17 @@
+/* pages/withdraw-deposit/withdraw-deposit.wxss */
+.container{background-color: #f0eff5;height: 100%;box-sizing: border-box;}
+/*投诉和建议内容  */
+.container .content{background-color: white;}
+.container textarea{font-size: 31.25rpx;padding: 31.25rpx;width: 100%;}
+/*修改支付密码  */
+.list{padding: 0 27.083rpx 0 0;height: 114.583rpx;background-color: #ffffff;line-height: 114.583rpx;position: relative;border-bottom:1rpx solid #dcdcdc;}
+.lists .list:nth-last-child(1){border-bottom: 0;}
+.lists{background-color: white;border-top: 31.25rpx solid #f0eff5;}
+.lists label{font-size: 31.25rpx;color: #696969;position: absolute;left: 27.083rpx;width: 107rpx;text-align: right;}
+.lists input{height: 114.583rpx;line-height: 114.583rpx;padding-left: 151.0417rpx;font-size: 50rpx;}
+
+/* .lists label{font-size: 31.25rpx;color: #696969;}
+.lists icon,.lists text{position: absolute;right: 27.083rpx;} */
+/* .lists .checkCode text{width: 163.5417rpx;height: 50rpx;background-color: #f5f5f5;border-radius: 25rpx;color: #3398fc;font-size: 25rpx;line-height: 50rpx;text-align: center;top:29rpx;} */
+.saveBtn{width: 562.5rpx;height: 93.75rpx;background-color: #00a0fc;border-radius: 10.417rpx;color: #fff;margin-top: 42.7083rpx;font-size: 37.5rpx;}
+
