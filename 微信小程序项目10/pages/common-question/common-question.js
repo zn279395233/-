@@ -16,6 +16,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    debugger
     app.appRequest({
       url: "api/member/help",
       success: function (res) {
