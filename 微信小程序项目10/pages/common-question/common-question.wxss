@@ -1,1 +1,6 @@
 /* pages/common-question/common-question.wxss */
+.container{background-color: #f0eff5;height: 100%;box-sizing: border-box;}
+.container .wxParse{font-size: 31.25rpx;color: #333;}
+.container .type-header{padding: 0 31.25rpx;height: 50rpx;font-size: 25rpx;line-height: 50rpx;color: #696969;letter-spacing: 2rpx;}
+.container .wxParse-pre{height:auto;padding:31.25rpx;border-top: 2rpx solid #f0eff5;background-color: white;line-height: 25rpx;}
+.container .wxParse-pre:first-child{border-top: 0;}

@@ -1,6 +1,9 @@
 <!--pages/common-question/common-question.wxml-->
 <import src="../../template/wxParse/wxParse.wxml"/>
-  
- <view class="wxParse">
-    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
-</view> 
+ <view class='container'>
+  <view class='type-header'>常见问题</view>
+  <view class="wxParse">
+      <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+  </view> 
+ </view> 
+ 

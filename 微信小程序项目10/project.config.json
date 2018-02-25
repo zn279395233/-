@@ -29,7 +29,7 @@
 				{
 					"id": 0,
 					"name": "2",
-					"pathName": "pages/index/index",
+					"pathName": "pages/common-question/common-question",
 					"query": "company_code=c02",
 					"scene": "1011"
 				}
