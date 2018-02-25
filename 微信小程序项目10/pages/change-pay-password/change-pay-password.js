@@ -20,10 +20,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this;
+    
+    var that = this, oldWriteState;
+    oldWriteState = options.oldWriteState == "false" ? false : true;
+    debugger
     var oldSixValueBox = that.selectComponent("#oldSixValueBox");
     that.setData({
-      oldSixValueBox: oldSixValueBox
+      oldSixValueBox: oldSixValueBox,
+      oldWriteState: oldWriteState
     });
   },
   // 当用户输入原密码时自定义函数

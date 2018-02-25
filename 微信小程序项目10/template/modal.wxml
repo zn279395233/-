@@ -97,7 +97,7 @@
 </view>
 </template>
 
-        <!--日历  -->
+<!--日历  -->
 <template name="calendar">
 <view class="modal-mask" wx:if="{{showViewCalendar}}"></view>
 <view class="modal-dialog calendar" wx:if="{{showViewCalendar}}">
@@ -149,6 +149,15 @@
     </view>
 </view>
 </template>
+<!--扫码时假如没有设置支付密码则弹出模态框  -->
 
-
+<template name="isHasPayPassword">
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{isHasPayPassword}}"></view>
+<view class="modal-dialog isHasPayPassword" wx:if="{{isHasPayPassword}}">
+    <view class="modal-title">您还没有设置支付密码，请先设置</view>
+    <view class="modal-footer">
+       <navigator>提示：点击我的>>设置>>设置支付密码</navigator> 
+    </view>
+</view>
+</template>
   

@@ -37,4 +37,12 @@
               </view>
         </view>
   </view>
+
+  <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="true"></view>
+<view class="modal-dialog isHasPayPassword" wx:if="true">
+    <view class="modal-title">您还没有设置支付密码，请先设置</view>
+    <view class="modal-footer">
+       <navigator url="../change-pay-password/change-pay-password?oldWriteState=false">提示：点击我的>>设置>>设置支付密码</navigator> 
+    </view>
+</view>
 </view>

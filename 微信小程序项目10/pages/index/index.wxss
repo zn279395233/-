@@ -1,4 +1,4 @@
-
+@import "../../template/modal.wxss";
 /**index.wxss**/
 /*图片code  */
 .container{background-color: #fff;}

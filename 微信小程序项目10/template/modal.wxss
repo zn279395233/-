@@ -46,3 +46,8 @@ input-holder {color: #666;font-size: 28rpx;}
 .calendar .sure{color: #448bfa;float: right;}
 .calendar{padding: 0;}
 .calendar .calendar-l{text-align: center;padding: 20rpx 0;border-bottom: 1rpx solid #dcdcdc;}
+/*未设置支付密码提示框 */
+.isHasPayPassword{height: 291.67rpx;top: 400rpx;}
+.isHasPayPassword .modal-title{font-size: 31.25rpx;text-align: center;padding-top: 95.83rpx;}
+.isHasPayPassword navigator{margin-top: -20rpx;font-size: 31.25rpx;text-align: center;color: #e57c01;}
+.isHasPayPassword .modal-footer{justify-content: center;}
