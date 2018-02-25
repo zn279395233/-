@@ -18,7 +18,8 @@
     </view>
 </view>
 <view class='content'>
-    <textarea maxlength="200" placeholder="请输入不少于200字" id="reason" name="description" class="isNull"></textarea>
+    <textarea maxlength="200" placeholder="请输入不超过200个字的描述" id="reason" name="description" class="isNull"></textarea>
+    <view class="count">0/200</view>
 </view>
     <view class='lists'>
         <view class='list' bindtap='bindViewChangePassword'>

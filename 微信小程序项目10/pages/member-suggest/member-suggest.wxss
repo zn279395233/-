@@ -8,8 +8,10 @@
 .success-type .list:nth-last-child(1){border-bottom: 0;}
 .success-type radio{margin-right: 10rpx;}
 .success-type label{font-size: 31.25rpx;color: #696969;}
+
 /*投诉和建议内容  */
-.container .content{background-color: white;}
+.container .content{background-color: white;position: relative;}
+.container .count{position: absolute;bottom:20rpx;right:31.25rpx;color: #ccc;font-size: 31.25rpx}
 .container textarea{font-size: 31.25rpx;padding: 31.25rpx;width: 100%;}
 /*修改支付密码  */
 .list{padding: 0 27.083rpx 0 0;height: 114.583rpx;background-color: #ffffff;line-height: 114.583rpx;position: relative;border-bottom:1rpx solid #dcdcdc;}

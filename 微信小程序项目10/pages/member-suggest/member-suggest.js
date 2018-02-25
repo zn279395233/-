@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    types:0
   },
 
   /**
@@ -13,6 +13,13 @@ Page({
    */
   onLoad: function (options) {
   
+  },
+  // 单选按钮选中切换
+  radioChange:function(e){
+    var that = this;
+    that.setData({
+      types:e.detail.value
+    })
   },
 
   /**
