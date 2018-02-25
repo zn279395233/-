@@ -25,7 +25,7 @@ Page({
   // 内容计算验证
   bindTextAreaChange: function (e) {
     var value = e.detail.value, len = parseInt(value.length);
-    this.setData({ noteNowLen: len, content: len })
+    this.setData({ noteNowLen: len, content: value })
     if (len >= 200) {
       this.setData(
         { _num: 2, popErrorMsg: "" },
@@ -62,9 +62,21 @@ Page({
   },
   // 提交
   saveBtn:function (){
-    if (this.data.content == 0) {
+    if (this.data.content.length == 0) {
       this.setData(
         { _num: 2, popErrorMsg: "内容不能为空" },
+      );
+      setTimeout(() => {
+        this.setData(
+          { _num: 1, },
+        );
+
+      }, 1500);
+      return false
+    }
+    if (this.data.mobile.length == 0) {
+      this.setData(
+        { _num: 2, popErrorMsg: "手机号不能为空" },
       );
       setTimeout(() => {
         this.setData(
