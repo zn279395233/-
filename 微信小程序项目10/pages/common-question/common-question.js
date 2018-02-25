@@ -19,6 +19,7 @@ Page({
     app.appRequest({
       url: "api/member/help",
       success: function (res) {
+
         that.setData({
           info: res.data
         });

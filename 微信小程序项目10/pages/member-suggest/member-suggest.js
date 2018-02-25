@@ -1,4 +1,5 @@
 // pages/member-suggest/member-suggest.js
+var app = getApp();
 var myreg = /^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$/;
 Page({
 
@@ -97,6 +98,7 @@ Page({
       }, 1500);
       return false
     }
+    var that = this;
     //将投诉内容提交给后台
     app.appRequest({
       url: "api/member/suggest",
@@ -106,7 +108,11 @@ Page({
         type: that.data.types
       },
       success: function (res) {
-        
+        setTimeout(function () {
+          wx.navigateBack({
+            delta: 1,
+          })
+        }, 1500)
       },
       fail: function (res) {
 

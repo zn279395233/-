@@ -10,15 +10,15 @@
       <view>转账金额</view>
       <view class='money'>
        <text>￥</text>
-          <input placeholder="100" auto-focus='true' focus="false" type='number'></input>
+          <input placeholder="100" auto-focus='true' focus="false" type='number' bindinput='amountInput'></input>
       </view>
        <view class='remark' bindtap="showDialogBtn">添加备注</view>
    </view>
-  <button bindtap='showDialogPayBtn' data-merchantId="{{info.merchantID}}">转账</button>
+  <button bindtap='showDialogPayBtn' data-merchantId="{{}}">转账</button>
   <!--添加备注信息  -->
-  <template is="modalRemark" data="{{showModal}}"></template>
+  <template is="modalRemark" data="{{...item,howModal:showModal}}"></template>
   <!--转账  -->
-  <template is="modalPayPassword" data="{{showModalPay}}"></template>
+  <template is="modalPayPassword" data="{{...item,showModalPay:showModalPay,info:info,amount:amount}}"></template>
 
 </view>
 

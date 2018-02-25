@@ -39,13 +39,13 @@
 <view class="modal-dialog pay" wx:if="{{showModalPay}}">
     <view class="modal-title">
         <icon class='icon iconfont icon-error' bindtap='hideDialogPayBtn'></icon>
-        <image src='../../images/big_03.png' mode='aspectFill'></image>
+        <image src='{{info.merchantLogo}}' mode='aspectFill'></image>
         <text>请输入支付密码</text>
     </view>
     <view class='modal-content'>
-        <view class='user'>向xxx用户转账</view>
+        <view class='user'>向{{info.merchantName}}用户转账</view>
         <text class='moneys'>￥
-            <text class='number'>100</text>
+            <text class='number'>{{amount}}</text>
         </text>
     </view>
     <view class="modal-footer">

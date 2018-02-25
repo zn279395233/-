@@ -32,7 +32,7 @@ App({
                   iv: that.globalData.options.iv
                 },
                 success: function (res) {
-                  if (res.statusCode == "200"){
+                  if (res.statusCode == "200" && res.data.data){
                     that.globalData.token = res.data.data;
                     typeof cb == "function" && cb(that.globalData);
                   }

@@ -5,9 +5,11 @@ Page({
    * 页面的初始数据
    */
   data: {
+    info:{},//数据
     showModal: false,   //备注模态框
     showModalPay: false, //转账模态框
-    content: null   //二维码内容
+    content: null,  //二维码内容,
+    remark:""//备注
   },
   // * 生命周期函数--监听页面加载
   // * /
@@ -29,13 +31,38 @@ Page({
             info: res.data
           })
         }
-       
       },
       fail: function (res) {
 
       }
     });
   
+  },
+  // 金额输入
+  amountInput: function (e) {
+    var that = this;
+    that.setData({
+      amount: e.detail.value
+    })
+  },
+  // 提交数据到后台
+  submitBtn:function(){
+    var that = this;
+    app.appRequest({
+      url: "api/scan/getscaninfo",
+      data: {
+        amount: that.data.amount,
+        merchant_id: that.data.info.merchantID,
+        pay_password:"",
+        remark: that.data.remark,
+        serial_number: that.data.merchant_id,
+      },
+      success: function (res) {
+        
+      },
+      fail: function (res) {
+      }
+    });
   },
   // 显示
   showDialogBtn: function () {

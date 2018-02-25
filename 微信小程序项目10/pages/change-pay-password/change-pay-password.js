@@ -108,6 +108,7 @@ Page({
         pay_password: md5.md5(value)
       },
       success: function (res) {
+        console.log(res)
         that.prevViewData();
         setTimeout(function () {
           wx.navigateBack({
