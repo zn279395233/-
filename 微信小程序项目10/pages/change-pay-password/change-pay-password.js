@@ -1,4 +1,5 @@
 // pages/full-money/full-money.js
+var md5 = require("../../utils/md5.js");
 var app = getApp();
 Page({
 
@@ -9,7 +10,7 @@ Page({
     popErrorMsg: "",
     _num: 1,
     oldWriteState:true,
-    oldInputValue: null,//旧的支付密码值
+    oldInputValue: "",//旧的支付密码值
     oldSixValueBox:null, //旧的支付密码包含框
     newInputValueOne: null,//第一个新的支付密码值
     newSixValueBoxOne: null, //第一个新的支付密码包含框
@@ -20,10 +21,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
     var that = this, oldWriteState;
     oldWriteState = options.oldWriteState == "false" ? false : true;
-    debugger
+
     var oldSixValueBox = that.selectComponent("#oldSixValueBox");
     that.setData({
       oldSixValueBox: oldSixValueBox,
@@ -44,7 +44,6 @@ Page({
   },
   // 验证旧的支付密码
   nextBtn:function(){
-
     var that = this;
     var value = that.data.oldSixValueBox.data;
     if(value.input_value.length != 6){
@@ -59,21 +58,12 @@ Page({
 
       return false
     }else{
-      this.setData(
-        { oldWriteState: false},
-      );
+      this.setData({ 
+        oldWriteState: false,
+        oldInputValue: value.input_value
+      });
     }
-    // app.appRequest({
-    //   url: "api/card/configinfo",
-    //   success: function (res) {
-    //     that.setData({
-    //       info: res.data
-    //     })
-    //   },
-    //   fail: function (res) {
-
-    //   }
-    // });
+    
   },
   go:function(){
 
@@ -87,7 +77,6 @@ Page({
       newSixValueBoxOne: newSixValueBoxOne,
       newSixValueBoxTwo: newSixValueBoxTwo
     });
-    console.log(newSixValueBoxOne.data)
     var value1 = newSixValueBoxOne.data;
     var value2 = newSixValueBoxTwo.data;
     if (value1.input_value.length != 6) {
@@ -99,10 +88,8 @@ Page({
           { _num: 1, },
         );
       }, 1500);
-
       return false
-    }
-    if (value1.input_value != value2.input_value) {
+    }else if (value1.input_value != value2.input_value) {
       this.setData(
         { _num: 2, popErrorMsg: "两次输入密码不一致" },
       );
@@ -111,22 +98,27 @@ Page({
           { _num: 1, },
         );
       }, 1500);
-
       return false
     }
+    var value = that.data.newSixValueBoxOne.data.input_value;
+    app.appRequest({
+      url: "api/member/savepaypassword",
+      data:{
+        origin_password: md5.md5(that.data.oldInputValue),
+        pay_password: md5.md5(value)
+      },
+      success: function (res) {
+        that.prevViewData();
+        setTimeout(function () {
+          wx.navigateBack({
+            delta: 1,
+          })
+        }, 1500)
+      },
+      fail: function (res) {
 
-    // var value = that.data.newSixValueBoxOne.data;
-    // app.appRequest({
-    //   url: "api/card/configinfo",
-    //   success: function (res) {
-    //     that.setData({
-    //       info: res.data
-    //     })
-    //   },
-    //   fail: function (res) {
-
-    //   }
-    // });
+      }
+    });
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -174,6 +166,16 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+
+  },
+  // // 将数据传递给上一个页面
+  prevViewData: function (e) {
+    var that = this;
+    let pages = getCurrentPages();//当前页面
+    let prevPage = pages[pages.length - 2];//上一页面
+    prevPage.setData({//直接给上移页面赋值
+      isHasPayPassword: false
+    });
 
   }
 })

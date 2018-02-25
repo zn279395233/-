@@ -13,7 +13,6 @@ Page({
   // * /
   onLoad: function (options) {
     var content = options.content;
-    console.log(content)
     var that = this;
     app.appRequest({
       url: "api/scan/getscaninfo",
@@ -21,10 +20,16 @@ Page({
         content:content
       },
       success: function (res) {
-        console.log(res)
-        that.setData({
-          info: res.data
-        })
+        if (res.return_code == "1011") {//支付密码未设置
+          wx.navigateTo({
+            url: '../index/index?isHasPayPassword=true',
+          });
+        } else {
+          that.setData({
+            info: res.data
+          })
+        }
+       
       },
       fail: function (res) {
 
@@ -69,8 +74,6 @@ Page({
     this.hideModal();
   },
   /**
-  
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -15,7 +15,6 @@ Page({
     noteNowLen: 0
 
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -98,7 +97,21 @@ Page({
       }, 1500);
       return false
     }
-    
+    //将投诉内容提交给后台
+    app.appRequest({
+      url: "api/member/suggest",
+      data:{
+        content: that.data.content,
+        mobile: that.data.mobile,
+        type: that.data.types
+      },
+      success: function (res) {
+        
+      },
+      fail: function (res) {
+
+      }
+    });
   },
   
 

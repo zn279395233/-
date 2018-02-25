@@ -18,7 +18,7 @@ input-holder {color: #666;font-size: 28rpx;}
 .pay .moneys{font-size: 62.5rpx;}
 .pay .number{font-size: 75rpx;}
 .pay .modal-content,.pay .modal-footer{padding: 0 31.25rpx;}
-.pay .modal-content{height: 165.2rpx;text-align: center;font-size: 29.17rpx;}
+.pay .modal-content{height: auto;text-align: center;font-size: 29.17rpx;}
 .pay .modal-title text{font-size: 37.5rpx;}
 .pay .modal-title image{vertical-align: middle;margin-left: 16.67rpx;margin-right: 20.83rpx;}
 .payPassword{font-size: 0;text-align: left}
@@ -49,5 +49,5 @@ input-holder {color: #666;font-size: 28rpx;}
 /*未设置支付密码提示框 */
 .isHasPayPassword{height: 291.67rpx;top: 400rpx;}
 .isHasPayPassword .modal-title{font-size: 31.25rpx;text-align: center;padding-top: 95.83rpx;}
-.isHasPayPassword navigator{margin-top: -20rpx;font-size: 31.25rpx;text-align: center;color: #e57c01;}
+.isHasPayPassword navigator{margin-top: -20rpx;font-size: 31.25rpx;text-align: center;color: #e57c01;background-color: transparent;}
 .isHasPayPassword .modal-footer{justify-content: center;}

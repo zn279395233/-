@@ -4,10 +4,30 @@ Page({
   data:{
     content:null,
     info:null,
-    logoUrl:null
+    logoUrl:null,
+    isHasPayPassword:false//是否提醒用户设置支付密码(不显示)
   },
-  onLoad:function(){
+  onLoad:function(options){
     var that = this;
+    if (options.isHasPayPassword){
+      that.setData({
+        isHasPayPassword:true
+      })
+    }
+    // 验证用户是否设置支付密码
+    app.appRequest({
+      url: "api/member/checkpaypassword",
+      success: function (res) {
+          that.setData({
+            isHasPayPassword: !res.hasset
+          })   
+      },
+      fail: function (res) {
+
+      }
+    });
+    
+    // 获取会员卡信息
     app.appRequest({
         url: "api/card/configinfo",
         success: function (res) {
@@ -25,10 +45,11 @@ Page({
         // 扫码功能
         wx.scanCode({
             success: function (json) {
-               var content = json.result;
-               wx.navigateTo({
-                 url: '../scan-pay/scan-pay?content=' + content,
-               });
+                var content = json.result;
+                wx.navigateTo({
+                  url: '../scan-pay/scan-pay?content=' + content,
+                });
+              
             },
             fail: function (json) {
 
