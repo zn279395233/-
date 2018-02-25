@@ -1,6 +1,5 @@
 <!--pages/member-suggest/member-suggest.wxml-->
 
-
 <view class='container'>
 <view class='success-type'>
     <view class='type-header'>(必选)你想反馈的问题类型</view>
@@ -18,14 +17,15 @@
     </view>
 </view>
 <view class='content'>
-    <textarea maxlength="200" placeholder="请输入不超过200个字的描述" id="reason" name="description" class="isNull"></textarea>
-    <view class="count">0/200</view>
+    <textarea maxlength="200" placeholder="请输入不超过200个字的描述" id="reason" name="description" class="isNull" bindinput='bindTextAreaChange' value='{{content}}'></textarea>
+    <view class="count">{{noteNowLen}}/{{noteMaxLen}}</view>
 </view>
     <view class='lists'>
         <view class='list' bindtap='bindViewChangePassword'>
             <label>*手机号</label>
-            <input bindinput='amountInput' type='number'></input>
+            <input bindinput='amountInput' type='number' value='{{mobile}}'></input>
         </view>
     </view>
     <button class='saveBtn' bindtap='saveBtn'>提交</button>
 </view>
+<view class="prompt {{_num == 1?'hide':''}}">{{ popErrorMsg}}</view>

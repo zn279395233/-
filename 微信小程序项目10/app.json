@@ -2,7 +2,6 @@
   "pages": [
     "pages/member-suggest/member-suggest",
     "pages/common-question/common-question",
-    
     "pages/calender/calender",
     "pages/scan-pay/scan-pay",
     "pages/index/index",
