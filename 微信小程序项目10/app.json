@@ -1,11 +1,9 @@
 {
   "pages": [
-    "pages/calender/calender",
     "pages/scan-pay/scan-pay",
+    "pages/calender/calender",
     "pages/member-suggest/member-suggest",
     "pages/common-question/common-question",
-    
-    
     "pages/index/index",
     "pages/money-list/money-list",
     "pages/change-personal/change-personal",

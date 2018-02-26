@@ -14,9 +14,9 @@
       </view>
        <view class='remark' bindtap="showDialogBtn">添加备注</view>
    </view>
-  <button bindtap='showDialogPayBtn' data-merchantId="{{}}">转账</button>
+  <button bindtap='showDialogPayBtn'>转账</button>
   <!--添加备注信息  -->
-  <template is="modalRemark" data="{{...item,howModal:showModal}}"></template>
+  <template is="modalRemark" data="{{...item,showModal:showModal}}"></template>
   <!--转账  -->
 
   <view class="modal-mask " bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModalPay}}"></view>
@@ -28,9 +28,9 @@
     </view>
     <view class='modal-content'>
         <view class='user'>向{{info.merchantName}}用户转账</view>
-        <text class='moneys'>￥
+        <view class='moneys'>￥
             <text class='number'>{{amount}}</text>
-        </text>
+        </view>
     </view>
     <view class="modal-footer">
         <view class='payPassword'>

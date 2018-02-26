@@ -10,7 +10,7 @@ Page({
      frozen_balance:null,//冻结余额
      isuse_balance:null,//可用余额
      total_balance:null,//总余额
-     amount:100,
+     amount:"",
      info:{}
   },
 
@@ -18,18 +18,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (e) {
-    // var that = this;
-    // app.appRequest({
-    //   url: "api/card/info",
-    //   success: function (res) {
-    //     that.setData({
-    //       info: res.data
-    //     })
-    //   },
-    //   fail: function (res) {
+    var that = this;
+    app.appRequest({
+      url: "api/card/info",
+      success: function (res) {
+        that.setData({
+          info: res.data
+        })
+      },
+      fail: function (res) {
 
-    //   }
-    // });
+      }
+    });
   },
   //提现金额值发生改变
   amountInput: function (e) {
@@ -38,8 +38,15 @@ Page({
       amount: e.detail.value
     })
   }, 
+  // 全部提现
+  totalwithdrawBtn:function(){
+    var that = this;
+    that.setData({
+      amount: that.data.info.isuse_balance
+    })
+  },
 
-  // 提现
+  // 申请提现
   withdrawBtn: function () {
     var that = this;
     app.appRequest({

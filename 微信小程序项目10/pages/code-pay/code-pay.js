@@ -21,7 +21,6 @@ Page({
 
   },
   onLoad: function (options) {
-    debugger
     var that = this;
     app.appRequest({
       url: "api/member/getauthcode",

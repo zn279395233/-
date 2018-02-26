@@ -39,5 +39,5 @@
   </view>
 
    <!--支付密码设置提示框  -->
-     <!-- <template is="isHasPayPassword" data="{{isHasPayPassword}}"></template>    -->
+      <!-- <template is="isHasPayPassword" data="{{isHasPayPassword}}"></template>     -->
 </view>

@@ -15,7 +15,7 @@ input-holder {color: #666;font-size: 28rpx;}
 /*请输入支付密码弹框  */
 .pay{padding: 0;width: 666.67rpx;height: 531.25rpx;}
 .pay .modal-title{padding-top: 0;border-bottom: solid 1px #6dcaff;height: 101.0417rpx;box-sizing: border-box;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;padding: 0 31.25rpx;line-height: 101.0417rpx;}
-.pay .moneys{font-size: 62.5rpx;}
+.pay .moneys{font-size: 62.5rpx;border-bottom:1rpx solid #dcdcdc;margin-bottom:52.83rpx;height:124rpx;line-height:114rpx}
 .pay .number{font-size: 75rpx;}
 .pay .modal-content,.pay .modal-footer{padding: 0 31.25rpx;}
 .pay .modal-content{height: auto;text-align: center;font-size: 29.17rpx;}
@@ -39,7 +39,7 @@ input-holder {color: #666;font-size: 28rpx;}
 .codePayCode button{width: 416.7rpx;	height: 83.3rpx;background-color: #ffffff	;border-radius: 10rpx;	border: solid 2rpx #00a0fc;text-align: center;line-height:  83.33rpx;color: #00a0fc;font-size: 37.5rpx;box-sizing: border-box;}
 
 /* 日历样式 */
-.calendar{width: 750rpx;background-color: #ffffff;border-radius: 5.2083rpx;overflow: hidden; position: fixed;bottom: 0rpx;left: 0;right: 0;margin: auto;z-index: 9999;background: #fff;padding: 0 31.25rpx;height: 550rpx;margin-bottom: 0;}
+.calendar{width: 750rpx;background-color: #ffffff;border-radius: 5.2083rpx;overflow: hidden; position: fixed;bottom: 0rpx;left: 0;right: 0;margin: auto;z-index: 9999;background: #fff;padding: 0 31.25rpx;height:auto;margin-bottom: 0;top: initial;}
 .calendar button{ width: 50%; background-color: #fff; border: none;color: gray; float: left;border-top: 1rpx solid #dcdcdc;border-radius: 0;}
 .calendar button::after{border: 0}
 .calendar button:first-child{border-right: 1rpx solid #dcdcdc}

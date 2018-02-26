@@ -2,7 +2,8 @@
 <view class='container'>
     <view class='lists'>
         <view class='list' bindtap='bindViewChangePassword'>
-            <label>设置/修改支付密码</label>
+            <label wx:if="{{hasset}}">修改支付密码</label>
+            <label wx:else>设置支付密码</label>
             <icon type='' class='icon iconfont icon-detail'></icon>
         </view>
         <view class='list' bindtap='bindViewFindPassword'>

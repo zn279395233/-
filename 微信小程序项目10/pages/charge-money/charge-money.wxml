@@ -5,36 +5,36 @@
           <label>电子卡号</label><input value='00000001' bindinput='cardCodeInput'></input>
       </view>
        <view class='list'>
-          <label>充值金额</label><input bindinput='amountInput' type='number'></input>
+          <label>充值金额</label><input bindinput='amountInput' type='number' value='{{amount}}'></input>
       </view>
        <button class='withdrawBtn' bindtap='withdrawBtn'>充值</button>
    </view>
    <!--快速充值  -->
    <view class=' power-up'>
        <text class='title'>优惠充值</text>
-       <view class='list-item'>
+       <view class='list-item' bindtap='selectAmount' data-amount="90">
           <text class='original-price'>100元</text>
           <text class='selling-price'>售90元</text>
        </view>
-       <view class='list-item'>
+       <view class='list-item' bindtap='selectAmount' data-amount="80">
           <text class='original-price'>100元</text>
-          <text class='selling-price'>售90元</text>
+          <text class='selling-price'>售80元</text>
        </view>
-       <view class='list-item'>
+      <view class='list-item' bindtap='selectAmount' data-amount="70">
           <text class='original-price'>100元</text>
-          <text class='selling-price'>售90元</text>
+          <text class='selling-price'>售70元</text>
        </view>
-       <view class='list-item'>
+      <view class='list-item' bindtap='selectAmount' data-amount="60">
           <text class='original-price'>100元</text>
-          <text class='selling-price'>售90元</text>
+          <text class='selling-price'>售60元</text>
        </view>
-       <view class='list-item'>
+       <view class='list-item' bindtap='selectAmount' data-amount="50">
           <text class='original-price'>100元</text>
-          <text class='selling-price'>售90元</text>
+          <text class='selling-price'>售50元</text>
        </view>
-       <view class='list-item'>
+       <view class='list-item' bindtap='selectAmount' data-amount="40">
           <text class='original-price'>100元</text>
-          <text class='selling-price'>售90元</text>
+          <text class='selling-price'>售40元</text>
        </view>
    </view>
 </view>

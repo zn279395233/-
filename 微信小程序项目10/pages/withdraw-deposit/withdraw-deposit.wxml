@@ -3,11 +3,13 @@
     <view class='lists'>
          <view class='list'>
             <label>可用余额</label>
-            <text>￥100</text>
+            <text wx:if="{{info.isuse_balance >= 0}}">￥{{info.isuse_balance}}</text>
+            <text wx:else></text>
         </view>
         <view class='list'>
             <label>冻结金额</label>
-            <text>￥10</text>
+            <text wx:if="{{info.frozen_balance >= 0}}">￥{{info.frozen_balance}}</text>
+            <text wx:else></text>
         </view> 
         <view class='list'>
              <label>可提现金额</label> 

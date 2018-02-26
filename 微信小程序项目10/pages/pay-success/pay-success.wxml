@@ -1,16 +1,16 @@
 <view class=".top">
    <icon type='success' size='60'color='#00a0fc'></icon>
    <view>支付成功</view>
-   <view class='money'><text class='nine'>￥</text>0.01</view>
+   <view class='money'><text class='nine'>￥</text>{{amount}}</view>
 </view>
 <view class="bottom">
   <view>
    <text>收款人</text>
-   <view><image src='/pages/img/person_03.png'  mode='aspectFill'></image>王菲菲(用户名)</view>
+   <view><image src='/pages/img/person_03.png'  mode='aspectFill'></image>{{receiver}}</view>
   </view>
   <view>
   <text>付款人备注</text>
-  <text>测试</text>
+  <text>{{pay_remark}}</text>
   </view>
 </view>
  <button>完成</button>

@@ -9,7 +9,6 @@ Page({
     amount:null, //金额
     card_code:null //电子卡号
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -39,12 +38,21 @@ Page({
     })
   }, 
   //充值金额值发生改变
-  amountInput: function () {
+  amountInput: function (e) {
     var that = this;
     that.setData({
       amount: e.detail.value
     })
+   
   }, 
+  // 选择优惠充值
+  selectAmount:function(e){
+    var that = this;
+    that.setData({
+      amount: e.currentTarget.dataset.amount
+    })
+    console.log(that.data.amount)
+  },
   // 转账
   withdrawBtn:function(){
     var that = this;

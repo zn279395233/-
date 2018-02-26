@@ -6,7 +6,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+     info:{
+       mobile:"",//手机号
+       code:""//验证码
+     }
   },
 
   /**
@@ -14,6 +17,14 @@ Page({
    */
   onLoad: function (options) {
   
+  },
+  // 设置手机号
+  bindViewChangePassword:function(){
+    var that = this;
+    var personalValue = that.data.info.mobile || "";
+    wx.navigateTo({
+      url: '../change-personal/change-personal?personalKey=mobile&personalValue=' + personalValue,
+    })
   },
 
   /**

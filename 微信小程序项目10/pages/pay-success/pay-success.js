@@ -4,12 +4,32 @@ Page({
     /**
      * 页面的初始数据
      */
-    data: {},
-
+    data: {
+      amount:"",//金额
+      pay_remark:"",//备注
+      receiver:""//商户姓名
+    },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+      var trade_id = options.trade_id;
+      app.appRequest({
+        url: "api/scan/transferresult",
+        data: {
+          trade_id: trade_id,
+        },
+        success: function (res) {
+          var info = res.data;
+          that.setData({
+            amount: info.amount,//金额
+            pay_remark: info.pay_remark,//备注
+            receiver: info.receiver//商户姓名
+          })
+        },
+        fail: function (res) {
+        }
+      });
 
     },
 

@@ -1,4 +1,5 @@
-// var formatTime = require("../../utils/util.js");
+
+var formatTime = require('../../utils/dateTimefomater.js');
 var app = getApp();
 const date = new Date()
 const years = []
@@ -32,7 +33,6 @@ for (let i = 1; i <= 28; i++) {
 for (let i = 1; i <= 29; i++) {
   daysR.push(i)
 }
-
 Page({
   data: {
     isScroll:true,
@@ -42,7 +42,7 @@ Page({
     expend_sum: null,//支出汇总
     hasnextpage: true,//是否还有下一页
     income_sum: null,//收入汇总
-    rows: [],//明细列表{amount:金额, deal_time:时间, icon:图标, id:明细id,title内容}
+    rows: {},//明细列表{amount:金额, deal_time:时间, icon:图标, id:明细id,title内容}
     total: null,//总行数
     // scrollTop: 100,
     // hasMore: true,
@@ -65,6 +65,7 @@ Page({
     loadMoreData: '加载更多……' 
   },
   onLoad: function (e) {
+    
     this.loadMore();
 // 上拉刷新与下拉加载
     var date = new Date();
@@ -80,8 +81,8 @@ Page({
       })
   },
   loadMore: function (e) {
+  
     var that = this;
-    
     if (that.data.hasnextpage) {
       app.appRequest({
         url: "api/account/list",
@@ -95,7 +96,7 @@ Page({
             expend_sum: res.data.expend_sum,
             hasnextpage: res.data.hasnextpage,
             income_sum: res.data.income_sum,
-            // rows: res.data.rows,
+            rows: res.data.rows,
             page_number: that.data.page_number++
           })
         },

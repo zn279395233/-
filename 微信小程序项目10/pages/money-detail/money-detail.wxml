@@ -1,15 +1,15 @@
 <view class="container">
      <view class='money'>
          <text>付款金额</text>
-         <text class='money-c'>￥0.01</text>
+         <text class='money-c'>￥{{info.amount}}</text>
      </view>
      <view>
-         <text>付款方备注</text>
+         <text>{{info.payer_remark}}</text>
       <text >二维码收款</text>
      </view>
      <view>
       <text>转账时间</text>
-      <text>2018-01-25 14:43</text>
+      <text>{{info.deal_time}}</text>
      </view>
      <view>
       <text>支付方式</text>

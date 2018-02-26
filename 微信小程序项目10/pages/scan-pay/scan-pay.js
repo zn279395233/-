@@ -1,3 +1,4 @@
+var md5 = require("../../utils/md5.js");
 var app = getApp();
 Page({
 
@@ -10,17 +11,15 @@ Page({
     showModalPay: false, //转账模态框
     content: null,  //二维码内容,
     modalInput:null,
-    remark:""//备注
+    remark:"",//备注,
+    pay_password:"",//支付密码
+    amount:"",//金额
   },
   // * 生命周期函数--监听页面加载
   // * /
   onLoad: function (options) {
     var content = options.content;
     var that = this;
-    // var oldSixValueBox = that.selectComponent("#oldSixValueBox");
-    // that.setData({
-    //   modalInput: oldSixValueBox.get_value
-    // })
     app.appRequest({
       url: "api/scan/getscaninfo",
       data:{
@@ -35,6 +34,7 @@ Page({
           that.setData({
             info: res.data
           })
+          console.log(res.data)
         }
       },
       fail: function (res) {
@@ -50,20 +50,33 @@ Page({
       amount: e.detail.value
     })
   },
+  // 备注输入
+  inputChange: function(e) {
+    var that = this;
+    that.setData({
+      remark: e.detail.value
+    })
+  },
   // 提交数据到后台
   submitBtn:function(){
     var that = this;
+    var serial_number = new Date().getTime();
+    var pay_password = md5.md5(md5.md5(that.data.pay_password) + serial_number);
+    
     app.appRequest({
-      url: "api/scan/getscaninfo",
+      url: "api/scan/transfer",
       data: {
         amount: that.data.amount,
         merchant_id: that.data.info.merchantID,
-        pay_password:"",
+        pay_password: pay_password,
         remark: that.data.remark,
-        serial_number: that.data.merchant_id,
+        serial_number: serial_number,
       },
       success: function (res) {
-
+          var trade_id = res.data.trade_id;
+          wx.navigateTo({
+            url: '../pay-success/pay-success?trade_id=' + trade_id,
+          });
       },
       fail: function (res) {
       }
@@ -71,20 +84,19 @@ Page({
   },
   // 当用户输入原密码时自定义函数
   valueSixOld() {
-
-  },
-  
-  amountInput:function(e){
-   console.log(e.detail.value)
+    var that = this;
+    var oldSixValueBox = that.selectComponent("#oldSixValueBox");
+    that.setData({
+      pay_password:oldSixValueBox.data.input_value
+    })
+    that.submitBtn();
   },
   // 显示
   showDialogBtn: function () {
     var that = this;
-   
     that.setData({
       showModal: true
     })
-    
   },
   // 弹出支付窗口
   showDialogPayBtn: function () {
@@ -92,10 +104,7 @@ Page({
     that.setData({
       showModalPay: true
     })
-    debugger
-    var oldSixValueBox = that.selectComponent("#oldSixValueBox");
-    // that.modalInput();
-    console.log(oldSixValueBox.get_value)
+    that.submitBtn();
   },
   // 隐藏
   hideModal: function () {

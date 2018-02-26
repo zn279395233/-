@@ -69,3 +69,5 @@ button{
 }
 
 /*输入框  */
+/* .payPassword{position: relative;}
+.payPassword input{position: absolute;top:0;left:57rpx;width:419rpx;border:0;background-color:transparent;color: transparent;z-index: -1;} */
