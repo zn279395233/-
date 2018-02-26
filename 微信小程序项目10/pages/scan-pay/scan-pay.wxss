@@ -1,4 +1,7 @@
+@import "../component/component.wxss";/*6位数输入框*/
+
 @import "../../template/modal.wxss";
+
 page{background-color: #ededed;
 }
 .container{

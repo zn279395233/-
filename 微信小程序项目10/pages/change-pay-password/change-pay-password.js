@@ -23,7 +23,6 @@ Page({
   onLoad: function (options) {
     var that = this, oldWriteState;
     oldWriteState = options.oldWriteState == "false" ? false : true;
-
     var oldSixValueBox = that.selectComponent("#oldSixValueBox");
     that.setData({
       oldSixValueBox: oldSixValueBox,

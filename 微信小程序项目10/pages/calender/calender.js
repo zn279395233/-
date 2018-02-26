@@ -1,178 +1,130 @@
-// var formatTime = require("../../utils/util.js");
+var wxbarcode = require('../../utils/codepay.js');
 var app = getApp();
-const date = new Date()
-const years = []
-const months = []
-const days = []
-const daysX = []
-const daysD = []
-const daysP = []
-const daysR = []
-var mDay
-
-for (let i = 1900; i <= date.getFullYear(); i++) {
-  years.push(i)
-}
-for (let i = 1; i <= 12; i++) {
-  months.push(i)
-}
-
-for (let i = 1; i <= 31; i++) {
-  days.push(i)
-}
-for (let i = 1; i <= 30; i++) {
-  daysX.push(i)
-}
-for (let i = 1; i <= 31; i++) {
-  daysD.push(i)
-}
-for (let i = 1; i <= 28; i++) {
-  daysP.push(i)
-}
-for (let i = 1; i <= 29; i++) {
-  daysR.push(i)
-}
-
 Page({
   data: {
-    isScroll: true,
-    deal_date: "2018-02",//请求时间
-    page_number: 1,//开始页数,
-    page_size: 10,//每页显示多少条数据(默认10条)
-    expend_sum: null,//支出汇总
-    hasnextpage: true,//是否还有下一页
-    income_sum: null,//收入汇总
-    rows: [],//明细列表{amount:金额, deal_time:时间, icon:图标, id:明细id,title内容}
-    total: null,//总行数
-    // scrollTop: 100,
-    // hasMore: true,
-    years: years,
-    year: date.getFullYear(),
-    months: months,
-    month: 1,
-    days: days,
-    day: 1,
-    year: date.getFullYear(),
-    value: [9999, 0, 0],
-    // 上拉刷新与下拉加载
-    showModal: false,
-    hideHeader: true,
-    hideBottom: true,
-    refreshTime: '', // 刷新的时间 
-    contentlist: [], // 列表显示的数据源
-    allPages: '',    // 总页数
-    currentPage: 1,  // 当前页数  默认是1
-    loadMoreData: '加载更多……'
-  },
-  onLoad: function (e) {
-    var that = this;
-    app.appRequest({
-      url: "api/member/help",
-      success: function (res) {
-        
-      },
-      fail: function (res) {
+    isHidden: false,
+    codePayCode: false,
+    codePayIntroduce: false,
+  auth_codes: ["185431449958186261","188187864775467712","182151627242837173","184585691467337197","186726288263654216","188145895687179876","181271393546332663","184412475884611921","187827214627554261","185182389487331185"],//一个批次的条形码数组
+    batch: null,//这个数组的批次
+    index: 0,
+    timer: null, //计时器,
+    timerPay: null,
+    codePayCodeData: {},//条形码数据
+    twoCodePayCodeData: {},//二维码码数据
+    // 扫码结果显示
+    amount: null,//支付金额
+    receiver: null,//收款方名称
+    receiver_image: null,//收款方头像
+    remark: null//付款方备注,
 
-      }
-    });
-  },
-  //事件处理函数
-  bindViewTap: function (options) {
-    var orderNumber = options.currentTarget.dataset.ordernumber;
-    wx.navigateTo({
-      url: '../money-detail/money-detail?orderNumber=' + orderNumber
-    })
-  },
-  loadMore: function (e) {
-    var that = this;
 
-    if (that.data.hasnextpage) {
+  },
+  onLoad: function (options) {
+    var that = this;
+    that.createQrAndBarCode();
+    var timer = setInterval(function () {
+      that.createQrAndBarCode();
+    }, 60000)
+    that.data.timer = timer;
+     
+  },
+  // 请求后台看是否扫码成功
+  isPayCode: function () {
+    var that = this;
+    var timerPay = setInterval(function () {
       app.appRequest({
-        url: "api/account/list",
+        url: "api/micropayresult",
+        isAnimate: false,
         data: {
-          deal_date: that.data.deal_date,
-          page_number: that.data.page_number,
-          page_size: that.data.page_size
+          batch: that.data.batch
         },
         success: function (res) {
-          that.setData({
-            expend_sum: res.data.expend_sum,
-            hasnextpage: res.data.hasnextpage,
-            income_sum: res.data.income_sum,
-            // rows: res.data.rows,
-            page_number: that.data.page_number++
-          })
+          if (res.data.success) {
+            clearInterval(timerPay);
+            that.setData({
+              amount: res.data.amount,//支付金额
+              receiver: res.data.receiver,//收款方名称
+              receiver_image: res.data.receiver_image,//收款方头像
+              remark: res.data.remark//付款方备注
+            });
+          }
         },
         fail: function (res) {
 
         }
       });
+    }, 2000)
+    that.data.timerPay = timerPay;
+  },
+
+  // 根据后台的数据生成条形码和二维码
+  createQrAndBarCode: function () {
+    debugger
+    var that = this;
+    if (that.data.index <= 9 && that.data.index >= 0) {
+      var array = that.data.auth_codes, index = that.data.index;
+      wxbarcode.barcode('barcode', array[index], 591.7, 165.625);
+      wxbarcode.qrcode('qrcode', array[index], 250, 250);
+      that.data.index++;
     } else {
-      if (self.data.currentPage == self.data.allPages) {
-        self.setData({
-          loadMoreData: '已经到顶'
-        })
-        return;
-      }
+      clearInterval(that.data.timer);
     }
+  },
+  bindView: function () {
 
   },
-  // 下拉刷新
-  refresh: function (e) {
-    var self = this;
-    setTimeout(function () {
-      console.log('下拉刷新');
-      var date = new Date();
-      self.setData({
-        currentPage: 1,
-        refreshTime: date.toLocaleTimeString(),
-        hideHeader: false
-      })
-      self.getData();
-    }, 300);
-  },
-  // 显示
-  showViewCalendarBtn: function () {
+
+  // <!--谨防诈骗提示  -->
+  showViewCodeIntro: function () {
     this.setData({
-      showModal: true,
-      isScroll: false
+      codePayCode: true,
+      codePayIntroduce: false,
+      isHidden: true
     })
-    // this.onPullDownRefresh();
-    // wx.stopPullDownRefresh();
-
   },
-  // 上拉刷新
-  onPullDownRefresh: function (e) {
-    this.stopDrag();
-  },
-
-  /**
-   * 弹出框蒙层截断touchmove事件
-   */
-  preventTouchMove: function () {
-  },
-  /**
-   * 隐藏模态对话框
-   */
-  hideModal: function () {
+  //条形码
+  showViewCode: function () {
     this.setData({
-      showModal: false
+      codePayIntroduce: true,
+      codePayCode: false,
+      isHidden: true
     });
+    if (that.data.index <= 9 && that.data.index >= 0) {
+      var array = that.data.auth_codes, index = that.data.index;
+      wxbarcode.barcode('barcode', array[index], 591.7, 165.625);
+    } else {
+      clearInterval(that.data.timer);
+    }
   },
-  /**
-   * 对话框取消按钮点击事件
-   */
-  onCancel: function () {
-    this.hideModal();
+  // hi
+  hideViewCode: function () {
+    this.setData({
+      codePayIntroduce: false,
+      codePayCode: false,
+      isHidden: false
+    })
   },
-  /**
-  * 对话框确认按钮点击事件
-  */
-  onConfirm: function () {
-    this.hideModal();
-  },
-  stopDrag:function(e){
-    event.preventDefault();
-  }
+  // 根据数字一组数据生成条形码
+  createBarCode: function (auth_codes) {
 
-})  
+  },
+
+  // 根据数字一组数据生成二维码
+  createQrCode: function (auth_codes) {
+
+  },
+  onHide: function () {
+    var that = this;
+    clearInterval(that.data.timer);//消除二维码和条码计时
+    clearInterval(that.data.timerPay);//消除按批次请求后台是否支付
+  },
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+    var that = this;
+    clearInterval(that.data.timer);//消除二维码和条码计时
+    clearInterval(that.data.timerPay);//消除按批次请求后台是否支付
+  },
+})

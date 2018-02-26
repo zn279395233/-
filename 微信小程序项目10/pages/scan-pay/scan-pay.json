@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "扫码付"
+  "navigationBarTitleText": "扫码付",
+  "usingComponents": {
+    "paySix": "../component/component"
+  }
 }

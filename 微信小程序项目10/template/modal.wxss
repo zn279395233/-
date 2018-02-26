@@ -22,8 +22,9 @@ input-holder {color: #666;font-size: 28rpx;}
 .pay .modal-title text{font-size: 37.5rpx;}
 .pay .modal-title image{vertical-align: middle;margin-left: 16.67rpx;margin-right: 20.83rpx;}
 .payPassword{font-size: 0;text-align: left}
-.payPassword input:first-child{border-left: solid 1rpx #dcdcdc;}
-.payPassword input{width: 97.0417rpx;height: 94.7917rpx;background-color: #ffffff;border-top: solid 1rpx #dcdcdc;border-right: solid 1rpx #dcdcdc;border-bottom: solid 1rpx #dcdcdc;display: inline-block;vertical-align: middle;}
+
+.payPassword input:first-child,.payPassword view.num:first-child{border-left: solid 1rpx #dcdcdc;}
+.payPassword input,.payPassword view.num{width: 97.0417rpx;height: 94.7917rpx;background-color: #ffffff;border-top: solid 1rpx #dcdcdc;border-right: solid 1rpx #dcdcdc;border-bottom: solid 1rpx #dcdcdc;display: inline-block;vertical-align: middle;}
 /* .<!--条码付与诈骗介绍  --> */
 .content-bg{position: fixed;left: 0;right: 0;top: 0;bottom: 0;background-color: white;text-align: center;}
  .codePayIntroduce .content{margin-top: 50%;transform: rotate(90deg);transform-origin: center center;} 

@@ -1,52 +1,30 @@
- <import src="../../template/modal.wxml"/>
-<view class="container" >
-  <view class='totalMoney'>
-    <text class='month'>本月</text>
-      <text class='expend'>支出￥{{expend_sum || 0}}</text>
-      <text class='income'>收入￥{{income_sum || 0}}</text>
-      <icon bindtap='showViewCalendarBtn' class='icon iconfont icon-calendar'></icon>
+<import src="../../template/modal.wxml"/>
+
+<view class='container'>
+  <view class="pays {{isHidden == true?'isHidden':''}}" bindtap='bindView'>
+      <view class='pay-header'>
+          <icon class='icon iconfont icon-moneyBag'></icon>
+          <text>向商家付款</text>
+        </view>
+        <view class='content'>
+            <view class='content-header'>
+                  <text>点击可查看付款码数字</text>
+            </view>
+            <view  class='code'>
+              <canvas canvas-id="barcode" class='code' bindtap='showViewCodeIntro'
+                      data-title="{{auth_codes[index]}}"></canvas>
+              </view>
+            
+            <canvas canvas-id='qrcode' class='twoCode'></canvas>
+            <view class='content-footer'>
+                  *<text>付款码每分钟刷新一次</text>
+            </view>
+        </view>
   </view>
-<scroll-view scroll-y="{{isScroll}}" lower-threshold="10" bindscrolltolower="loadMore" bindscrolltoupper="refresh" >
-  <view class='lists'>
-      <view wx:for="{{rows}}" class='list-item' bindtap="bindViewTap" data-orderNumber="{{item.id}}">
-          <image src="{{item.icon}}"></image>
-          <view class='list-c'>
-              <label class='name'>{{item.title}}</label>
-              <text class='date'>{{item.deal_time}}</text>
-          </view>
-          <text class='money payOut' wx:if="{{item.amount >= 0}}">+{{item.amount}}</text>
-          <text class='money payIn' wx:else="{{item.amount > 0}}">{{item.amount}}</text>
-    </view>
-    <view class="isLaod">
-          <view wx:if="{{hasMore}}" style="" class='loadingContainer'>
-          <icon type="waiting" size="20"/><text>加载中...</text>
-          </view>
-          <view wx:else class='noContent'><text>没有更多内容了</text></view>
-    </view>
-   </view>
-      <!-- <loading hidden="{{hiddenLoading}}">
-           加载中...
-   </loading> -->
-     
- </scroll-view> 
- <!-- <view class="bottom" hidden="{{hideBottom}}">
-  <view>{{loadMoreData}}</view>
-  <view>{{refreshTime}}</view>
-</view>  -->
-  </view>  
-<!-- 日历 -->
-<view bindtouchmove='stopDrag' class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
-<view class="modal-dialog calendar" wx:if="{{showModal}}" bindtouchmove='stopDrag'>
-   <scroll-view >  
-    <view class='calendar-l'>选择日期</view>  
-    <picker-view indicator-style="height: 50px;" style="width: 100%; height: 180px;" value="{{value}}" bindchange="bindChange">  
-        <picker-view-column>  
-            <view wx:for="{{years}}" style="line-height: 50px;text-align:center;">{{item}}年</view>  
-        </picker-view-column>  
-        <picker-view-column>  
-            <view wx:for="{{months}}" style="line-height: 50px;text-align:center;">{{item}}月</view>  
-        </picker-view-column>  
-    </picker-view>
-    <button bindtap='onCancel'>取消</button>  <button class='sure' bindtap='onConfirm'>确认</button> 
- </scroll-view> 
+  <!--条形码  -->
+   <template is="codePayIntroduce" data="{{codePayIntroduce:codePayIntroduce,dataNumbe:dataNumbe,dataCanvas:dataCanvas}}"></template> 
+  
+  <!--谨防诈骗提示  -->
+  <template is="codePayCode" data="{{codePayCode:codePayCode}}"></template>
 </view>
+

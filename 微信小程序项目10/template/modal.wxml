@@ -32,8 +32,7 @@
         <!--弹出键盘 -->
 <template name="modalKeyboard">
 </template>
-
-        <!--请输入输入支付密码弹框  -->
+<!--请输入输入支付密码弹框  -->
 <template name="modalPayPassword">
 <view class="modal-mask " bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModalPay}}"></view>
 <view class="modal-dialog pay" wx:if="{{showModalPay}}">
@@ -50,12 +49,13 @@
     </view>
     <view class="modal-footer">
         <view class='payPassword'>
+             <!-- <input></input>
             <input></input>
             <input></input>
             <input></input>
             <input></input>
-            <input></input>
-            <input></input>
+            <input></input>  -->
+            
         </view>
     </view>
 </view>

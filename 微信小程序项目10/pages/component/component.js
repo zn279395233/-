@@ -12,9 +12,8 @@ Component({
                 let that = this;
                 // 当输入框的值等于6时（发起支付等...）
                 if (newVal == 6) {
-                    // 引用组件页面的自定义函数
+                  // 引用组件页面的自定义函数
                   that.triggerEvent('valueSix', {}, {})
-
                 }
             },
 

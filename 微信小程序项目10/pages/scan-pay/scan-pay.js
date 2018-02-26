@@ -9,6 +9,7 @@ Page({
     showModal: false,   //备注模态框
     showModalPay: false, //转账模态框
     content: null,  //二维码内容,
+    modalInput:null,
     remark:""//备注
   },
   // * 生命周期函数--监听页面加载
@@ -16,6 +17,10 @@ Page({
   onLoad: function (options) {
     var content = options.content;
     var that = this;
+    // var oldSixValueBox = that.selectComponent("#oldSixValueBox");
+    // that.setData({
+    //   modalInput: oldSixValueBox.get_value
+    // })
     app.appRequest({
       url: "api/scan/getscaninfo",
       data:{
@@ -58,23 +63,39 @@ Page({
         serial_number: that.data.merchant_id,
       },
       success: function (res) {
-        
+
       },
       fail: function (res) {
       }
     });
   },
+  // 当用户输入原密码时自定义函数
+  valueSixOld() {
+
+  },
+  
+  amountInput:function(e){
+   console.log(e.detail.value)
+  },
   // 显示
   showDialogBtn: function () {
-    this.setData({
+    var that = this;
+   
+    that.setData({
       showModal: true
     })
+    
   },
   // 弹出支付窗口
   showDialogPayBtn: function () {
-    this.setData({
+    var that = this;
+    that.setData({
       showModalPay: true
     })
+    debugger
+    var oldSixValueBox = that.selectComponent("#oldSixValueBox");
+    // that.modalInput();
+    console.log(oldSixValueBox.get_value)
   },
   // 隐藏
   hideModal: function () {
