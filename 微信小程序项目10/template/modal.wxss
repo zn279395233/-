@@ -29,7 +29,7 @@ input-holder {color: #666;font-size: 28rpx;}
 .content-bg{position: fixed;left: 0;right: 0;top: 0;bottom: 0;background-color: white;text-align: center;}
  .codePayIntroduce .content{margin-top: 50%;transform: rotate(90deg);transform-origin: center center;} 
 .codePayIntroduce .intro{white-space: nowrap;}
-.codePayIntroduce .code{width: 591.7rpx;height: 165.625rpx;}
+.codePayIntroduce .code{width: 591.7rpx;height: 165.625rpx; }
 .codePayIntroduce .intro text{color: #e57c01;font-size: 25rpx;}
 .codePayIntroduce .codeNumber{margin-top: 82.875rpx;margin-bottom: 20rpx;}
 .codePayIntroduce .codeNumber text{font-size: 43.75rpx;color: #010101;padding: 0 20.25rpx;}

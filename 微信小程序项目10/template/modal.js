@@ -2,9 +2,12 @@ Page({
   data: {
     showModal: true,
     showModalPay:false,
+    auth_codes:""
   },
   onLoad: function () {
+   
   },
+  
   /**
    * 弹窗
    */
@@ -12,6 +15,7 @@ Page({
     this.setData({
       showModal: true
     })
+    
   },
   // 弹出支付窗口
   showDialogPayBtn:function(){

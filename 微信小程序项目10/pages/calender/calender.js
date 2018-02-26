@@ -4,7 +4,7 @@ Page({
   data: {
     isHidden: false,
     codePayCode: false,
-    codePayIntroduce: false,
+    codePayIntroduces: false,
   auth_codes: ["185431449958186261","188187864775467712","182151627242837173","184585691467337197","186726288263654216","188145895687179876","181271393546332663","184412475884611921","187827214627554261","185182389487331185"],//一个批次的条形码数组
     batch: null,//这个数组的批次
     index: 0,
@@ -60,16 +60,17 @@ Page({
 
   // 根据后台的数据生成条形码和二维码
   createQrAndBarCode: function () {
-    debugger
     var that = this;
     if (that.data.index <= 9 && that.data.index >= 0) {
       var array = that.data.auth_codes, index = that.data.index;
       wxbarcode.barcode('barcode', array[index], 591.7, 165.625);
+      wxbarcode.barcode('barcodes', array[index], 591.7, 165.625);
       wxbarcode.qrcode('qrcode', array[index], 250, 250);
       that.data.index++;
     } else {
       clearInterval(that.data.timer);
     }
+    
   },
   bindView: function () {
 
@@ -79,28 +80,28 @@ Page({
   showViewCodeIntro: function () {
     this.setData({
       codePayCode: true,
-      codePayIntroduce: false,
+      codePayIntroduces: false,
       isHidden: true
     })
   },
   //条形码
   showViewCode: function () {
     this.setData({
-      codePayIntroduce: true,
+      codePayIntroduces: true,
       codePayCode: false,
       isHidden: true
     });
-    if (that.data.index <= 9 && that.data.index >= 0) {
-      var array = that.data.auth_codes, index = that.data.index;
-      wxbarcode.barcode('barcode', array[index], 591.7, 165.625);
-    } else {
-      clearInterval(that.data.timer);
-    }
+    // if (that.data.index <= 9 && that.data.index >= 0) {
+    //   var array = that.data.auth_codes, index = that.data.index;
+    //   wxbarcode.barcode('barcode', array[index], 591.7, 165.625);
+    // } else {
+    //   clearInterval(that.data.timer);
+    // }
   },
   // hi
   hideViewCode: function () {
     this.setData({
-      codePayIntroduce: false,
+      codePayIntroduces: false,
       codePayCode: false,
       isHidden: false
     })

@@ -6,7 +6,7 @@ page{background-color: #ededed;
 }
 .container{
   margin: 41.6rpx 31rpx;
-  background-color: #fff;
+  background-color: #fbfbfb;
   border-radius: 10rpx;
   padding-bottom: 104rpx;
 }

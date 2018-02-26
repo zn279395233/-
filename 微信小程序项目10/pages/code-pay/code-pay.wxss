@@ -15,3 +15,8 @@
 .content .twoCode{width:250rpx;height: 250rpx;display: flex;margin: 51.04rpx auto  40.625rpx;}
 .content-footer{color: #f00000;font-size: 25rpx;border-top: 1.04rpx solid #dcdcdc;height: 27.5rpx;line-height: 87.5rpx;text-align: left;}
 .content-footer text{color: #333333;font-size: 25rpx;}
+.codePayIntroduces{display: none}
+
+
+
+
