@@ -5,10 +5,10 @@
         <view class='content'>
             <image src='../../images/cardImg.jpg'></image>
            <!-- <icon type='success'></icon> -->
-            <text class='name'>{{info.card_name}}</text>
-            <text class='number'>NO\t•\t0000000000000</text>
+            <text class='name'>{{configInfo.card_name}}</text>
+            <text class='number'>NO\t•\t{{cardInfo.card_code}}</text>
         </view>
-      <view class='balance'>余额：<text>￥0</text>
+      <view class='balance'>余额：<text>￥{{cardInfo.total_balance}}</text>
           <text bindtap="bindViewPayList" class='moneyList'>查看明细</text>
       </view>
       <view>
@@ -39,5 +39,5 @@
   </view>
 
    <!--支付密码设置提示框  -->
-      <!-- <template is="isHasPayPassword" data="{{isHasPayPassword}}"></template>     -->
+       <template is="isHasPayPassword" data="{{isHasPayPassword}}"></template>     
 </view>

@@ -1,5 +1,5 @@
 
-var formatTime = require('../../utils/dateTimefomater.js');
+var formatTime = require('../../utils/util.js');
 var app = getApp();
 const date = new Date()
 const years = []
@@ -65,7 +65,7 @@ Page({
     loadMoreData: '加载更多……' 
   },
   onLoad: function (e) {
-    
+
     this.loadMore();
 // 上拉刷新与下拉加载
     var date = new Date();
@@ -81,7 +81,7 @@ Page({
       })
   },
   loadMore: function (e) {
-  
+
     var that = this;
     if (that.data.hasnextpage) {
       app.appRequest({

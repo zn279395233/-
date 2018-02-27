@@ -6,22 +6,29 @@ Page({
      * 页面的初始数据
      */
     data: {
-        userInfo: {}
+        userInfo: {},
+        card_code:""
 
     },
     onLoad: function () {
         var that = this;
+        that.setData({
+          userInfo: app.globalData.options.userInfo
+        })
         app.appRequest({
-            url: "api/card/configinfo",
-            success: function (res) {
-                that.setData({
-                    info: res.data
-                })
-            },
-            fail: function (res) {
+          url: "api/member/info",
+          success: function (res) {
 
-            }
+          },
+          fail: function (res) {
+
+          }
         });
+        var card_code = wx.getStorageSync('card_code');
+        that.setData({
+          card_code: card_code
+        })
+
     },
     // 个人资料
     bindViewPersonal: function () {

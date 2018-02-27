@@ -5,7 +5,8 @@ Page({
     isHidden: false,
     codePayCode: false,
     codePayIntroduces: false,
-    auth_codes: ["185431449958186261", "188187864775467712", "182151627242837173", "184585691467337197", "186726288263654216", "188145895687179876", "181271393546332663", "184412475884611921", "187827214627554261", "185182389487331185"],//一个批次的条形码数组
+    qrCodeIsShow:false,
+    auth_codes: [],//一个批次的条形码数组
     batch: null,//这个数组的批次
     index: 0,
     timer: null, //计时器,
@@ -17,17 +18,28 @@ Page({
     receiver: null,//收款方名称
     receiver_image: null,//收款方头像
     remark: null//付款方备注,
-
-
   },
   onLoad: function (options) {
     var that = this;
-    that.createQrAndBarCode();
-    var timer = setInterval(function () {
-      that.createQrAndBarCode();
-    }, 60000)
-    that.data.timer = timer;
+    app.appRequest({
+      url: "api/member/getauthcode",
+      success: function (res) {
+        that.setData({
+          auth_codes: res.data.auth_codes.split(","),
+          batch: res.data.batch
+        });
+        that.createQrAndBarCode();
+        var timer = setInterval(function () {
+          that.createQrAndBarCode();
+        }, 60000)
+        that.data.timer = timer;
+        that.isPayCode();//不停请求后台看是否扫码成功
 
+      },
+      fail: function (res) {
+
+      }
+    });
   },
   // 请求后台看是否扫码成功
   isPayCode: function () {
@@ -48,6 +60,9 @@ Page({
               receiver_image: res.data.receiver_image,//收款方头像
               remark: res.data.remark//付款方备注
             });
+            wx.navigateTo({
+              url: '../pay-success/pay-success?trade_id=' + res.data.trade_id,
+            })
           }
         },
         fail: function (res) {
@@ -90,29 +105,28 @@ Page({
       codePayCode: false,
       isHidden: true
     });
-    // if (that.data.index <= 9 && that.data.index >= 0) {
-    //   var array = that.data.auth_codes, index = that.data.index;
-    //   wxbarcode.barcode('barcode', array[index], 591.7, 165.625);
-    // } else {
-    //   clearInterval(that.data.timer);
-    // }
   },
-  // hi
-  hideViewCode: function () {
+  // 一切还原
+  hideViewCode:function(){
     this.setData({
       codePayIntroduces: false,
       codePayCode: false,
       isHidden: false
-    })
+    });
   },
-  // 根据数字一组数据生成条形码
-  createBarCode: function (auth_codes) {
-
+  // 显示放大版的二维码
+  showViewqrCode: function () {
+    this.setData({
+      qrCodeIsShow: true,
+      isHidden: true
+      }); 
   },
-
-  // 根据数字一组数据生成二维码
-  createQrCode: function (auth_codes) {
-
+  // 隐藏放大版的二维码
+  hideViewqrCode:function(){
+    this.setData({
+      qrCodeIsShow:false,
+      isHidden: false
+    });
   },
   onHide: function () {
     var that = this;

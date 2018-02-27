@@ -17,7 +17,7 @@ Page({
         url: "api/member/checkpaypassword",
         success: function (res) {
           that.setData({
-            hasset: res.hasset
+            hasset: res.data.hasset
           })
         },
         fail: function (res) {

@@ -1,4 +1,3 @@
 {
-  "navigationBarTitleText": "条码付",
-  "navigationBarBackgroundColor": "#00a0fc"
+  "enablePullDownRefresh": false
 }

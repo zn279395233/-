@@ -6,7 +6,7 @@ page{background-color: #ededed;
 }
 .container{
   margin: 41.6rpx 31rpx;
-  background-color: #fbfbfb;
+  background-color: #fff;
   border-radius: 10rpx;
   padding-bottom: 104rpx;
 }
@@ -44,8 +44,7 @@ image{
   vertical-align: top;
   padding-bottom: 0;
   box-sizing: border-box;
-  line-height: 125rpx;
-  min-height: 125rpx;
+
 }
 .money>text{
   font-size: 62.5rpx;
@@ -66,6 +65,17 @@ button{
   margin: 0 62.5rpx;
   background-color:#00a0fc;
   height: 94rpx; 
+}
+.remarkinfo{
+  width: 750rpx;
+  color: black;
+}
+.remarkinfo>view{
+  display: inline-block;
+  margin-left: 10rpx;
+  color: orange;
+
+  
 }
 
 /*输入框  */

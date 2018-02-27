@@ -4,7 +4,7 @@
         <view class='content'>
             <image src='../../images/us.jpg'></image>
             <image src='{{userInfo.avatarUrl}}' background-size="cover" class='avatar'></image>
-            <text class='number'>0000000000000</text>
+            <text class='number'>{{card_code}}</text>
         </view>
   </view>
     <view class='lists'>

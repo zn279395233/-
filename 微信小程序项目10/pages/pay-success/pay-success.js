@@ -14,6 +14,7 @@ Page({
      */
     onLoad: function (options) {
       var trade_id = options.trade_id;
+      var that=this;
       app.appRequest({
         url: "api/scan/transferresult",
         data: {
@@ -21,6 +22,9 @@ Page({
         },
         success: function (res) {
           var info = res.data;
+          wx.showToast({
+            title: info.amount,
+          })
           that.setData({
             amount: info.amount,//金额
             pay_remark: info.pay_remark,//备注
@@ -32,7 +36,11 @@ Page({
       });
 
     },
-
+    goHome:function(){
+      wx.navigateTo({
+        url: '../index/index',
+      })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

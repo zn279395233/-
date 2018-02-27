@@ -43,15 +43,14 @@ Page({
     that.setData({
       amount: e.detail.value
     })
-   
-  }, 
+
+  },
   // 选择优惠充值
   selectAmount:function(e){
     var that = this;
     that.setData({
       amount: e.currentTarget.dataset.amount
     })
-    console.log(that.data.amount)
   },
   // 转账
   withdrawBtn:function(){

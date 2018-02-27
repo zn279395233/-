@@ -12,11 +12,15 @@
        <text>￥</text>
           <input placeholder="100" auto-focus='true' focus="false" type='number' bindinput='amountInput'></input>
       </view>
-       <view class='remark' bindtap="showDialogBtn">添加备注</view>
+         <view class='remark' bindtap="showDialogBtn" wx:if="{{remarkinfos}}">添加备注</view>  
+       <view class='remarkinfo remark' wx:if="{{remarkinfo}}">
+        <text>{{remark}}</text>
+        <view bindtap="showDialogBtn">修改</view>
+       </view>
    </view>
   <button bindtap='showDialogPayBtn'>转账</button>
   <!--添加备注信息  -->
-  <template is="modalRemark" data="{{...item,showModal:showModal}}"></template>
+  <template is="modalRemark" data="{{...item,showModal:showModal,remark:remark}}"></template>
   <!--转账  -->
 
   <view class="modal-mask " bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModalPay}}"></view>

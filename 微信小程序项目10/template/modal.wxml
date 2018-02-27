@@ -8,7 +8,7 @@
         <view class="modal-content">
             <view class="modal-input">
                 <input placeholder-class="input-holder" type="number" maxlength="10" bindinput="inputChange"
-                       class="input" placeholder="请输入备注信息"></input>
+                       class="input" placeholder="请输入备注信息" value='{{remark}}'></input>
             </view>
         </view>
         <view class="modal-footer">
@@ -55,7 +55,7 @@
             <input></input>
             <input></input>
             <input></input>  -->
-            
+
         </view>
     </view>
 </view>
@@ -152,11 +152,11 @@
 <!--扫码时假如没有设置支付密码则弹出模态框  -->
 
 <template name="isHasPayPassword">
- <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="isHasPayPassword"></view>
-<view class="modal-dialog isHasPayPassword" wx:if="isHasPayPassword">
+ <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{!isHasPayPassword}}"></view>
+<view class="modal-dialog isHasPayPassword" wx:if="{{!isHasPayPassword}}">
     <view class="modal-title">您还没有设置支付密码，请先设置</view>
     <view class="modal-footer">
-       <navigator url="../change-pay-password/change-pay-password?oldWriteState=false">提示：点击我的>>设置>>设置支付密码</navigator> 
+       <navigator url="../change-pay-password/change-pay-password?oldWriteState=false">提示：点击我的>>设置>>设置支付密码</navigator>
     </view>
 </view>
 </template>

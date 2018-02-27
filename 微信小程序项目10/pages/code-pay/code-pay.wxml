@@ -1,3 +1,4 @@
+<import src="../../template/modal.wxml"/>
 
 <view class='container'>
   <view class="pays {{isHidden == true?'isHidden':''}}" bindtap='bindView'>
@@ -13,8 +14,7 @@
               <canvas canvas-id="barcode" class='code' bindtap='showViewCodeIntro'
                       data-title="{{auth_codes[index]}}"></canvas>
               </view>
-            
-            <canvas canvas-id='qrcode' class='twoCode'></canvas>
+            <canvas canvas-id='qrcode' class='twoCode' bindtap='showViewqrCode'></canvas>
             <view class='content-footer'>
                   *<text>付款码每分钟刷新一次</text>
             </view>
@@ -35,22 +35,16 @@
             <text>356213</text>
         </view>
         <canvas canvas-id="barcodes" class='code'></canvas>
-        <!-- <image src="../../images/codeImg.jpg"></image> -->
     </view>
 </view>
-        <!--谨防诈骗提示  -->
-<view class='content-bg codePayCode' wx:if="{{codePayCode}}">
+<!--二维码  -->
+<view class="content-bg qrCode {{qrCodeIsShow == false?'qrCodeIsShow':''}}"  bindtap='hideViewqrCode'>
     <view class='content'>
-        <view>
-            <icon class='icon iconfont icon-defend'></icon>
-        </view>
-        <view class='hint'>
-            <text>付款码数字仅用于支付时向收银员展示，
-                请勿发送给他人，以防诈骗。
-            </text>
-        </view>
-        <button bindtap='showViewCode'>知道了</button>
+        <canvas canvas-id="qrcodes" class='code'></canvas>
     </view>
 </view>
+    <!--谨防诈骗提示  -->
+    <template is="codePayCode" data="{{...item,codePayCode:codePayCode}}"></template>  
+
 
 

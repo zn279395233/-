@@ -9,8 +9,8 @@
    <view><image src='/pages/img/person_03.png'  mode='aspectFill'></image>{{receiver}}</view>
   </view>
   <view>
-  <text>付款人备注</text>
+  <text>备注</text>
   <text>{{pay_remark}}</text>
   </view>
 </view>
- <button>完成</button>
+ <button bindtap='goHome'>完成</button>
