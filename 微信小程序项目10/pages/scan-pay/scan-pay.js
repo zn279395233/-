@@ -15,7 +15,8 @@ Page({
     remark: "",//备注,
     pay_password: "",//支付密码
     amount: "",//金额
-    remarkinfos:"true"
+    remarkinfos:"true",
+    infos:""
   },
   // * 生命周期函数--监听页面加载
   // * /
@@ -136,11 +137,11 @@ Page({
    */
   // 确认
   onConfirm: function () {
-    console.log(this.data.remark)
     if(this.data.remark.length > 0){
       this.setData({
         remarkinfo: true,
-        remarkinfos:false
+        remarkinfos:false,
+        infos: this.data.remark
       })
     }
     else{

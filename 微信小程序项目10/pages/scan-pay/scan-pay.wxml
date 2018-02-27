@@ -14,7 +14,7 @@
       </view>
          <view class='remark' bindtap="showDialogBtn" wx:if="{{remarkinfos}}">添加备注</view>  
        <view class='remarkinfo remark' wx:if="{{remarkinfo}}">
-        <text>{{remark}}</text>
+        <text>{{infos}}</text>
         <view bindtap="showDialogBtn">修改</view>
        </view>
    </view>
