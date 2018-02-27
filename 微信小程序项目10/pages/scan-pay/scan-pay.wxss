@@ -73,7 +73,7 @@ button{
 .remarkinfo>view{
   display: inline-block;
   margin-left: 10rpx;
-  color: orange;
+  color: #20b2aa;
 
   
 }
