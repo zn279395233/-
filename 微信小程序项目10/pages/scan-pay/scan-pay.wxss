@@ -48,7 +48,7 @@ image{
 }
 .money>text{
   font-size: 62.5rpx;
-   vertical-align: top;
+  line-height: 110rpx;
   
 }
 .remark{
@@ -75,7 +75,6 @@ button{
   margin-left: 10rpx;
   color: #20b2aa;
 
-  
 }
 
 /*输入框  */

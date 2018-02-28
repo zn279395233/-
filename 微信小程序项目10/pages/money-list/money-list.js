@@ -64,8 +64,31 @@ Page({
     currentPage: 1,  // 当前页数  默认是1
     loadMoreData: '加载更多……' 
   },
+  bindChange: function (e) {
+    const val = e.detail.value
+    var mdays
+    let year = this.data.years[val[0]]
+    let month = this.data.months[val[1]]
+    let day = this.data.days[val[2]]
+    if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+      mdays = daysR
+    } else {
+      mdays = daysP
+    }
+    if (month == 4 || month == 6 || month == 9 || month == 11) {
+      mdays = daysX
+    } else if (month == 1 || month == 3 || month == 5 || month == 7 | month == 8 | month == 10 | month == 12) {
+      mdays = daysD
+    }
+    this.setData({
+      year,
+      month,
+      day,
+      days: mdays
+    })
+   
+  },
   onLoad: function (e) {
-
     this.loadMore();
 // 上拉刷新与下拉加载
     var date = new Date();

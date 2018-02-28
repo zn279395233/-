@@ -30,7 +30,7 @@ Page({
 
     // 保存并提交
     bindViewSaveBtn: function () {
-      if (this.data.personalValue != null || this.data.personalValue.length != 0){
+      if (this.data.personalValue != null && this.data.personalValue.length != 0){
         if (this.data.personalkey == "mobile" && !(myreg.test(this.data.personalValue))){
           this.setData(
             { _num: 2, popErrorMsg: "手机号错误" },

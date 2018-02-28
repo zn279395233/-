@@ -27,7 +27,7 @@ input-holder {color: #666;font-size: 28rpx;}
 .payPassword input,.payPassword view.num{width: 97.0417rpx;height: 94.7917rpx;background-color: #ffffff;border-top: solid 1rpx #dcdcdc;border-right: solid 1rpx #dcdcdc;border-bottom: solid 1rpx #dcdcdc;display: inline-block;vertical-align: middle;}
 /* .<!--条码付与诈骗介绍  --> */
 .content-bg{position: fixed;left: 0;right: 0;top: 0;bottom: 0;background-color: white;text-align: center;}
- .codePayIntroduce .content{margin-top: 50%;transform: rotate(90deg);transform-origin: center center;} 
+  .codePayIntroduce .content{margin-top: 50%;transform: rotate(90deg);transform-origin: center center;}  
 .codePayIntroduce .intro{white-space: nowrap;}
 .codePayIntroduce .code{width: 591.7rpx;height: 165.625rpx;}
 .codePayIntroduce .intro text{color: #e57c01;font-size: 25rpx;}
