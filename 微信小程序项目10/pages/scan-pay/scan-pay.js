@@ -16,7 +16,10 @@ Page({
     pay_password: "",//支付密码
     amount: "",//金额
     remarkinfos:"true",
-    infos:""
+    infos:"",
+    showModalError:false,//支付失败模态框
+    msg:"",//提示错误信息
+    auto_focus:true//"是否自动弹出"
   },
   // * 生命周期函数--监听页面加载
   // * /
@@ -29,7 +32,6 @@ Page({
         content: content
       },
       success: function (res) {
-        console.log(res)
         if (res.return_code == "1011") {//支付密码未设置
           wx.navigateTo({
             url: '../index/index?isHasPayPassword=true',
@@ -41,7 +43,8 @@ Page({
         }
       },
       fail: function (res) {
-
+        
+        
       }
     });
 
@@ -63,33 +66,55 @@ Page({
   // 提交数据到后台
   submitBtn: function () {
     var that = this;
-    var serial_number = new Date().getTime();
-    var pay_password = md5.md5(md5.md5(that.data.pay_password) + serial_number);
-
-    app.appRequest({
-      url: "api/scan/transfer",
-      data: {
-        amount: parseInt(that.data.amount * 100),
-        merchant_id: that.data.info.merchantID,
-        //pay_password: pay_password,
-        pay_password: md5.md5(md5.md5('147147') + serial_number),
-        remark: that.data.remark,
-        serial_number: serial_number.toString(),
-      },
-      success: function (res) {
-        console.log(res)
-        var trade_id = res.data.trade_id;
-        wx.navigateTo({
-          url: '../pay-success/pay-success?trade_id=' + trade_id,
-        });
-      },
-      fail: function (res) {
-        console.log(res)
-        wx.showToast({
-          title: res.return_msg,
-        })
-      }
-    });
+    if (that.data.pay_password.length >= 6){
+      var serial_number = new Date().getTime();
+      var pay_password = md5.md5(md5.md5(that.data.pay_password) + serial_number);
+      app.appRequest({
+        url: "api/scan/transfer",
+        data: {
+          amount: parseInt(that.data.amount * 100),
+          merchant_id: that.data.info.merchantID,
+          pay_password: pay_password,
+          remark: that.data.remark,
+          serial_number: serial_number.toString(),
+        },
+        success: function (res) {
+          if (res.return_code == "1001") {//商户不存在
+            that.setData({
+              showModalError: true,
+              msg: res.return_msg,
+              pay_password:""
+            })
+            setTimeout(function(){
+              that.setData({
+                showModalError: false,
+                msg: "",
+              })
+              wx.navigateBack({
+                delta: 1,
+              })
+            },1500)
+          }else{
+            var trade_id = res.data.trade_id;
+            wx.navigateTo({
+              url: '../pay-success/pay-success?trade_id=' + trade_id,
+            });
+          } 
+        },
+        fail: function (res) {
+          // if (res.return_code == "1009") {//支付密码不正确
+            that.hideDialogPayBtn();//隐藏转账弹框
+            that.setData({
+              showModalError: true,
+              msg: res.return_msg,
+              pay_password: ""
+            })
+            console.log(that.data)
+            
+          // }     
+        }
+      });
+    }
   },
   // 当用户输入原密码时自定义函数
   valueSixOld() {
@@ -98,6 +123,9 @@ Page({
     that.setData({
       pay_password: oldSixValueBox.data.input_value
     })
+    // oldSixValueBox.data.input_value="";
+    // oldSixValueBox.data.value_length = 0;
+    // consoel.log(that.selectComponent("#oldSixValueBox").data)
     that.submitBtn();
   },
   // 显示
@@ -108,12 +136,24 @@ Page({
     })
   },
   // 弹出支付窗口
-  showDialogPayBtn: function () {
+  showDialogPayBtn: function (event) {
+    // event.preventDefault();
+    var that = this;
+    if (that.data.amount != "" && that.data.amount > 0){
+      that.setData({
+        showModalPay: true,
+      })
+      that.submitBtn();
+    }
+  },
+  // 取消错误弹框
+  onCancelError:function(){
     var that = this;
     that.setData({
-      showModalPay: true
+      showModalPay: true,
+      showModalError: false,
+      msg: ""
     })
-    that.submitBtn();
   },
   // 隐藏
   hideModal: function () {
@@ -127,7 +167,6 @@ Page({
       showModalPay: false
     })
   },
-
   // 取消
   onCancel: function () {
     this.hideModal();

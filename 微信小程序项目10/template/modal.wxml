@@ -8,7 +8,7 @@
         <view class="modal-content">
             <view class="modal-input">
                 <input placeholder-class="input-holder" type="number" maxlength="10" bindinput="inputChange"
-                       class="input" placeholder="最多输入十个字" value='{{remark}}'></input>
+                       class="input" placeholder="请输入备注信息" value="{{infos}}"></input>
             </view>
         </view>
         <view class="modal-footer">
@@ -17,19 +17,20 @@
         </view>
     </view>
 </template>
-        <!--支付密码错误，请重试-->
+<!--支付密码错误，请重试-->
 <template name="modalError">
-<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
-<view class="modal-dialog" wx:if="{{showModal}}">
-    <view class="modal-title">{{msg}}</view>
-
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModalError}}"></view>
+<view class="modal-dialog modalError" wx:if="{{showModalError}}">
+    <view class="modal-title">{{msg}}</view> 
     <view class="modal-footer">
-        <view class="btn-cancel" bindtap="onCancel" data-status="cancel">重试</view>
-        <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">忘记密码</view>
+        <view class="btn-cancel" bindtap="onCancelError" data-status="cancel">重试</view>
+        <view class="btn-confirm" data-status="confirm">
+            <navigator url="../find-password/find-password">忘记密码</navigator>
+        </view>
     </view>
 </view>
 </template>
-        <!--弹出键盘 -->
+<!--弹出键盘 -->
 <template name="modalKeyboard">
 </template>
 <!--请输入输入支付密码弹框  -->
@@ -49,13 +50,6 @@
     </view>
     <view class="modal-footer">
         <view class='payPassword'>
-             <!-- <input></input>
-            <input></input>
-            <input></input>
-            <input></input>
-            <input></input>
-            <input></input>  -->
-
         </view>
     </view>
 </view>
@@ -76,7 +70,6 @@
             <text>356213</text>
         </view>
         <canvas canvas-id="barcode" class='code'></canvas>
-        <!-- <image src="../../images/codeImg.jpg"></image> -->
     </view>
 </view>
 </template>
@@ -96,67 +89,23 @@
     </view>
 </view>
 </template>
-
-<!--日历  -->
-<template name="calendar">
-<view class="modal-mask" wx:if="{{showViewCalendar}}"></view>
-<view class="modal-dialog calendar" wx:if="{{showViewCalendar}}">
-    <view class="box">
-        <view class="box-flex box-year">
-            <view class="flex-item">
-                <view class="item-content" bindtap="doDay" data-key='left'>
-                    <view class="glyphicon glyphicon-triangle-left"></view>
-                </view>
-            </view>
-            <view class="flex-item item-content-current-day">
-                <view class="item-content">{{currentDate}}</view>
-            </view>
-            <view class="flex-item">
-                <view class="item-content" bindtap="doDay" data-key="right">
-                    <view class="glyphicon glyphicon-triangle-right"></view>
-                </view>
-            </view>
-        </view>
-        <view class="box-flex box-weekend">
-            <view class="flex-item">
-                <view class="item-content">一</view>
-            </view>
-            <view class="flex-item">
-                <view class="item-content">二</view>
-            </view>
-            <view class="flex-item">
-                <view class="item-content">三</view>
-            </view>
-            <view class="flex-item">
-                <view class="item-content">四</view>
-            </view>
-            <view class="flex-item">
-                <view class="item-content">五</view>
-            </view>
-            <view class="flex-item">
-                <view class="item-content">六</view>
-            </view>
-            <view class="flex-item">
-                <view class="item-content">日</view>
-            </view>
-        </view>
-        <view class="box-flex">
-            <view class="flex-item" wx:for="{{currentDayList}}" wx:for-index='key' wx:for-item="vo" wx:key="{{key}}">
-                <view class="item-content" wx:if="{{currentDay != vo}}">{{vo}}</view>
-                <view class="item-content bk-color-day" wx:else>{{vo}}</view>
-            </view>
-        </view>
-    </view>
-</view>
-</template>
 <!--扫码时假如没有设置支付密码则弹出模态框  -->
-
 <template name="isHasPayPassword">
  <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{!isHasPayPassword}}"></view>
 <view class="modal-dialog isHasPayPassword" wx:if="{{!isHasPayPassword}}">
     <view class="modal-title">您还没有设置支付密码，请先设置</view>
     <view class="modal-footer">
-       <navigator url="../change-pay-password/change-pay-password?oldWriteState=false">提示：点击我的>>设置>>设置支付密码</navigator>
+       <navigator url="../change-pay-password/change-pay-password?oldWriteState=false">提示：点击关于我>>设置>>设置支付密码</navigator>
+    </view>
+</view>
+</template>
+
+<template name="isHasPhone">
+ <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{isHasPhone}}"></view>
+<view class="modal-dialog isHasPayPassword" wx:if="{{isHasPhone}}">
+    <view class="modal-title">您还没有完善手机号，请先完善</view>
+    <view class="modal-footer">
+       <navigator url="../personal-data/personal-data">提示：点击关于我>>个人资料>>手机号码</navigator>
     </view>
 </view>
 </template>

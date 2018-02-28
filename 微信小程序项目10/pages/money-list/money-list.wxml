@@ -6,15 +6,14 @@
       <text class='income'>收入￥{{income_sum || 0}}</text>
       <icon bindtap='showViewCalendarBtn' class='icon iconfont icon-calendar'></icon>
   </view>
-<!-- <view class="header" hidden="{{hideHeader}}">
-  <view>下拉刷新中……</view>
-  <view>{{refreshTime}}</view>
-</view>   -->
-<scroll-view scroll-y="{{isScroll}}" lower-threshold="10" bindscrolltolower="loadMore" bindscrolltoupper="refresh" >
-
+ <view class="header" wx:if="{{isRefreshHidden}}">
+      <text class='loading'></text>
+      <text>下拉刷新中……</text>
+ </view>    
+<scroll-view bindtouchstart='touchStart' bindtouchmove='touchMove' bindtouchend='touchEnd'>
   <view class='lists'>
       <view wx:for="{{rows}}" class='list-item' bindtap="bindViewTap" data-orderNumber="{{item.id}}">
-          <image src="{{item.icon}}"></image>
+          <!-- <image src="{{item.icon}}"></image> -->
           <view class='list-c'>
               <label class='name'>{{item.title}}</label>
               <text class='date'>{{item.deal_time}}</text>

@@ -84,7 +84,8 @@ Page({
       var array = that.data.auth_codes, index = that.data.index;
       wxbarcode.barcode('barcode', array[index], 591.7, 165.625);
       wxbarcode.barcode('barcodes', array[index], 591.7, 165.625);
-      wxbarcode.qrcode('qrcode', array[index], 250, 250);
+      wxbarcode.qrcode('qrcode', array[index], 250, 250,0);
+      wxbarcode.qrcode('qrcodes', array[index], 500, 500,0);
       this.setData({
         first: array[index].slice(0, 4),
         second: array[index].slice(4, 8),

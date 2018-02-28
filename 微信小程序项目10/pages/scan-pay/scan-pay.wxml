@@ -10,19 +10,33 @@
       <view>转账金额</view>
       <view class='money'>
        <text>￥</text>
-          <input placeholder="100" auto-focus='true' focus="false" type='number' bindinput='amountInput'></input>
+           <input auto-focus='{{auto_focus}}' focus="{{auto_focus}}" type='digit' bindinput='amountInput' value="{{amount == '.'?'0'+amount:amount}}"></input> 
+     
       </view>
-         <view class='remark' bindtap="showDialogBtn" wx:if="{{remarkinfos}}">添加备注</view>  
+         <view class='remark' bindtap="showDialogBtn" wx:if="{{remarkinfos}}">添加备注</view>
        <view class='remarkinfo remark' wx:if="{{remarkinfo}}">
         <text>{{infos}}</text>
         <view bindtap="showDialogBtn">修改</view>
        </view>
    </view>
-  <button bindtap='showDialogPayBtn'>转账</button>
+   <button bindtap='showDialogPayBtn'>转账</button> 
   <!--添加备注信息  -->
-  <template is="modalRemark" data="{{...item,showModal:showModal,remark:remark}}"></template>
+  <!-- <template is="modalRemark" data="{{showModal:showModal,remark:remark,infos:infos}}"></template> -->
+  <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+    <view class="modal-dialog" wx:if="{{showModal}}">
+        <view class="modal-title">添加备注</view>
+        <view class="modal-content">
+            <view class="modal-input">
+                <input placeholder-class="input-holder" type="text" maxlength="10" bindinput="inputChange"
+                       class="input" placeholder="请输入备注信息" value="{{infos}}"></input>
+            </view>
+        </view>
+        <view class="modal-footer">
+            <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
+            <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">确定</view>
+        </view>
+    </view>
   <!--转账  -->
-
   <view class="modal-mask " bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModalPay}}"></view>
 <view class="modal-dialog pay" wx:if="{{showModalPay}}">
     <view class="modal-title">
@@ -42,8 +56,19 @@
         </view>
     </view>
 </view>
-  <!-- <template is="modalPayPassword" data="{{...item,showModalPay:showModalPay,info:info,amount:amount}}"></template> -->
-
+ 
+  <!--支付密码错误请重试  -->
+ <!-- <template is="modalError" data="{{...item,showModalError:showModalError,msg:msg}}"></template>  -->
+ <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModalError}}"></view>
+<view class="modal-dialog modalError" wx:if="{{showModalError}}">
+    <view class="modal-title">{{msg}}</view> 
+    <view class="modal-footer">
+        <view class="btn-cancel" bindtap="onCancelError" data-status="cancel">重试</view>
+        <view class="btn-confirm" data-status="confirm">
+            <navigator url="../find-password/find-password">忘记密码</navigator>
+        </view>
+    </view>
+</view>
 </view>
 
 

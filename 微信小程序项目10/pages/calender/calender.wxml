@@ -5,7 +5,6 @@
           <icon class='icon iconfont icon-moneyBag'></icon>
           <text>向商家付款</text>
         </view>
-        <scroll-view scroll-x="true"> 
         <view class='content'>
             <view class='content-header'>
                   <text>点击可查看付款码数字</text>
@@ -20,7 +19,6 @@
                   *<text>付款码每分钟刷新一次</text>
             </view>
         </view>
-        </scroll-view>
     </view>
   </view>
  <!--条码付  -->
@@ -31,10 +29,10 @@
             <text>付款码数字仅限于支付时向收银员展示，请勿泄露以防诈骗</text>
         </view>
         <view class='codeNumber'>
-            <text>{{first}}</text>
-            <text>{{second}}</text>
-            <text>{{third}}</text>
-            <text>{{fourth}}</text>
+            <text>1256</text>
+            <text>3898</text>
+            <text>3121</text>
+            <text>356213</text>
         </view>
         <canvas canvas-id="barcodes" class='code'></canvas>
         <!-- <image src="../../images/codeImg.jpg"></image> -->
@@ -54,5 +52,8 @@
         <button bindtap='showViewCode'>知道了</button>
     </view>
 </view>
+
+
+
 
 

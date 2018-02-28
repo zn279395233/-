@@ -26,8 +26,6 @@ Page({
         })
       
     },
-
-
     // 保存并提交
     bindViewSaveBtn: function () {
       if (this.data.personalValue != null && this.data.personalValue.length != 0){
@@ -41,7 +39,6 @@ Page({
             );
             
           }, 1500);
-          
           return false
         }
         else if (this.data.personalkey == "ID_CARD" && !(isIDCard.test(this.data.personalValue))){
@@ -52,16 +49,15 @@ Page({
             this.setData(
               { _num: 1, },
             );
-
           }, 1000);
-
           return false
         }
-        
       }
-      
-
-
+      if (this.data.personalValue == null){
+        this.setData(
+          { personalValue: "" },
+        );
+      }
         var that = this;
         app.appRequest({
             url: "api/member/updateinfo",
@@ -71,10 +67,13 @@ Page({
             },
             success: function (res) {
                 that.prevViewData();
+                if (that.data.personalkey == "mobile") {
+                  app.globalData.mobile = that.data.personalValue
+                }
                 wx.showToast({
                     title: '成功',
                     icon: 'success',
-                    success: function () {
+                    success: function () {                    
                         setTimeout(function () {
                             wx.navigateBack({
                                 delta: 1,
@@ -84,7 +83,14 @@ Page({
                 })
             },
             fail: function (res) {
-
+              that.setData(
+                { _num: 2, popErrorMsg: res.return_msg },
+              );
+              setTimeout(() => {
+                that.setData(
+                  { _num: 1, },
+                );
+              }, 1000);
             }
         });
     },

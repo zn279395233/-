@@ -2,7 +2,7 @@
 <view class='container'>
    <view class='lists'>
       <view class='list'>
-          <label>电子卡号</label><input value='00000001' bindinput='cardCodeInput'></input>
+          <label>电子卡号</label><input value='{{card_code}}' bindinput='cardCodeInput'></input>
       </view>
        <view class='list'>
           <label>充值金额</label><input bindinput='amountInput' type='number' value='{{amount}}'></input>

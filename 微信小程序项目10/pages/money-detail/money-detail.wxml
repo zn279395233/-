@@ -4,8 +4,8 @@
          <text class='money-c'>￥{{info.amount}}</text>
      </view>
      <view>
-         <text>{{info.payer_remark}}</text>
-      <text >二维码收款</text>
+      <text >付款方备注</text>
+      <text>{{info.payer_remark}}</text>
      </view>
      <view>
       <text>转账时间</text>
@@ -24,14 +24,12 @@
 </view>
         <!--常见问题和投诉建议  -->
 <view class='lists'>
-<view class='list'>
+<view class='list' bindtap="bindViewQuestion">
     <label>常见问题</label>
 </view>
-<view class='list'>
+<view class='list' bindtap="bindViewSuggest">
     <label>投诉建议</label>
 </view>
 </view>
-<loading hidden="{{loadingHidden}}">
-加载中...
-</loading>
+
 

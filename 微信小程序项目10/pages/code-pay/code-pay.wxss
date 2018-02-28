@@ -17,6 +17,11 @@
 .content-footer text{color: #333333;font-size: 25rpx;}
 .codePayIntroduces,.qrCodeIsShow{display: none}
 
+/*放大版二维码  */
+.qrCode .content{width: 100%;height: 100%;padding: 0;}
+.qrCode .code{align-content: center;margin: 40% auto 0;height: 600rpx;margin-left: 119rpx;}
+.transform{transform: rotate(90deg);-webkit-transform: rotate(90deg);-moz-transform:rotate(90deg);-o-transform:rotate(90deg);-ms-transform: rotate(90deg); }
+
 
 
 

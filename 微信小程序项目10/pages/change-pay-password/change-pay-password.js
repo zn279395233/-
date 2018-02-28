@@ -107,16 +107,29 @@ Page({
         pay_password: md5.md5(value)
       },
       success: function (res) {
-        console.log(res)
         that.prevViewData();
-        setTimeout(function () {
-          wx.navigateBack({
-            delta: 1,
-          })
-        }, 1500)
+        wx.showToast({
+          title: '保存成功',
+          icon: 'success',
+          success: function () {
+            setTimeout(function () {
+              wx.navigateBack({
+                delta: 1,
+              })
+            }, 1500)
+          }
+        })
       },
-      fail: function (res) {
-
+      fail: (res) => {
+        console.log(res)
+        this.setData(
+          { _num: 2, popErrorMsg: res.return_msg },
+        );
+        setTimeout(() => {
+          this.setData(
+            { _num: 1, },
+          );
+        }, 1500);
       }
     });
   },

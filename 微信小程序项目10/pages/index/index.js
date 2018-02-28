@@ -102,5 +102,12 @@ Page({
       url: '../money-list/money-list',
     })
   },
+  // 隐藏设置支付密码提示框
+  hideModal:function(){
+    var that = this;
+    that.setData({
+      isHasPayPassword: true
+    })
+  }
 
 })

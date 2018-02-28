@@ -10,7 +10,6 @@ const daysD = []
 const daysP = []
 const daysR = []
 var mDay
-
 for (let i = 1900; i <= date.getFullYear(); i++) {
   years.push(i)
 }
@@ -33,6 +32,8 @@ for (let i = 1; i <= 28; i++) {
 for (let i = 1; i <= 29; i++) {
   daysR.push(i)
 }
+// 下拉坐标
+var pageY = 0;
 Page({
   data: {
     isScroll:true,
@@ -58,12 +59,22 @@ Page({
     showModal: false,
     hideHeader: true,
     hideBottom: true,
-    refreshTime: '', // 刷新的时间 
     contentlist: [], // 列表显示的数据源
     allPages: '',    // 总页数
     currentPage: 1,  // 当前页数  默认是1
-    loadMoreData: '加载更多……' 
+    loadMoreData: '加载更多……',
+    isRefreshHidden:false//下拉刷新动画
   },
+  onLoad: function (e) {
+// 上拉刷新与下拉加载
+    var that = this;
+    var date = new Date();
+    that.setData({
+      deal_date: that.getDate(date)
+    })
+    this.loadMore();
+  },
+  // 时间改变
   bindChange: function (e) {
     const val = e.detail.value
     var mdays
@@ -86,16 +97,8 @@ Page({
       day,
       days: mdays
     })
-   
   },
-  onLoad: function (e) {
-    this.loadMore();
-// 上拉刷新与下拉加载
-    var date = new Date();
-    this.setData({
-      refreshTime: date.toLocaleTimeString()
-    })
-  },
+  
   //事件处理函数
   bindViewTap: function (options) {
       var orderNumber = options.currentTarget.dataset.ordernumber;
@@ -104,7 +107,6 @@ Page({
       })
   },
   loadMore: function (e) {
-
     var that = this;
     if (that.data.hasnextpage) {
       app.appRequest({
@@ -115,61 +117,50 @@ Page({
           page_size: that.data.page_size
         },
         success: function (res) {
-          that.setData({
-            expend_sum: res.data.expend_sum,
-            hasnextpage: res.data.hasnextpage,
-            income_sum: res.data.income_sum,
-            rows: res.data.rows,
-            page_number: that.data.page_number++
-          })
+          setTimeout(function () {
+            that.setData({
+              expend_sum: res.data.expend_sum,
+              hasnextpage: res.data.hasnextpage,
+              income_sum: res.data.income_sum,
+              rows: res.data.rows,
+              page_number: that.data.page_number++,
+              isRefreshHidden: false
+            })
+          }, 1500)
         },
         fail: function (res) {
 
         }
       });
     }else{
-      if (self.data.currentPage == self.data.allPages) {
-        self.setData({
+      if (that.data.currentPage == that.data.allPages) {
+        that.setData({
           loadMoreData: '已经到顶'
         })
         return;
       }
     }
-
-  },
-  // 下拉刷新
-  refresh: function (e) {
-    var self = this;
-    setTimeout(function () {
-      console.log('下拉刷新');
-      var date = new Date();
-      self.setData({
-        currentPage: 1,
-        refreshTime: date.toLocaleTimeString(),
-        hideHeader: false
-      })
-      self.getData();
-    }, 300);
   },
   // 显示
   showViewCalendarBtn: function () {
     this.setData({
       showModal: true,
       isScroll:false
-    })
-    // this.onPullDownRefresh();
-    // wx.stopPullDownRefresh();
-      
+    })   
   },
-  // 上拉刷新
-  onPullDownRefresh:function(e){
-      
+  getDate: function (date){
+      var that =this; 
+      const year = date.getFullYear()
+      const month = date.getMonth() + 1
+      const day = date.getDate()
+      const hour = date.getHours()
+      const minute = date.getMinutes()
+      const second = date.getSeconds()
+      return [year, month].map(that.formatNumber).join('-');
   },
- 
-  /**
-   * 弹出框蒙层截断touchmove事件
-   */
-  preventTouchMove: function () {
+  formatNumber:function(n){
+    n = n.toString()
+    return n[1] ? n : '0' + n
   },
   /**
    * 隐藏模态对话框
@@ -189,7 +180,41 @@ Page({
   * 对话框确认按钮点击事件
   */
   onConfirm: function () {
-    this.hideModal();
-  }
-
+    var that =this;
+    var year = that.data.year;
+    var month = that.data.month;
+    that.setData({
+      deal_date: [year, month].map(that.formatNumber).join('-')
+    })
+    that.hideModal();
+    that.loadMore();
+  },
+  //滑动开始
+  touchStart:function(e){
+    pageY = e.changedTouches[0].pageY;
+  },
+  //滑动进行中
+  touchMove: function () {
+    var that = this;
+  },
+  //滑动结束
+  touchEnd: function (e) {
+    // var that = this;
+    // var curPageY = e.changedTouches[0].pageY;
+    // if (curPageY - pageY > 0){//下拉刷新
+    //   var date = new Date();
+    //   that.setData({//上拉刷新还原
+    //     page_number: 0,
+    //     hasnextpage:true,
+    //     isRefreshHidden: true,
+    //     deal_date: that.getDate(date)
+    //   })
+    //   that.loadMore();
+    // } else if (curPageY - pageY < 0){
+    //   that.setData({
+    //     isRefreshHidden: true
+    //   })
+    //   that.loadMore();
+    // }
+  },
 })  

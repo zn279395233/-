@@ -60,8 +60,6 @@ App({
     var that = this;
     that.getUserInfo(function (json) {
       newWork.requestLoading(options, json)
-      console.log(options)
-      newWork.requestLoading(options, json)
     });
   },
   showok: function () {
@@ -94,6 +92,7 @@ App({
     encryptedData: null,
     iv: null,
     post: null,
-    baseUrl: "http://192.168.100.244:8200/"
+    baseUrl: "http://192.168.100.244:8200/",
+    mobile:null,//用户手机号(用于投诉与找寻密码)
   },
 })  

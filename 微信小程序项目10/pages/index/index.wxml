@@ -3,12 +3,14 @@
     <view class='title'>电子会员卡</view>
   <view class='img-container'>
         <view class='content'>
-            <image src='../../images/cardImg.jpg'></image>
-           <!-- <icon type='success'></icon> -->
+            <image src='{{configInfo.card_bgimg}}'></image>
+             <icon>
+                <image src='{{configInfo.company_logo}}'></image>     
+             </icon>  
             <text class='name'>{{configInfo.card_name}}</text>
             <text class='number'>NO\t•\t{{cardInfo.card_code}}</text>
         </view>
-      <view class='balance'>余额：<text>￥{{cardInfo.total_balance}}</text>
+      <view class='balance boxSizing'>余额：<text>￥{{cardInfo.total_balance}}</text>
           <text bindtap="bindViewPayList" class='moneyList'>查看明细</text>
       </view>
       <view>

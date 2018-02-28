@@ -10,11 +10,13 @@
 .img-container .number{font-size: 37.5rpx;left: 41.7rpx;bottom:47.91rpx;}
 .img-container{text-align: center;padding-top: 43.75rpx;position: relative;}
 .img-container image{width: 645.83rpx;height: 385.417rpx;}
-.img-container .balance{font-size: 43.75rpx;color: #333333;height: 125rpx;line-height: 125rpx;margin: auto;position: relative;width: 645.83rpx;}
+.img-container .balance{font-size: 43.75rpx;color: #333333;height: 125rpx;line-height: 125rpx;margin: auto;position: relative;width: 645.83rpx;padding-right:100rpx;}
 .img-container .balance text{color: #333333;font-size: 50rpx;vertical-align: -2rpx;}
 .img-container button{margin-top: 20.83rpx;width: 312.5rpx;height: 75rpx;background-color: #ffffff;border-radius: 10.417rpx;line-height: 75rpx;font-size: 37.5rpx;color: #696969;display: inline-block;vertical-align: top;margin: 0 10.417rpx;border-color: #bbbbbb;}
 .img-container button:hover{background-color: #00a0fc;color: white;border-radius: #00a0fc;}
 .img-container text.moneyList{position:absolute;font-size: 31.25rpx;color: #00a0fc;right: 0;}
+.img-container icon{width: 66.67rpx;height:  66.67rpx;background-color: #ffffff;border-radius: 10.417rpx;left: 41.67rpx;top: 41.67rpx;line-height: 66.67rpx;display: flex;align-content: center;align-items: center;justify-content: center;}
+.img-container icon image{width: 45.83rpx;height: 45.83rpx;vertical-align: -2rpx;vertical-align: middle;}
 /*列表  */
 .lists{padding: 0 31.25rpx;background-color: #fff;margin-top: 32.7rpx;}
 .lists scroll-view{height: 100%;}

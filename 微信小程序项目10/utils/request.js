@@ -5,13 +5,13 @@
 // success:成功的回调函数
 // fail：失败的回调
 function requestLoading(options, json) {
+
   // 登录数据
   var baseUrl = json.baseUrl;
   var token = json.token;
   //var company_code = json.company_code;
   // 请求数据
-  var url = options.url;
-   
+  var url = options.url; 
   var data = options.data || {};
   var isAnimate = typeof options.isAnimate == "undefined" ? true : false;
   //data.company_code = company_code;
@@ -47,18 +47,31 @@ function requestLoading(options, json) {
         wx.hideLoading()
       }
       if (res.statusCode == 200 && res.data.return_code == "SUCCESS") {
-      
         success(res.data)
       } else {
-        fail(res.data)
+        if (res == "" || res == null || typeof res == "undefined" || res.statusCode == 500) {
+          wx.showModal({
+            title: "请求失败",
+          });
+        }else{
+          fail(res.data)
+          console.log("1111")
+        }
       }
     },
     fail: function (res) {
+      console.log("22222")
       // wx.hideNavigationBarLoading()
-      if (message != "" && isAnimate) {
-        wx.hideLoading()
+      if (res == "" || res == null || typeof res == "undefined") {
+        wx.showModal({
+          title: "请求失败",
+        });
+      } else {
+        if (message != "" && isAnimate) {
+          wx.hideLoading()
+        }
+        fail(res)
       }
-      fail(res)
     },
     complete: function (res) {
 

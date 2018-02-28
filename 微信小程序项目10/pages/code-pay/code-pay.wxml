@@ -1,5 +1,4 @@
 <import src="../../template/modal.wxml"/>
-
 <view class='container'>
   <view class="pays {{isHidden == true?'isHidden':''}}" bindtap='bindView'>
       <view class='pay-header'>

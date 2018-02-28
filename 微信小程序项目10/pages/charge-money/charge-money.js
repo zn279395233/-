@@ -12,8 +12,12 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (e) {
+  onLoad: function (e) { 
     var that = this;
+    var card_code = wx.getStorageSync('card_code');
+    that.setData({
+      card_code: card_code
+    })
     app.appRequest({
       url: "api/account/recharge",
       data:{

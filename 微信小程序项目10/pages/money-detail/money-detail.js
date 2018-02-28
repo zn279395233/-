@@ -6,15 +6,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-      hiddenLoading: false,
       info: {}
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var id = options.id;
+    var id = options.orderNumber;
     var that = this;
+
     app.appRequest({
       url: "api/account/detail",
       data: {
@@ -26,9 +26,22 @@ Page({
         })
       },
       fail: function (res) {
-
+        
       }
     });
+
+  },
+  // 常见问题
+  bindViewQuestion: function () {
+    wx.navigateTo({
+      url: '../common-question/common-question',
+    })
+  },
+  // 投诉建议
+  bindViewSuggest: function () {
+    wx.navigateTo({
+      url: '../member-suggest/member-suggest',
+    })
 
   },
 

@@ -1,6 +1,7 @@
 <!--pages/change-personal/change-personal.wxml-->
 <view class='container'>
-    <button bindtap='bindViewSaveBtn'>保存</button>
+    <button bindtap='bindViewSaveBtn' wx:if="{{personalValue > 0}}" class="personalValue">保存</button>
+    <button wx:else bindtap='bindViewSaveBtn'>保存</button>
     <input value='{{personalValue || null}}' name="{{personalkey}}" bindinput='changeDataInput'></input>
 </view>
 <view class="prompt {{_num == 1?'hide':''}}">{{ popErrorMsg}}</view>

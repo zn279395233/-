@@ -13,14 +13,39 @@ Page({
     content:"",
     mobile:"",
     noteMaxLen: 200,
-    noteNowLen: 0
-
+    noteNowLen: 0,
+    isHasPhone:false
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var that = this;
+    if (app.globalData.mobile != null) {
+      that.setData({
+        isHasPhone: false
+      })
+    } else {
+      var that = this;
+      app.appRequest({
+        url: "api/member/info",
+        success: function (res) {
+          var mobile = res.data.mobile;
+          if (mobile == null || mobile == "" || typeof mobile == "undefined") {
+            that.setData({
+              isHasPhone: true
+            })
+          } else {
+            that.setData({
+              isHasPhone: false
+            })
+          }
+        },
+        fail: function (res) {
+
+        }
+      });
+    }
   },
   // 内容计算验证
   bindTextAreaChange: function (e) {
@@ -39,7 +64,13 @@ Page({
     }
 
   },
-
+  // 隐藏完善手机号提示框
+  hideModal: function () {
+    var that = this;
+    that.setData({
+      isHasPhone: false
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -82,7 +113,6 @@ Page({
         this.setData(
           { _num: 1, },
         );
-
       }, 1500);
       return false
     }
@@ -94,7 +124,6 @@ Page({
         this.setData(
           { _num: 1, },
         );
-
       }, 1500);
       return false
     }
@@ -108,11 +137,17 @@ Page({
         type: that.data.types
       },
       success: function (res) {
-        setTimeout(function () {
-          wx.navigateBack({
-            delta: 1,
-          })
-        }, 1500)
+        wx.showToast({
+          title: '提交成功',
+          icon: 'success',
+          success: function () {
+            setTimeout(function () {
+              wx.navigateBack({
+                delta: 1,
+              })
+            }, 1500)
+          }
+        })
       },
       fail: function (res) {
 

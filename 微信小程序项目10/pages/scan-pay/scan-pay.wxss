@@ -1,7 +1,5 @@
 @import "../component/component.wxss";/*6位数输入框*/
-
 @import "../../template/modal.wxss";
-
 page{background-color: #ededed;
 }
 .container{
@@ -11,8 +9,10 @@ page{background-color: #ededed;
   padding-bottom: 104rpx;
 }
 .head{
-  padding-top: 41.6rpx;
+  padding-top:15rpx;
   text-align: center;
+  background-color: #fbfbfb;
+  padding-bottom: 40rpx;
 }
 image{
  height: 78rpx;
@@ -23,7 +23,7 @@ image{
   font-size: 29rpx;
 }
 .center{
-  margin-top: 109rpx;
+  padding-top: 46.5rpx;
   padding-left: 62.5rpx;
   font-size: 29rpx;
 }
@@ -44,12 +44,10 @@ image{
   vertical-align: top;
   padding-bottom: 0;
   box-sizing: border-box;
-
 }
 .money>text{
-  font-size: 62.5rpx;
-  line-height: 110rpx;
-  
+   font-size: 62.5rpx;
+   line-height: 110rpx;
 }
 .remark{
   margin-top: 26rpx;
@@ -66,6 +64,7 @@ button{
   background-color:#00a0fc;
   height: 94rpx; 
 }
+button:hover{background-color:#00a0fc;opacity: 0.8;color: white;}
 .remarkinfo{
   width: 750rpx;
   color: black;
@@ -74,7 +73,6 @@ button{
   display: inline-block;
   margin-left: 10rpx;
   color: #20b2aa;
-
 }
 
 /*输入框  */

@@ -33,7 +33,6 @@ function getBytes(str) {
 exports.code128 = function (ctx, text, width, height) {
 
     width = parseInt(width);
-    // ctx.rotate(90*Math.PI/180) 
 
     height = parseInt(height);
 
@@ -62,8 +61,6 @@ exports.code128 = function (ctx, text, width, height) {
             x += barW + spcW;
         }
     }
-    
-    ctx.translate(x + .5 * width, y + .5 * height);
     ctx.draw();
 }
 

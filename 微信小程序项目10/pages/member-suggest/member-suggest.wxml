@@ -1,5 +1,5 @@
 <!--pages/member-suggest/member-suggest.wxml-->
-
+<import src="../../template/modal.wxml"/>
 <view class='container'>
 <view class='success-type'>
     <view class='type-header'>(必选)你想反馈的问题类型</view>
@@ -29,3 +29,6 @@
     <button class='saveBtn' bindtap='saveBtn'>提交</button>
 </view>
 <view class="prompt {{_num == 1?'hide':''}}">{{ popErrorMsg}}</view>
+
+<!--支付密码设置提示框  -->
+<template is="isHasPhone" data="{{...item,isHasPhone:isHasPhone}}"></template>   

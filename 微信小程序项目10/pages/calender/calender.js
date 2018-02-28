@@ -16,11 +16,8 @@ Page({
     amount: null,//支付金额
     receiver: null,//收款方名称
     receiver_image: null,//收款方头像
-    remark: null,//付款方备注
-    first:"",
-    second:"",
-    third:"",
-    fourth:""
+    remark: null,//付款方备注,
+    codes:false
 
 
   },
@@ -31,6 +28,12 @@ Page({
       that.createQrAndBarCode();
     }, 60000)
     that.data.timer = timer;
+
+   
+    
+
+
+
 
   },
   // 请求后台看是否扫码成功
@@ -69,18 +72,12 @@ Page({
       var array = that.data.auth_codes, index = that.data.index;
       wxbarcode.barcode('barcode', array[index], 591.7, 165.625);
       wxbarcode.barcode('barcodes', array[index], 591.7, 165.625);
-      
-      this.setData({
-        first: array[index].slice(0, 4),
-        second: array[index].slice(4, 8),
-        third: array[index].slice(8, 12),
-        fourth: array[index].slice(12, 18)
-      })
       wxbarcode.qrcode('qrcode', array[index], 250, 250);
       that.data.index++;
     } else {
       clearInterval(that.data.timer);
     }
+
   },
   bindView: function () {
 
@@ -96,6 +93,9 @@ Page({
   },
   //条形码
   showViewCode: function () {
+    this.setData({
+      codes: true
+    })
     this.setData({
       codePayIntroduces: true,
       codePayCode: false,
